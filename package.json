@@ -1,0 +1,10 @@
+{
+  "name": "project-explorer-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Netlify-only AI Q&A for Project Explorer",
+  "scripts": {
+    "build": "node ./scripts/build-embeddings.js"
+  },
+  "license": "MIT"
+}

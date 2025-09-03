@@ -1,0 +1,20 @@
+[
+  {
+    "id": "proj-001",
+    "project_title": "Behavioral Economics Capstone: Nudges for Transit",
+    "instructor": "Alexander Bick",
+    "year": 2023,
+    "problem_level": "Advanced",
+    "source_url": "https://battenprojects.com/files/proj-001.pdf",
+    "text": "This project evaluates the effectiveness of subtle choice architecture—nudges—to increase public transit use among students and staff. The team designed a randomized controlled trial featuring message framing (loss vs. gain), default calendar invitations for bus reminders, and social proof messaging based on campus ridership data. The analysis measures changes in ridership card taps and survey-reported intent to use transit. Findings suggest that default reminders combined with social proof increased weekly ridership by 6-9% among infrequent riders, with stronger effects at the start of semesters. Policy implications include low-cost adoption by the transportation office and integration with existing campus communications. Limitations involve self-selection bias and seasonal effects."
+  },
+  {
+    "id": "proj-002",
+    "project_title": "Local Housing Market Metrics Dashboard",
+    "instructor": "J. Alexander Bick",
+    "year": 2022,
+    "problem_level": "Intermediate",
+    "source_url": "https://battenprojects.com/files/proj-002.pdf",
+    "text": "This project aggregates open data sources—tax records, building permits, and MLS summaries—to create a unified dashboard for local policymakers. The team cleaned address anomalies, geocoded parcels, and aligned time series across sources using a quarterly cadence. Key indicators include median days on market, price-to-income ratios, and permit issuance rates. The dashboard emphasizes explainability with tooltips and footnotes linking back to source methodology. Validation included back-casting against known policy shifts and external macro indicators. The team recommends seasonal adjustment and caution when interpreting short-run spikes."
+  }
+]

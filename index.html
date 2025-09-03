@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Explorer + AI Q&A</title>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    #legacyWrap { position: fixed; inset: 0; }
+    #legacyApp {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      border: 0; background: #fff;
+    }
+    .fallback {
+      position:absolute; inset:0; display:none; align-items:center; justify-content:center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:#334155; background:#f1f5f9; text-align:center; padding:24px;
+    }
+    .aiq-btn{
+      position:fixed; right:20px; bottom:20px; z-index:2147483000;
+      padding:12px 16px; border:0; border-radius:12px; font-weight:700;
+      background:#0ea5e9; color:#fff; box-shadow:0 6px 20px rgba(0,0,0,.15);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .aiq-drawer{
+      position:fixed; inset:0; background:rgba(15,23,42,.35);
+      display:none; z-index:2147482999;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .aiq-drawer[aria-hidden="false"]{ display:block; }
+    .aiq-drawer-inner{
+      position:absolute; right:0; top:0; height:100%; width:min(480px,100%);
+      background:#fff; border-left:1px solid #e5e7eb; padding:18px 18px 12px;
+      box-shadow:-8px 0 24px rgba(0,0,0,.12); display:flex; flex-direction:column; gap:12px;
+    }
+    .aiq-header{ display:flex; align-items:center; justify-content:space-between; }
+    .aiq-header h2{ margin:0; font:600 18px/1.2 system-ui, -apple-system, Segoe UI, Roboto; }
+    .aiq-icon{ border:0; background:transparent; font-size:18px; cursor:pointer; }
+    .aiq-row{ display:flex; gap:8px; }
+    #aiq-input{
+      flex:1; padding:12px 14px; border:1px solid #cbd5e1; border-radius:10px; font-size:15px;
+    }
+    #aiq-ask{
+      padding:12px 14px; border:0; border-radius:10px; background:#0ea5e9; color:#fff; font-weight:700;
+    }
+    .aiq-check{ font-size:14px; color:#334155; display:flex; gap:8px; align-items:center; }
+    .aiq-answer{
+      border:1px solid #e2e8f0; border-radius:12px; padding:12px; background:#f8fafc;
+      min-height:120px; white-space:pre-wrap; line-height:1.5; font-size:15px;
+    }
+    .aiq-citations{ font-size:14px; color:#334155; margin-top:4px; }
+    .aiq-citations a{ color:#0ea5e9; text-decoration:none; }
+    .aiq-foot{ display:flex; gap:8px; align-items:center; margin-top:auto; font-size:12px; color:#64748b; }
+    .aiq-pill{ background:#e2e8f0; border-radius:999px; padding:4px 8px; }
+    .aiq-muted{ color:#64748b; }
+  </style>
+</head>
+<body>
+
+  <div id="legacyWrap">
+    <!-- ABSOLUTE PATH to avoid relative path surprises -->
+    <iframe id="legacyApp" src="/app.html" title="Project Explorer"></iframe>
+    <div id="fallback" class="fallback">
+      <div>
+        <h2 style="margin-top:0;">We couldn't load <code>/app.html</code>.</h2>
+        <p>Please confirm that <strong>app.html</strong> exists at the site root and was deployed.</p>
+        <p>Tip: Open <a href="/app.html">/app.html</a> directly in your browser. If it 404s, it wasn't published.</p>
+      </div>
+    </div>
+  </div>
+
+  <button id="aiq-toggle" class="aiq-btn">Ask the data</button>
+  <div id="aiq-drawer" class="aiq-drawer" aria-hidden="true">
+    <div class="aiq-drawer-inner">
+      <div class="aiq-header">
+        <h2>AI Q&amp;A</h2>
+        <button id="aiq-close" class="aiq-icon" aria-label="Close">✕</button>
+      </div>
+
+      <div class="aiq-row">
+        <input id="aiq-input" type="text" placeholder="Ask about these projects…" />
+        <button id="aiq-ask">Ask</button>
+      </div>
+
+      <label class="aiq-check">
+        <input type="checkbox" id="aiq-use-filters" checked />
+        Respect current filters (instructor / year / level)
+      </label>
+
+      <div id="aiq-answer" class="aiq-answer">Ask a question to get started.</div>
+      <div id="aiq-citations" class="aiq-citations"></div>
+
+      <div class="aiq-foot">
+        <span class="aiq-pill">/api/ask</span>
+        <span class="aiq-muted">Grounded answers with citations. If the data isn’t in context, it will say so.</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Detect iframe load failure (404 shows Netlify HTML, but still 'load' fires).
+    // We'll also poll the iframe document title for 'Page not found' to decide to show fallback.
+    const iframe = document.getElementById("legacyApp");
+    const fallback = document.getElementById("fallback");
+    function checkIframe(){
+      try{
+        const doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (!doc) return;
+        const title = (doc.title || "").toLowerCase();
+        if (title.includes("page not found")) {
+          fallback.style.display = "flex";
+        }
+      }catch(e){
+        // cross-origin shouldn't happen on same site
+      }
+    }
+    iframe.addEventListener("load", checkIframe);
+
+    // Drawer logic
+    const aiqDrawer = document.getElementById("aiq-drawer");
+    const aiqToggle = document.getElementById("aiq-toggle");
+    const aiqClose = document.getElementById("aiq-close");
+    const aiqInput = document.getElementById("aiq-input");
+    const aiqAsk = document.getElementById("aiq-ask");
+    const aiqAns = document.getElementById("aiq-answer");
+    const aiqCites = document.getElementById("aiq-citations");
+    const aiqUseF = document.getElementById("aiq-use-filters");
+
+    function aiqOpen(){ aiqDrawer.setAttribute("aria-hidden","false"); aiqInput.focus(); }
+    function aiqHide(){ aiqDrawer.setAttribute("aria-hidden","true"); }
+    aiqToggle.addEventListener("click", aiqOpen);
+    aiqClose?.addEventListener("click", aiqHide);
+    aiqDrawer.addEventListener("click", (e)=>{ if(e.target===aiqDrawer) aiqHide(); });
+
+    function collectActiveFilters(){
+      try {
+        const doc = iframe.contentDocument;
+        if (!doc) return {};
+        const getVals = id => {
+          const el = doc.getElementById(id);
+          if (!el) return [];
+          const vals = Array.from(el.selectedOptions || []).map(o => o.value).filter(Boolean);
+          if (!vals.length && el.value) vals.push(el.value);
+          return vals;
+        };
+        const f = {};
+        const instr = getVals("instructorFilter");
+        const year = getVals("yearFilter").map(v => isNaN(+v) ? v : +v);
+        const lvl = getVals("problemLevelFilter");
+        if(instr.length) f.instructor = instr;
+        if(year.length) f.year = year;
+        if(lvl.length) f.problem_level = lvl;
+        return f;
+      } catch { return {}; }
+    }
+
+    async function askQuestion(query, filters){
+      const res = await fetch("/api/ask", {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify({ query, filters })
+      });
+      if (!res.ok) throw new Error(await res.text());
+      return res.json();
+    }
+
+    async function runAsk(){
+      const q = aiqInput.value.trim();
+      if (!q) return;
+      aiqAsk.disabled = true;
+      aiqAns.textContent = "Thinking…";
+      aiqCites.textContent = "";
+      try {
+        const filters = aiqUseF.checked ? collectActiveFilters() : {};
+        const data = await askQuestion(q, filters);
+        aiqAns.textContent = data.answer || "(No answer returned)";
+        aiqCites.innerHTML = (data.citations || []).map(c => {
+          const meta = [c.instructor || "Unknown", c.year || "n/a", c.problem_level || ""].filter(Boolean).join(" • ");
+          const link = c.source_url ? ` — <a href="${c.source_url}" target="_blank" rel="noopener">source</a>` : "";
+          return `<div>[${c.n}] ${c.title || "Untitled"} <span class="aiq-muted">(${meta})</span>${link}</div>`;
+        }).join("");
+      } catch (err) {
+        aiqAns.textContent = "Error: " + err.message;
+      } finally {
+        aiqAsk.disabled = false;
+      }
+    }
+
+    document.getElementById("aiq-ask").addEventListener("click", runAsk);
+    document.getElementById("aiq-input").addEventListener("keydown", e => { if (e.key === "Enter") runAsk(); });
+  </script>
+</body>
+</html>
