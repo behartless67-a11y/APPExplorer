@@ -36,7 +36,9 @@
     .pill { display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:999px; border:1.5px solid var(--brand-accent); background: rgba(229,114,0,0.08); font-size:12px; }
     .pill button { border:none; background:transparent; cursor:pointer; font-size:14px; line-height:1; color:var(--brand-accent); }
     .grid { display:grid; gap:12px; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); }
-    .card { background:var(--brand-card); border:1px solid var(--brand-border); border-radius:var(--radius); padding:18px; display:flex; flex-direction:column; gap:10px; position:relative; box-shadow:var(--shadow); transition: transform 0.2s ease, box-shadow 0.2s ease;}
+    .card { background:var(--brand-card); border:1px solid var(--brand-border); border-radius:var(--radius); padding:18px; display:flex; flex-direction:column; gap:10px; position:relative; box-shadow:var(--shadow); transition: transform 0.2s ease, box-shadow 0.2s ease; min-height: 300px;}
+    .card-content { display:flex; flex-direction:column; gap:10px; flex-grow:1; }
+    .card-footer { margin-top:auto; padding-top:16px; }
     .card h3 { margin:0; font-size:16px; color:var(--brand-text); padding-bottom:4px; border-bottom:2px solid rgba(229,114,0,0.15);}
     .muted { color:var(--brand-muted); font-size:12px; }
     .meta { display:flex; gap:6px; flex-wrap:wrap; }
@@ -382,11 +384,14 @@ const App = (()=>{
     const {short, truncated} = smartTruncate(summary, 280);
 
     el.innerHTML = `
-      <h3>${highlight(title, qNow)}</h3>
-      <div class="muted">${highlight(short, qNow)}${truncated ? ' <button class="readmore">Read more</button>' : ''}</div>
-      <div class="meta">
-        ${FILTER_COLS.map(col=>`<span class="tag">${labelFor(col)}: ${escapeHtml(row[col]||"(Unspecified)")}</span>`).join("")}
+      <div class="card-content">
+        <h3>${highlight(title, qNow)}</h3>
+        <div class="muted">${highlight(short, qNow)}${truncated ? ' <button class="readmore">Read more</button>' : ''}</div>
+        <div class="meta">
+          ${FILTER_COLS.map(col=>`<span class="tag">${labelFor(col)}: ${escapeHtml(row[col]||"(Unspecified)")}</span>`).join("")}
+        </div>
       </div>
+      <div class="card-footer"></div>
     `;
     if (truncated){
       el.querySelector(".readmore").addEventListener("click", (e)=>{
@@ -620,7 +625,8 @@ const App = (()=>{
         btn.innerHTML = "⬇️ Download Full Project";
         btn.setAttribute("download","");
         btn.dataset.dl = "1";
-        card.appendChild(btn);
+        const footer = card.querySelector('.card-footer');
+        footer.appendChild(btn);
         card.dataset.id = file.replace(/\.[^.]+$/,'');
       }
     }
