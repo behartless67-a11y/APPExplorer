@@ -18,3 +18,4 @@ name: Deploy to Azure Static Web Apps
           action: upload
           app_location: /
           output_location: ""
+Updated deployment token - [current time]
