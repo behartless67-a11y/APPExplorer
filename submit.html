@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit Your Project — UVA Batten School</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-bg: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+      --brand-card: #FFFFFF;
+      --brand-border: #E2E8F0;
+      --brand-text: #232D4B;
+      --brand-muted: #64748B;
+      --brand-accent: #E57200;
+      --brand-accent-contrast: #FFFFFF;
+      --brand-header-bg: linear-gradient(135deg, #1E293B 0%, #232D4B 100%);
+      --brand-header-text: #FFFFFF;
+      --radius: 16px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    * { box-sizing: border-box; }
+    body { 
+      margin:0; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+      background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('./UVA_Zoom-Wallpaper_Rotunda.jpg'); 
+      background-size: cover; 
+      background-position: center center; 
+      background-attachment: fixed; 
+      background-repeat: no-repeat; 
+      color:var(--brand-text); 
+      font-size: 15px; 
+      line-height: 1.6; 
+      font-weight: 400;
+    }
+    header { padding:20px 24px; background:var(--brand-header-bg); color:var(--brand-header-text);}
+    .nav { display:flex; align-items:center; gap:20px; max-width:1400px; margin:0 auto; justify-content: space-between; }
+    .title { 
+      font-family: 'Playfair Display', serif; 
+      font-weight: 800; 
+      font-size: 32px; 
+      letter-spacing: -0.02em;
+      color: var(--brand-header-text);
+    }
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-link { 
+      color: var(--brand-header-text); 
+      text-decoration: none; 
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+    }
+    .nav-link:hover { opacity: 0.8; }
+    .container { padding:24px 24px; max-width:800px; margin:0 auto; }
+    .panel { 
+      background:var(--brand-card); 
+      border:1px solid var(--brand-border); 
+      border-radius:var(--radius); 
+      padding:32px; 
+      margin-bottom:24px; 
+      box-shadow:var(--shadow-lg);
+    }
+    .form-section { margin-bottom: 32px; }
+    .form-section h2 { 
+      margin: 0 0 16px 0; 
+      color: var(--brand-text); 
+      font-size: 20px; 
+      font-weight: 600;
+    }
+    .form-section p { 
+      margin: 0 0 20px 0; 
+      color: var(--brand-muted); 
+      font-size: 14px;
+    }
+    .form-row { display: flex; gap: 20px; margin-bottom: 20px; }
+    .form-col { flex: 1; }
+    label { 
+      display: block; 
+      font-size: 14px; 
+      font-weight: 500; 
+      color: var(--brand-text); 
+      margin-bottom: 8px;
+    }
+    .required { color: var(--brand-accent); }
+    input[type="text"], input[type="email"], select, textarea { 
+      width: 100%; 
+      padding: 12px 16px; 
+      border: 1px solid var(--brand-border); 
+      border-radius: 8px; 
+      background: var(--brand-card); 
+      color: var(--brand-text); 
+      font-family: inherit; 
+      font-size: 14px; 
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    input:focus, select:focus, textarea:focus { 
+      outline: none; 
+      border-color: var(--brand-accent); 
+      box-shadow: 0 0 0 3px rgba(229, 114, 0, 0.1);
+    }
+    textarea { 
+      min-height: 120px; 
+      resize: vertical;
+    }
+    .file-upload-area {
+      border: 2px dashed var(--brand-border);
+      border-radius: 8px;
+      padding: 40px 20px;
+      text-align: center;
+      background: #fafafa;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .file-upload-area:hover {
+      border-color: var(--brand-accent);
+      background: rgba(229, 114, 0, 0.05);
+    }
+    .file-upload-area.dragover {
+      border-color: var(--brand-accent);
+      background: rgba(229, 114, 0, 0.1);
+    }
+    .file-upload-icon {
+      font-size: 48px;
+      color: var(--brand-muted);
+      margin-bottom: 16px;
+    }
+    .file-upload-text {
+      color: var(--brand-text);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .file-upload-subtext {
+      color: var(--brand-muted);
+      font-size: 13px;
+    }
+    .file-input {
+      display: none;
+    }
+    .file-list {
+      margin-top: 16px;
+      display: none;
+    }
+    .file-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border: 1px solid var(--brand-border);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      background: white;
+    }
+    .file-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .file-name {
+      font-weight: 500;
+      color: var(--brand-text);
+    }
+    .file-size {
+      color: var(--brand-muted);
+      font-size: 13px;
+    }
+    .remove-file {
+      background: none;
+      border: none;
+      color: #dc2626;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 4px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn.primary {
+      background: var(--brand-accent);
+      color: var(--brand-accent-contrast);
+    }
+    .btn.primary:hover {
+      background: #d66000;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    .btn.secondary {
+      background: var(--brand-card);
+      color: var(--brand-text);
+      border: 1px solid var(--brand-border);
+    }
+    .btn.secondary:hover {
+      background: #f8fafc;
+      transform: translateY(-1px);
+    }
+    .form-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: flex-end;
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid var(--brand-border);
+    }
+    .character-count {
+      text-align: right;
+      font-size: 12px;
+      color: var(--brand-muted);
+      margin-top: 4px;
+    }
+    .help-text {
+      font-size: 13px;
+      color: var(--brand-muted);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 20px 0;
+      display: none;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--brand-accent);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+    .success-message, .error-message {
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      display: none;
+    }
+    .success-message {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+    }
+    .error-message {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #dc2626;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="nav">
+      <div class="title">Submit Your Project</div>
+      <div class="nav-links">
+        <a href="./app.html" class="nav-link">← Back to Explorer</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="panel">
+      <div style="margin-bottom: 32px; text-align: center;">
+        <h1 style="margin: 0 0 12px 0; font-size: 28px; font-weight: 700; color: var(--brand-text);">
+          Submit Your Applied Policy Project
+        </h1>
+        <p style="margin: 0; font-size: 16px; color: var(--brand-muted); line-height: 1.5;">
+          Share your project with the Batten School community. All submitted projects will be reviewed before appearing in the public explorer.
+        </p>
+      </div>
+
+      <form id="projectSubmissionForm" enctype="multipart/form-data">
+        <!-- Basic Information -->
+        <div class="form-section">
+          <h2>📋 Project Information</h2>
+          <p>Tell us about your project and its impact</p>
+          
+          <div class="form-row">
+            <div class="form-col">
+              <label for="title">Project Title <span class="required">*</span></label>
+              <input type="text" id="title" name="title" required maxlength="200">
+              <div class="character-count" id="titleCount">0/200 characters</div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <label for="summary">Project Summary <span class="required">*</span></label>
+              <textarea id="summary" name="summary" placeholder="Provide a comprehensive summary of your project, its objectives, methodology, and key findings or recommendations..." required maxlength="2000"></textarea>
+              <div class="character-count" id="summaryCount">0/2000 characters</div>
+              <div class="help-text">Include the problem you addressed, your approach, and main conclusions</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Author & Academic Info -->
+        <div class="form-section">
+          <h2>👤 Author & Academic Information</h2>
+          <p>Your details and academic context</p>
+
+          <div class="form-row">
+            <div class="form-col">
+              <label for="studentName">Student Name <span class="required">*</span></label>
+              <input type="text" id="studentName" name="name" required placeholder="Your full name">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <label for="instructor">Course Instructor <span class="required">*</span></label>
+              <select id="instructor" name="instructor" required>
+                <option value="">Select your instructor...</option>
+                <option value="Anna Rorem">Anna Rorem</option>
+                <option value="Craig Volden">Craig Volden</option>
+                <option value="Dan Player">Dan Player</option>
+                <option value="Gerard Robinson">Gerard Robinson</option>
+                <option value="Lucy Bassett">Lucy Bassett</option>
+                <option value="Noah Myung">Noah Myung</option>
+                <option value="Other">Other (specify in comments)</option>
+              </select>
+            </div>
+            <div class="form-col">
+              <label for="projectStartTerm">Project Start Term <span class="required">*</span></label>
+              <select id="projectStartTerm" name="project_start_term" required>
+                <option value="">Select term...</option>
+                <option value="Fall 2025">Fall 2025</option>
+                <option value="Spring 2025">Spring 2025</option>
+                <option value="Fall 2024">Fall 2024</option>
+                <option value="Spring 2024">Spring 2024</option>
+                <option value="Fall 2023">Fall 2023</option>
+                <option value="Spring 2023">Spring 2023</option>
+                <option value="Fall 2022">Fall 2022</option>
+                <option value="Spring 2022">Spring 2022</option>
+                <option value="Fall 2021">Fall 2021</option>
+                <option value="Spring 2021">Spring 2021</option>
+                <option value="Fall 2020">Fall 2020</option>
+                <option value="Spring 2020">Spring 2020</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Client Information -->
+        <div class="form-section">
+          <h2>🏢 Client Information</h2>
+          <p>Details about the organization you worked with</p>
+
+          <div class="form-row">
+            <div class="form-col">
+              <label for="clientOrgName">Client Organization Name <span class="required">*</span></label>
+              <input type="text" id="clientOrgName" name="client_org_name" required placeholder="e.g., Richmond Public Schools, Virginia Department of Health">
+            </div>
+            <div class="form-col">
+              <label for="clientOrgType">Client Organization Type <span class="required">*</span></label>
+              <select id="clientOrgType" name="client_org_type" required>
+                <option value="">Select organization type...</option>
+                <option value="Federal Government">Federal Government</option>
+                <option value="State Government">State Government</option>
+                <option value="Local Government">Local Government</option>
+                <option value="International Government">International Government</option>
+                <option value="Nonprofit Sector">Nonprofit Sector</option>
+                <option value="Research Institute or Think Tank">Research Institute or Think Tank</option>
+                <option value="Private Sector">Private Sector</option>
+                <option value="Academic Institution">Academic Institution</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <label for="clientContactName">Client Contact Name</label>
+              <input type="text" id="clientContactName" name="client_contact_name" placeholder="Contact person at the organization (optional)">
+            </div>
+            <div class="form-col">
+              <label for="clientContactTitle">Client Contact Title</label>
+              <input type="text" id="clientContactTitle" name="client_contact_title" placeholder="e.g., Director, Policy Analyst (optional)">
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Classification -->
+        <div class="form-section">
+          <h2>📊 Project Classification</h2>
+          <p>Help us categorize your project scope and impact</p>
+
+          <div class="form-row">
+            <div class="form-col">
+              <label for="problemLevel">Problem Level <span class="required">*</span></label>
+              <select id="problemLevel" name="problem_level" required>
+                <option value="">Select problem level...</option>
+                <option value="City/Municipal">City/Municipal</option>
+                <option value="State/Province">State/Province</option>
+                <option value="National">National</option>
+                <option value="International">International</option>
+                <option value="Rural">Rural</option>
+                <option value="Regional">Regional</option>
+              </select>
+            </div>
+            <div class="form-col">
+              <label for="geographicScope">Geographic Scope <span class="required">*</span></label>
+              <select id="geographicScope" name="geographic_scope_of_this_applied_policy_project" required>
+                <option value="">Select geographic scope...</option>
+                <option value="Domestic">Domestic (United States)</option>
+                <option value="International">International</option>
+                <option value="Regional">Regional (Multi-state/Multi-country)</option>
+                <option value="Global">Global</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- File Upload -->
+        <div class="form-section">
+          <h2>📎 Project Files</h2>
+          <p>Upload your project document and any supplementary materials</p>
+
+          <div class="file-upload-area" id="fileUploadArea">
+            <div class="file-upload-icon">📄</div>
+            <div class="file-upload-text">Drop your files here or click to browse</div>
+            <div class="file-upload-subtext">Supports PDF, DOC, DOCX files up to 25MB each</div>
+            <input type="file" id="fileInput" name="files" multiple accept=".pdf,.doc,.docx" class="file-input">
+          </div>
+          
+          <div class="file-list" id="fileList"></div>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="form-section">
+          <h2>💭 Additional Information</h2>
+          <p>Any additional context or special notes</p>
+
+          <div class="form-row">
+            <div class="form-col">
+              <label for="comments">Comments or Special Instructions</label>
+              <textarea id="comments" name="comments" placeholder="Any additional information about your project, special formatting requirements, or notes for the review team..." maxlength="500"></textarea>
+              <div class="character-count" id="commentsCount">0/500 characters</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="progress-bar" id="uploadProgress">
+          <div class="progress-fill" id="uploadProgressFill"></div>
+        </div>
+
+        <div class="success-message" id="successMessage">
+          <strong>✅ Success!</strong> Your project has been submitted successfully. You'll receive a confirmation email shortly.
+        </div>
+
+        <div class="error-message" id="errorMessage">
+          <strong>❌ Error:</strong> <span id="errorText">Something went wrong. Please try again.</span>
+        </div>
+
+        <div class="form-actions">
+          <a href="./app.html" class="btn secondary">Cancel</a>
+          <button type="submit" class="btn primary" id="submitBtn">
+            📤 Submit Project
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Character counters
+    function setupCharacterCounter(inputId, counterId, maxLength) {
+      const input = document.getElementById(inputId);
+      const counter = document.getElementById(counterId);
+      
+      input.addEventListener('input', () => {
+        const length = input.value.length;
+        counter.textContent = `${length}/${maxLength} characters`;
+        counter.style.color = length > maxLength * 0.9 ? '#dc2626' : 'var(--brand-muted)';
+      });
+    }
+
+    setupCharacterCounter('title', 'titleCount', 200);
+    setupCharacterCounter('summary', 'summaryCount', 2000);
+    setupCharacterCounter('comments', 'commentsCount', 500);
+
+    // File upload handling
+    const fileUploadArea = document.getElementById('fileUploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const fileList = document.getElementById('fileList');
+    let selectedFiles = [];
+
+    fileUploadArea.addEventListener('click', () => fileInput.click());
+
+    fileUploadArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      fileUploadArea.classList.add('dragover');
+    });
+
+    fileUploadArea.addEventListener('dragleave', () => {
+      fileUploadArea.classList.remove('dragover');
+    });
+
+    fileUploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      fileUploadArea.classList.remove('dragover');
+      handleFiles(e.dataTransfer.files);
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      handleFiles(e.target.files);
+    });
+
+    function handleFiles(files) {
+      for (let file of files) {
+        if (validateFile(file)) {
+          selectedFiles.push(file);
+        }
+      }
+      updateFileList();
+    }
+
+    function validateFile(file) {
+      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      const maxSize = 25 * 1024 * 1024; // 25MB
+
+      if (!allowedTypes.includes(file.type)) {
+        alert(`File "${file.name}" is not a supported format. Please upload PDF, DOC, or DOCX files only.`);
+        return false;
+      }
+
+      if (file.size > maxSize) {
+        alert(`File "${file.name}" is too large. Maximum file size is 25MB.`);
+        return false;
+      }
+
+      return true;
+    }
+
+    function updateFileList() {
+      if (selectedFiles.length === 0) {
+        fileList.style.display = 'none';
+        return;
+      }
+
+      fileList.style.display = 'block';
+      fileList.innerHTML = '';
+
+      selectedFiles.forEach((file, index) => {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-item';
+        
+        const fileInfo = document.createElement('div');
+        fileInfo.className = 'file-info';
+        
+        const fileName = document.createElement('div');
+        fileName.className = 'file-name';
+        fileName.textContent = file.name;
+        
+        const fileSize = document.createElement('div');
+        fileSize.className = 'file-size';
+        fileSize.textContent = formatFileSize(file.size);
+        
+        fileInfo.appendChild(fileName);
+        fileInfo.appendChild(fileSize);
+        
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'remove-file';
+        removeBtn.innerHTML = '×';
+        removeBtn.addEventListener('click', () => removeFile(index));
+        
+        fileItem.appendChild(fileInfo);
+        fileItem.appendChild(removeBtn);
+        fileList.appendChild(fileItem);
+      });
+    }
+
+    function removeFile(index) {
+      selectedFiles.splice(index, 1);
+      updateFileList();
+    }
+
+    function formatFileSize(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    // Form submission
+    document.getElementById('projectSubmissionForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const progressBar = document.getElementById('uploadProgress');
+      const progressFill = document.getElementById('uploadProgressFill');
+      const successMessage = document.getElementById('successMessage');
+      const errorMessage = document.getElementById('errorMessage');
+      
+      // Reset messages
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+      
+      // Validate required fields based on simplified form
+      const requiredFields = ['projectName', 'studentName', 'instructor', 'projectStartTerm'];
+      let isValid = true;
+      
+      for (let fieldId of requiredFields) {
+        const field = document.getElementById(fieldId);
+        if (!field.value.trim()) {
+          field.style.borderColor = '#dc2626';
+          isValid = false;
+        } else {
+          field.style.borderColor = '';
+        }
+      }
+      
+      if (!isValid) {
+        errorMessage.style.display = 'block';
+        document.getElementById('errorText').textContent = 'Please fill in all required fields.';
+        return;
+      }
+      
+      if (selectedFiles.length === 0) {
+        errorMessage.style.display = 'block';
+        document.getElementById('errorText').textContent = 'Please upload at least one project file.';
+        return;
+      }
+      
+      // Start submission
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '⏳ Submitting...';
+      progressBar.style.display = 'block';
+      
+      try {
+        // Create submission data object
+        const submissionData = {
+          projectName: document.getElementById('projectName').value.trim(),
+          studentName: document.getElementById('studentName').value.trim(),
+          instructor: document.getElementById('instructor').value.trim(),
+          projectStartTerm: document.getElementById('projectStartTerm').value.trim(),
+          clientOrgName: document.getElementById('clientOrgName')?.value?.trim() || '',
+          clientContactName: document.getElementById('clientContactName')?.value?.trim() || '',
+          clientContactTitle: document.getElementById('clientContactTitle')?.value?.trim() || '',
+          primaryTopic: document.getElementById('primaryTopic')?.value?.trim() || '',
+          projectSummary: document.getElementById('projectSummary')?.value?.trim() || '',
+          geographicScope: document.getElementById('geographicScope')?.value?.trim() || '',
+          files: selectedFiles.map(file => ({
+            name: file.name,
+            size: file.size,
+            type: file.type,
+            lastModified: file.lastModified
+          }))
+        };
+        
+        // Simulate upload progress
+        let progress = 0;
+        const progressInterval = setInterval(() => {
+          progress += Math.random() * 15;
+          if (progress > 90) progress = 90;
+          progressFill.style.width = progress + '%';
+        }, 200);
+        
+        // Submit to API
+        const response = await fetch('/api/submit-project', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(submissionData)
+        });
+        
+        clearInterval(progressInterval);
+        progressFill.style.width = '100%';
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+          // Show success message with submission details
+          successMessage.style.display = 'block';
+          const successText = document.getElementById('successText');
+          if (successText) {
+            successText.innerHTML = `
+              <strong>${result.message}</strong><br>
+              <small>Submission ID: ${result.submissionId}</small><br>
+              <small>Project: ${result.submission.projectName}</small><br>
+              <small>Status: ${result.submission.status.replace('_', ' ')}</small>
+            `;
+          }
+          
+          // Reset form
+          document.getElementById('projectSubmissionForm').reset();
+          selectedFiles = [];
+          updateFileList();
+          
+          setTimeout(() => {
+            progressBar.style.display = 'none';
+            progressFill.style.width = '0%';
+          }, 3000);
+        } else {
+          throw new Error(result.error || 'Submission failed');
+        }
+        
+      } catch (error) {
+        console.error('Submission error:', error);
+        errorMessage.style.display = 'block';
+        document.getElementById('errorText').textContent = 'Failed to submit project. Please try again.';
+        progressBar.style.display = 'none';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '📤 Submit Project';
+      }
+    });
+
+    // Email validation
+    document.getElementById('studentEmail').addEventListener('input', (e) => {
+      const email = e.target.value;
+      if (email && !email.endsWith('@virginia.edu')) {
+        e.target.style.borderColor = '#dc2626';
+      } else {
+        e.target.style.borderColor = '';
+      }
+    });
+  </script>
+</body>
+</html>
