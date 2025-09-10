@@ -208,11 +208,29 @@
   </header>
 
   <div class="container">
+    <!-- Authentication status -->
+    <div id="authPanel" class="panel" style="margin-bottom: 20px; display: none;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <span id="authStatus">Checking authentication...</span>
+        </div>
+        <div>
+          <button id="loginBtn" class="btn accent" style="display: none;">Sign In with UVA</button>
+          <button id="logoutBtn" class="btn" style="display: none;">Sign Out</button>
+        </div>
+      </div>
+    </div>
+
     <div class="panel">
       <div style="margin-bottom: 20px;">
         <p style="font-size: 16px; color: var(--brand-text); margin: 0; line-height: 1.5; text-align: left;">
           Explore Applied Policy Projects from UVA Batten School students. Search and filter by instructor, organization type, problem level, and geographic scope to discover policy solutions across diverse domains.
         </p>
+        <div id="authRequired" style="margin-top: 12px; padding: 12px; background: rgba(229, 114, 0, 0.1); border-radius: 8px; display: none;">
+          <p style="margin: 0; color: var(--brand-accent); font-weight: 500;">
+            📋 Sign in with your @virginia.edu account to access project downloads.
+          </p>
+        </div>
       </div>
       
       <div class="tools">
@@ -638,6 +656,84 @@ const App = (()=>{
     loadLocal();
   }
   window.addEventListener("DOMContentLoaded", init);
+  
+  // Authentication Management
+  let currentUser = null;
+  let isUVAUser = false;
+  
+  async function checkAuth() {
+    try {
+      const response = await fetch('/.auth/me');
+      const payload = await response.json();
+      
+      if (payload.clientPrincipal) {
+        currentUser = payload.clientPrincipal;
+        const userEmail = currentUser.userDetails || '';
+        isUVAUser = userEmail.toLowerCase().endsWith('@virginia.edu');
+        
+        updateAuthUI(true, userEmail, isUVAUser);
+      } else {
+        currentUser = null;
+        isUVAUser = false;
+        updateAuthUI(false);
+      }
+    } catch (error) {
+      console.log('Auth check failed, assuming local development');
+      // For local development, assume no auth required
+      updateAuthUI(true, 'local@virginia.edu', true);
+    }
+  }
+  
+  function updateAuthUI(isAuthenticated, userEmail = '', isValidDomain = false) {
+    const authPanel = document.getElementById('authPanel');
+    const authStatus = document.getElementById('authStatus');
+    const loginBtn = document.getElementById('loginBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const authRequired = document.getElementById('authRequired');
+    
+    authPanel.style.display = 'block';
+    
+    if (isAuthenticated && isValidDomain) {
+      authStatus.textContent = `Signed in as ${userEmail}`;
+      authStatus.style.color = 'var(--brand-text)';
+      loginBtn.style.display = 'none';
+      logoutBtn.style.display = 'inline-block';
+      authRequired.style.display = 'none';
+    } else if (isAuthenticated && !isValidDomain) {
+      authStatus.textContent = `Access restricted: ${userEmail} (UVA email required)`;
+      authStatus.style.color = 'var(--brand-accent)';
+      loginBtn.style.display = 'none';
+      logoutBtn.style.display = 'inline-block';
+      authRequired.style.display = 'block';
+    } else {
+      authStatus.textContent = 'Not signed in';
+      authStatus.style.color = 'var(--brand-muted)';
+      loginBtn.style.display = 'inline-block';
+      logoutBtn.style.display = 'none';
+      authRequired.style.display = 'block';
+    }
+  }
+  
+  // Initialize authentication on load
+  window.addEventListener('DOMContentLoaded', () => {
+    checkAuth();
+    
+    // Setup auth button handlers
+    const loginBtn = document.getElementById('loginBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    
+    if (loginBtn) {
+      loginBtn.addEventListener('click', () => {
+        window.location.href = '/.auth/login/aad?post_login_redirect_uri=' + encodeURIComponent(window.location.href);
+      });
+    }
+    
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        window.location.href = '/.auth/logout?post_logout_redirect_uri=' + encodeURIComponent(window.location.href);
+      });
+    }
+  });
   
   // Layout & Navigation improvements
   function initLayoutNavigation() {
