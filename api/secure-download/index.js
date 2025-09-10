@@ -1,3 +1,5 @@
+const { BlobServiceClient, StorageSharedKeyCredential, BlobSASPermissions, generateBlobSASQueryParameters } = require('@azure/storage-blob');
+
 module.exports = async function (context, req) {
     context.log('Secure download request received', req.method);
     
@@ -122,9 +124,51 @@ module.exports = async function (context, req) {
             return;
         }
         
-        // For now, we'll make the blob storage public temporarily to test the flow
-        // In production, you'd want to use SAS tokens, but that requires the Azure SDK
-        const directUrl = `https://projectexplorerfiles.blob.core.windows.net/project-files/${encodeURIComponent(filePath)}`;
+        // Azure Storage configuration
+        const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME || 'projectexplorerfiles';
+        const accountKey = process.env.AZURE_STORAGE_ACCOUNT_KEY;
+        const containerName = 'project-files';
+        
+        if (!accountKey) {
+            throw new Error('Azure Storage account key not configured');
+        }
+        
+        // Create credentials and blob service client
+        const sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
+        const blobServiceClient = new BlobServiceClient(
+            `https://${accountName}.blob.core.windows.net`,
+            sharedKeyCredential
+        );
+        
+        // Generate SAS token for the specific blob
+        const containerClient = blobServiceClient.getContainerClient(containerName);
+        const blobClient = containerClient.getBlobClient(filePath);
+        
+        // Check if blob exists
+        const exists = await blobClient.exists();
+        if (!exists) {
+            context.res = {
+                status: 404,
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: { error: 'File not found' }
+            };
+            return;
+        }
+        
+        // Generate SAS token valid for 1 hour
+        const sasOptions = {
+            containerName: containerName,
+            blobName: filePath,
+            permissions: BlobSASPermissions.parse('r'), // Read permission only
+            startsOn: new Date(),
+            expiresOn: new Date(new Date().valueOf() + 3600 * 1000), // 1 hour from now
+        };
+        
+        const sasToken = generateBlobSASQueryParameters(sasOptions, sharedKeyCredential).toString();
+        const downloadUrl = `${blobClient.url}?${sasToken}`;
         
         // Log the download for audit purposes
         context.log(`File download: ${filePath} by ${userEmail}`);
@@ -136,8 +180,8 @@ module.exports = async function (context, req) {
                 'Access-Control-Allow-Origin': '*'
             },
             body: {
-                downloadUrl: directUrl,
-                expiresIn: 3600, // Not actually expiring, but keeping the interface
+                downloadUrl: downloadUrl,
+                expiresIn: 3600,
                 filename: filePath,
                 userEmail: userEmail
             }
