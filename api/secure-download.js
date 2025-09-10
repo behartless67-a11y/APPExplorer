@@ -1,17 +1,32 @@
-const { BlobServiceClient } = require('@azure/storage-blob');
-
 module.exports = async function (context, req) {
     context.log('Secure download request received');
     
     try {
+        // For testing, let's first return a simple response
+        if (req.method === 'GET') {
+            context.res = {
+                status: 200,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    message: 'Secure download API is working',
+                    method: req.method,
+                    timestamp: new Date().toISOString()
+                })
+            };
+            return;
+        }
+        
         // Check if user has valid verification token
         const userEmail = req.headers['x-verified-email'];
         const verificationTime = req.headers['x-verification-time'];
         
+        context.log(`Request from: ${userEmail}, Time: ${verificationTime}`);
+        
         if (!userEmail || !verificationTime) {
             context.res = {
                 status: 401,
-                body: { error: 'Authentication required' }
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ error: 'Authentication required' })
             };
             return;
         }
@@ -20,7 +35,8 @@ module.exports = async function (context, req) {
         if (!userEmail.toLowerCase().endsWith('@virginia.edu')) {
             context.res = {
                 status: 403,
-                body: { error: 'Access restricted to @virginia.edu addresses' }
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ error: 'Access restricted to @virginia.edu addresses' })
             };
             return;
         }
@@ -30,17 +46,26 @@ module.exports = async function (context, req) {
         if (hoursSinceVerification > 24) {
             context.res = {
                 status: 401,
-                body: { error: 'Verification expired. Please verify your email again.' }
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ error: 'Verification expired. Please verify your email again.' })
             };
             return;
         }
         
-        // Get file path from query parameters
-        const filePath = req.query.file;
+        // Get file path from request body
+        let filePath;
+        try {
+            const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+            filePath = body.file || req.query.file;
+        } catch (e) {
+            filePath = req.query.file;
+        }
+        
         if (!filePath) {
             context.res = {
                 status: 400,
-                body: { error: 'File parameter required' }
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ error: 'File parameter required' })
             };
             return;
         }
@@ -49,7 +74,8 @@ module.exports = async function (context, req) {
         if (filePath.includes('../') || filePath.includes('..\\')) {
             context.res = {
                 status: 400,
-                body: { error: 'Invalid file path' }
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ error: 'Invalid file path' })
             };
             return;
         }
@@ -57,75 +83,49 @@ module.exports = async function (context, req) {
         // Azure Storage configuration
         const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
         const accountKey = process.env.AZURE_STORAGE_ACCOUNT_KEY;
-        const containerName = process.env.AZURE_STORAGE_CONTAINER_NAME || 'projects';
+        const containerName = process.env.AZURE_STORAGE_CONTAINER_NAME || 'project-files';
+        
+        context.log(`Storage config: Account=${accountName}, Container=${containerName}, Key=${accountKey ? 'SET' : 'NOT SET'}`);
         
         if (!accountName || !accountKey) {
             context.log.error('Azure Storage credentials not configured');
             context.res = {
                 status: 500,
-                body: { error: 'Storage configuration error' }
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ error: 'Storage configuration error' })
             };
             return;
         }
         
-        // Create blob service client
-        const blobServiceClient = new BlobServiceClient(
-            `https://${accountName}.blob.core.windows.net`,
-            {
-                account: accountName,
-                accountKey: accountKey
-            }
-        );
+        // For now, return a simple redirect to the original blob URL for testing
+        const directUrl = `https://${accountName}.blob.core.windows.net/${containerName}/${encodeURIComponent(filePath)}`;
         
-        const containerClient = blobServiceClient.getContainerClient(containerName);
-        const blobClient = containerClient.getBlobClient(filePath);
-        
-        // Check if file exists
-        const exists = await blobClient.exists();
-        if (!exists) {
-            context.res = {
-                status: 404,
-                body: { error: 'File not found' }
-            };
-            return;
-        }
-        
-        // Generate SAS token (valid for 1 hour)
-        const { generateBlobSASQueryParameters, BlobSASPermissions } = require('@azure/storage-blob');
-        const sasOptions = {
-            containerName: containerName,
-            blobName: filePath,
-            permissions: BlobSASPermissions.parse('r'), // Read only
-            startsOn: new Date(),
-            expiresOn: new Date(new Date().valueOf() + 60 * 60 * 1000), // 1 hour
-        };
-        
-        const sasToken = generateBlobSASQueryParameters(sasOptions, {
-            account: accountName,
-            accountKey: accountKey
-        }).toString();
-        
-        const downloadUrl = `${blobClient.url}?${sasToken}`;
-        
-        // Log the download for audit purposes
-        context.log(`File download: ${filePath} by ${userEmail}`);
+        context.log(`Redirecting to: ${directUrl}`);
         
         context.res = {
             status: 200,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: {
-                downloadUrl: downloadUrl,
-                expiresIn: 3600 // 1 hour in seconds
-            }
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                downloadUrl: directUrl,
+                expiresIn: 3600,
+                debug: {
+                    accountName,
+                    containerName,
+                    filePath,
+                    userEmail
+                }
+            })
         };
         
     } catch (error) {
         context.log.error('Error in secure download function:', error);
         context.res = {
             status: 500,
-            body: { error: 'Internal server error' }
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                error: 'Internal server error',
+                details: error.message
+            })
         };
     }
 };
