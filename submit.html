@@ -38,7 +38,7 @@
       font-weight: 400;
     }
     header { padding:20px 24px; background:var(--brand-header-bg); color:var(--brand-header-text);}
-    .nav { display:flex; align-items:center; gap:20px; max-width:1400px; margin:0 auto; justify-content: space-between; }
+    .nav { display:flex; align-items:center; gap:20px; max-width:1400px; margin:0 auto; justify-content: center; position: relative; }
     .title { 
       font-family: 'Playfair Display', serif; 
       font-weight: 800; 
@@ -46,7 +46,7 @@
       letter-spacing: -0.02em;
       color: var(--brand-header-text);
     }
-    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-links { position: absolute; right: 0; display: flex; gap: 20px; align-items: center; }
     .nav-link { 
       color: var(--brand-header-text); 
       text-decoration: none; 
@@ -264,7 +264,7 @@
 <body>
   <header>
     <div class="nav">
-      <img src="./images/bat_rgb_ko.png" alt="UVA Batten School" style="height: 40px;">
+      <img src="./images/bat_rgb_ko.png" alt="UVA Batten School" style="height: 80px; width: auto;">
       <div class="nav-links">
         <a href="./app.html" class="nav-link">← Back to Explorer</a>
       </div>
