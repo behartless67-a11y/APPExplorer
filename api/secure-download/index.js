@@ -39,7 +39,11 @@ module.exports = async function (context, req) {
         const userEmail = req.headers['x-verified-email'];
         const verificationTime = req.headers['x-verification-time'];
         
-        context.log(`Request from: ${userEmail}, Time: ${verificationTime}`);
+        context.log(`=== SECURE DOWNLOAD DEBUG ===`);
+        context.log(`Headers received:`, Object.keys(req.headers));
+        context.log(`User email: '${userEmail}' (type: ${typeof userEmail})`);
+        context.log(`Verification time: '${verificationTime}' (type: ${typeof verificationTime})`);
+        context.log(`Email ends with @virginia.edu?`, userEmail ? userEmail.toLowerCase().endsWith('@virginia.edu') : 'NO EMAIL');
         
         if (!userEmail || !verificationTime) {
             context.res = {
@@ -54,6 +58,10 @@ module.exports = async function (context, req) {
         }
         
         // Verify email domain
+        context.log(`About to check email domain...`);
+        context.log(`userEmail.toLowerCase(): '${userEmail.toLowerCase()}'`);
+        context.log(`endsWith check result:`, userEmail.toLowerCase().endsWith('@virginia.edu'));
+        
         if (!userEmail.toLowerCase().endsWith('@virginia.edu')) {
             context.res = {
                 status: 403,
