@@ -39,6 +39,17 @@
     }
     header { padding:20px 24px; background:var(--brand-header-bg); color:var(--brand-header-text);}
     .nav { display:flex; align-items:center; gap:20px; max-width:1400px; margin:0 auto; }
+    .nav-links { position: absolute; right: 0; display: flex; gap: 20px; align-items: center; }
+    .nav-link { 
+      color: var(--brand-header-text); 
+      text-decoration: none; 
+      font-weight: 500;
+      transition: opacity 0.2s ease;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .nav-link:hover { opacity: 0.8; background: rgba(255, 255, 255, 0.1); }
     .title { 
       font-family: 'Playfair Display', serif; 
       font-weight: 800; 
@@ -200,9 +211,12 @@
 <body>
 
   <header>
-    <div class="nav">
+    <div class="nav" style="position: relative;">
       <div style="display: flex; justify-content: center; width: 100%;">
         <img src="images/bat_rgb_ko.png" alt="UVA Batten School Logo" style="height:80px; width:auto;">
+      </div>
+      <div class="nav-links">
+        <a href="./submit.html" class="nav-link">Submit Project →</a>
       </div>
     </div>
   </header>
