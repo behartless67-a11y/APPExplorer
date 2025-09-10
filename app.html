@@ -724,7 +724,8 @@ const App = (()=>{
     
     if (loginBtn) {
       loginBtn.addEventListener('click', () => {
-        window.location.href = '/.auth/login/aad?post_login_redirect_uri=' + encodeURIComponent(window.location.href);
+        // Try both possible endpoints for Azure AD
+        window.location.href = '/.auth/login/aad';
       });
     }
     
