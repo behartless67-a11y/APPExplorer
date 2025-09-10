@@ -691,7 +691,7 @@ const App = (()=>{
   window.addEventListener("DOMContentLoaded", init);
   
   // Email Verification Authentication System
-  let verifiedEmail = null;
+  let verifiedUserEmail = null;
   let verificationCodes = {};
   
   function checkAuth() {
@@ -703,7 +703,7 @@ const App = (()=>{
       const hoursSinceVerification = (Date.now() - parseInt(storedTime)) / (1000 * 60 * 60);
       // Keep verification for 24 hours
       if (hoursSinceVerification < 24) {
-        verifiedEmail = stored;
+        verifiedUserEmail = stored;
         updateAuthUI();
         return;
       } else {
@@ -723,12 +723,12 @@ const App = (()=>{
     const verifiedEmailSpan = document.getElementById('verifiedEmail');
     const authRequired = document.getElementById('authRequired');
     
-    if (verifiedEmail) {
+    if (verifiedUserEmail) {
       // User is authenticated
       loginForm.style.display = 'none';
       verificationForm.style.display = 'none';
       authenticatedState.style.display = 'block';
-      verifiedEmailSpan.textContent = verifiedEmail;
+      verifiedEmailSpan.textContent = verifiedUserEmail;
       if (authRequired) authRequired.style.display = 'none';
       
       // Enable download functionality
@@ -794,7 +794,7 @@ const App = (()=>{
   }
   
   function signOut() {
-    verifiedEmail = null;
+    verifiedUserEmail = null;
     localStorage.removeItem('uva_verified_email');
     localStorage.removeItem('uva_verified_time');
     updateAuthUI();
@@ -871,7 +871,7 @@ const App = (()=>{
         
         if (verifyCode(email, code)) {
           // Successful verification
-          verifiedEmail = email;
+          verifiedUserEmail = email;
           localStorage.setItem('uva_verified_email', email);
           localStorage.setItem('uva_verified_time', Date.now().toString());
           updateAuthUI();
@@ -1079,7 +1079,7 @@ const App = (()=>{
         card.dataset.id = file.replace(/\.[^.]+$/,'');
         
         // Set initial state based on authentication
-        if (!verifiedEmail) {
+        if (!verifiedUserEmail) {
           btn.disabled = true;
           btn.style.opacity = '0.5';
         }
@@ -1091,7 +1091,7 @@ const App = (()=>{
     const btn = event.currentTarget;
     const filename = btn.dataset.filename;
     
-    if (!verifiedEmail) {
+    if (!verifiedUserEmail) {
       alert('Please verify your @virginia.edu email address first to access downloads.');
       return;
     }
@@ -1105,7 +1105,7 @@ const App = (()=>{
       // Call our Azure Function for secure download
       const headers = {
         'Content-Type': 'application/json',
-        'x-verified-email': verifiedEmail,
+        'x-verified-email': verifiedUserEmail,
         'x-verification-time': localStorage.getItem('uva_verified_time')
       };
       
