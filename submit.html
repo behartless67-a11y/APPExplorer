@@ -54,7 +54,7 @@
       transition: opacity 0.2s ease;
     }
     .nav-link:hover { opacity: 0.8; }
-    .container { padding:24px 24px; max-width:800px; margin:0 auto; }
+    .container { padding:24px 24px; max-width:1200px; margin:0 auto; }
     .panel { 
       background:var(--brand-card); 
       border:1px solid var(--brand-border); 
@@ -351,6 +351,19 @@
               </select>
             </div>
           </div>
+          
+          <div class="form-row">
+            <div class="form-col">
+              <label for="problemLevel">Project Complexity Level <span class="required">*</span></label>
+              <select id="problemLevel" name="problem_level" required>
+                <option value="">Select complexity level...</option>
+                <option value="Beginner">Beginner - Foundational analysis and straightforward policy recommendations</option>
+                <option value="Intermediate">Intermediate - Multi-faceted analysis with moderate complexity</option>
+                <option value="Advanced">Advanced - Complex analysis with sophisticated methodology and nuanced recommendations</option>
+              </select>
+              <div class="help-text">Choose the level that best describes the analytical complexity and scope of your project.</div>
+            </div>
+          </div>
         </div>
 
         <!-- Client Information -->
@@ -610,7 +623,7 @@
       errorMessage.style.display = 'none';
       
       // Validate required fields based on simplified form
-      const requiredFields = ['projectName', 'studentName', 'instructor', 'projectStartTerm'];
+      const requiredFields = ['projectName', 'studentName', 'instructor', 'projectStartTerm', 'problemLevel'];
       let isValid = true;
       
       for (let fieldId of requiredFields) {
@@ -647,6 +660,7 @@
           studentName: document.getElementById('studentName').value.trim(),
           instructor: document.getElementById('instructor').value.trim(),
           projectStartTerm: document.getElementById('projectStartTerm').value.trim(),
+          problemLevel: document.getElementById('problemLevel').value.trim(),
           clientOrgName: document.getElementById('clientOrgName')?.value?.trim() || '',
           clientContactName: document.getElementById('clientContactName')?.value?.trim() || '',
           clientContactTitle: document.getElementById('clientContactTitle')?.value?.trim() || '',
@@ -669,13 +683,27 @@
           progressFill.style.width = progress + '%';
         }, 200);
         
-        // Submit to API
-        const response = await fetch('/api/submit-project', {
+        // Submit to API - use FormData for file upload
+        const formDataToSend = new FormData();
+        
+        // Add all form fields
+        Object.keys(submissionData).forEach(key => {
+          if (key !== 'files') {
+            formDataToSend.append(key, submissionData[key]);
+          }
+        });
+        
+        // Add actual files
+        selectedFiles.forEach((file, index) => {
+          formDataToSend.append(`file_${index}`, file);
+        });
+        
+        // Also send file metadata as JSON
+        formDataToSend.append('fileMetadata', JSON.stringify(submissionData.files));
+        
+        const response = await fetch('/api/upload-project', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(submissionData)
+          body: formDataToSend  // Don't set Content-Type header - let browser set multipart boundary
         });
         
         clearInterval(progressInterval);

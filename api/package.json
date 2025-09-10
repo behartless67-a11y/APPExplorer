@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Azure Functions for secure document downloads",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "parse-multipart-data": "^1.5.0"
+  },
   "engines": {
     "node": ">=16.0.0"
   }
