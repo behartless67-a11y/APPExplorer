@@ -207,7 +207,9 @@ module.exports = async function (context, req) {
             },
             body: { 
                 error: 'Internal server error',
-                details: error.message
+                details: error.message,
+                stack: error.stack,
+                errorType: error.constructor.name
             }
         };
     }
