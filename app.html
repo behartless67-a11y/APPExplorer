@@ -6,7 +6,7 @@
   <title>Batten Projects Explorer — Inline (Polish)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --brand-bg: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
@@ -24,10 +24,28 @@
       --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
     * { box-sizing: border-box; }
-    body { margin:0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background:var(--brand-bg); color:var(--brand-text); font-size: 15px; line-height: 1.6; font-weight: 400;}
+    body { 
+      margin:0; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+      background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('./UVA_Zoom-Wallpaper_Rotunda.jpg'); 
+      background-size: cover; 
+      background-position: center center; 
+      background-attachment: fixed; 
+      background-repeat: no-repeat; 
+      color:var(--brand-text); 
+      font-size: 15px; 
+      line-height: 1.6; 
+      font-weight: 400;
+    }
     header { padding:20px 24px; background:var(--brand-header-bg); color:var(--brand-header-text);}
     .nav { display:flex; align-items:center; gap:20px; max-width:1200px; margin:0 auto; }
-    .title { font-weight:600; font-size:22px; letter-spacing:-0.025em; }
+    .title { 
+      font-family: 'Playfair Display', serif; 
+      font-weight: 800; 
+      font-size: 32px; 
+      letter-spacing: -0.02em;
+      color: var(--brand-header-text);
+    }
     .container { padding:24px 24px; max-width:1200px; margin:0 auto; }
     .panel { background:var(--brand-card); border:1px solid var(--brand-border); border-radius:var(--radius); padding:28px; margin-bottom:32px; box-shadow:var(--shadow-lg); transition: transform 0.2s ease, box-shadow 0.2s ease;}
     .filters { display:grid; gap:20px; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
@@ -78,6 +96,67 @@
     select:hover, input[type="text"]:hover { border-color: var(--brand-accent); transform: translateY(-1px); }
     .pill:hover { background: rgba(229,114,0,0.12); transform: translateY(-1px); }
     .meta .tag:hover { background:rgba(229,114,0,0.1); transform: translateY(-1px); }
+    
+    /* Layout & Navigation Improvements */
+    .sticky-panel { position: sticky; top: 20px; z-index: 100; }
+    .sticky-panel.stuck { background: var(--brand-card); border: 1px solid var(--brand-border); border-radius: var(--radius); box-shadow: var(--shadow-xl); }
+    
+    .back-to-top { position: fixed; bottom: 24px; right: 24px; width: 50px; height: 50px; background: var(--brand-accent); border: none; border-radius: 50%; color: white; font-size: 18px; cursor: pointer; opacity: 0; transform: translateY(20px); transition: all 0.3s ease; z-index: 1000; box-shadow: var(--shadow-lg); }
+    .back-to-top.visible { opacity: 1; transform: translateY(0); }
+    .back-to-top:hover { transform: translateY(-2px); box-shadow: var(--shadow-xl); }
+    
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1001;
+    }
+    
+    .scroll-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--brand-accent);
+      transition: width 0.2s ease-out;
+    }
+    
+    .raw-data-link {
+      color: var(--brand-header-text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    
+    .raw-data-info-box {
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(229, 114, 0, 0.05);
+      border: 1px solid rgba(229, 114, 0, 0.2);
+      border-radius: 12px;
+    }
+    
+    .raw-data-info-box a {
+      color: var(--brand-accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    
+    .raw-data-info-box a:hover {
+      text-decoration: underline;
+      color: #FF8C00;
+    }
+    
+    .progress-indicator { background: var(--brand-card); border: 1px solid var(--brand-border); border-radius: var(--radius); padding: 16px; margin-bottom: 20px; box-shadow: var(--shadow); }
+    .progress-bar { height: 6px; background: #E5E7EB; border-radius: 3px; overflow: hidden; margin-top: 8px; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--brand-accent), #FF8C00); border-radius: 3px; transition: width 0.3s ease; }
+    .progress-text { font-size: 13px; color: var(--brand-muted); display: flex; justify-content: space-between; align-items: center; }
     .btn.download { 
       background: linear-gradient(135deg, #E57200 0%, #FF8C00 100%); 
       color: white; 
@@ -120,25 +199,22 @@
 </head>
 <body>
 
-<header style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #000;">
-  <!-- Left side (optional title or leave blank) -->
-  <div></div>
-
-  <!-- Right side: Batten Logo -->
-  <div>
-    <img src="images/bat_rgb_ko.png" alt="UVA Batten School Logo" style="height:60px; width:auto;">
-  </div>
-</header>
-
-
   <header>
     <div class="nav">
-      <div class="title">Batten Projects Explorer</div>
+      <div style="display: flex; justify-content: center; width: 100%;">
+        <img src="images/bat_rgb_ko.png" alt="UVA Batten School Logo" style="height:80px; width:auto;">
+      </div>
     </div>
   </header>
 
   <div class="container">
     <div class="panel">
+      <div style="margin-bottom: 20px;">
+        <p style="font-size: 16px; color: var(--brand-text); margin: 0; line-height: 1.5; text-align: left;">
+          Explore Applied Policy Projects from UVA Batten School students. Search and filter by instructor, organization type, problem level, and geographic scope to discover policy solutions across diverse domains.
+        </p>
+      </div>
+      
       <div class="tools">
         <div style="flex:1; min-width:260px;">
           <label for="q">Keyword Search (Title/Summary/Fields)</label>
@@ -159,12 +235,23 @@
           </div>
           <div style="align-self:flex-end;">
             <button class="btn" id="clear">Clear Filters</button>
-            <button class="btn accent" id="exportCsv">Export CSV</button>
           </div>
         </div>
       </div>
 
       <div class="filters" id="filters"></div>
+      
+      <div class="raw-data-info-box">
+        <p style="margin: 0; font-size: 14px; color: var(--brand-text); line-height: 1.5;">
+          <strong>Need more data or missing a download link?</strong> Access the complete project database with additional filters, metadata, all project files, and export options in our 
+          <a href="https://myuva.sharepoint.com/sites/UVABattenIntranet/AppliedPolicyProjectLibrary/Forms/Clear%20with%20Widths.aspx" 
+             target="_blank" 
+             rel="noopener noreferrer">
+            📊 Raw Data SharePoint Library
+          </a>. If a download isn't available below, you'll find it there.
+        </p>
+      </div>
+      
       <div class="pills" id="pills"></div>
 
       <div class="rowtop" style="margin-top:10px;">
@@ -504,40 +591,6 @@ const App = (()=>{
     }
   };
 
-  const exportCurrent = (type="csv")=>{
-    const rows = sortRows(filterRows());
-    const fields = [META.title_col, META.summary_col, ...FILTER_COLS];
-    const out = rows.map(r=>fields.map(f=> (r[f]||"").replace(/"/g,'""')));
-    if (type==="csv"){
-      const head = fields.join(",");
-      const body = out.map(cols=> cols.map(v=>`"${v}"`).join(",")).join("\n");
-      downloadBlob(new Blob([head+"\n"+body], {type:"text/csv"}), "projects_export.csv");
-    } else {
-      downloadBlob(new Blob([JSON.stringify(rows,null,2)], {type:"application/json"}), "projects_export.json");
-    }
-  };
-  const downloadBlob = (blob, filename)=>{
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(()=>{
-      URL.revokeObjectURL(a.href);
-      a.remove();
-    },0);
-  };
-  const copyLink = ()=>{
-    const qs = stateToParams();
-    const url = `${location.origin}${location.pathname}${qs ? ("?"+qs) : ""}`;
-    navigator.clipboard.writeText(url).then(()=>{
-      const btn = document.getElementById("copyLink");
-      if (btn){
-        btn.textContent = "Link Copied!";
-        setTimeout(()=>btn.textContent="Copy Link", 1500);
-      }
-    });
-  };
   const onStateChange = (pushUrl=true)=>{
     const qs = stateToParams();
     if (pushUrl){
@@ -576,12 +629,6 @@ const App = (()=>{
       onStateChange();
     });
 
-    const exportCsv = document.getElementById("exportCsv");
-    exportCsv.insertAdjacentHTML("afterend", '<button class="btn" id="exportJson">Export JSON</button> <button class="btn" id="copyLink">Copy Link</button>');
-    document.getElementById("exportJson").addEventListener("click", ()=>exportCurrent("json"));
-    document.getElementById("exportCsv").addEventListener("click", ()=>exportCurrent("csv"));
-    document.getElementById("copyLink").addEventListener("click", copyLink);
-
     onStateChange(false);
   };
 
@@ -591,6 +638,68 @@ const App = (()=>{
     loadLocal();
   }
   window.addEventListener("DOMContentLoaded", init);
+  
+  // Layout & Navigation improvements
+  function initLayoutNavigation() {
+    // Sticky filter panel
+    const filterPanel = document.querySelector('.controls');
+    if (filterPanel) {
+      filterPanel.classList.add('sticky-panel');
+    }
+    
+    // Back to top button
+    const backToTop = document.createElement('button');
+    backToTop.className = 'back-to-top';
+    backToTop.innerHTML = '↑';
+    backToTop.title = 'Back to top';
+    backToTop.style.display = 'none';
+    document.body.appendChild(backToTop);
+    
+    // Scroll progress indicator
+    const scrollProgress = document.createElement('div');
+    scrollProgress.className = 'scroll-progress';
+    const scrollFill = document.createElement('div');
+    scrollFill.className = 'scroll-progress-fill';
+    scrollProgress.appendChild(scrollFill);
+    document.body.appendChild(scrollProgress);
+    
+    // Scroll event handlers
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        
+        // Show/hide back to top button
+        if (scrollTop > 300) {
+          backToTop.style.display = 'flex';
+        } else {
+          backToTop.style.display = 'none';
+        }
+        
+        // Update scroll progress indicator
+        const progress = Math.min((scrollTop / docHeight) * 100, 100);
+        scrollFill.style.width = progress + '%';
+      }, 16); // ~60fps
+    });
+    
+    // Back to top click handler
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+  
+  // Initialize layout improvements after DOM loads
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLayoutNavigation);
+  } else {
+    initLayoutNavigation();
+  }
+  
   return { };
 })();
 </script>

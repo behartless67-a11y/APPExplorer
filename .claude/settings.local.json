@@ -15,7 +15,8 @@
       "Bash(npx http-server:*)",
       "Bash(gh run list:*)",
       "Bash(git restore:*)",
-      "WebFetch(domain:sweetmahalocrozet.com)"
+      "WebFetch(domain:sweetmahalocrozet.com)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []
