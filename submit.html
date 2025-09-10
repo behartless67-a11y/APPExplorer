@@ -274,9 +274,7 @@
   <div class="container">
     <div class="panel">
       <div style="margin-bottom: 32px; text-align: center;">
-        <h1 style="margin: 0 0 12px 0; font-size: 28px; font-weight: 700; color: var(--brand-text);">
-          Submit Your Applied Policy Project
-        </h1>
+        <img src="./images/bat_rgb_ko.png" alt="UVA Batten School" style="height: 60px; margin-bottom: 20px;">
         <p style="margin: 0; font-size: 16px; color: var(--brand-muted); line-height: 1.5;">
           Share your project with the Batten School community. All submitted projects will be reviewed before appearing in the public explorer.
         </p>
@@ -285,7 +283,7 @@
       <form id="projectSubmissionForm" enctype="multipart/form-data">
         <!-- Basic Information -->
         <div class="form-section">
-          <h2>📋 Project Information</h2>
+          <h2>Project Information</h2>
           <p>Tell us about your project and its impact</p>
           
           <div class="form-row">
@@ -308,7 +306,7 @@
 
         <!-- Author & Academic Info -->
         <div class="form-section">
-          <h2>👤 Author & Academic Information</h2>
+          <h2>Author & Academic Information</h2>
           <p>Your details and academic context</p>
 
           <div class="form-row">
@@ -368,7 +366,7 @@
 
         <!-- Client Information -->
         <div class="form-section">
-          <h2>🏢 Client Information</h2>
+          <h2>Client Information</h2>
           <p>Details about the organization you worked with</p>
 
           <div class="form-row">
@@ -407,7 +405,7 @@
 
         <!-- Project Classification -->
         <div class="form-section">
-          <h2>📊 Project Classification</h2>
+          <h2>Project Classification</h2>
           <p>Help us categorize your project scope and impact</p>
 
           <div class="form-row">
@@ -438,11 +436,11 @@
 
         <!-- File Upload -->
         <div class="form-section">
-          <h2>📎 Project Files</h2>
+          <h2>Project Files</h2>
           <p>Upload your project document and any supplementary materials</p>
 
           <div class="file-upload-area" id="fileUploadArea">
-            <div class="file-upload-icon">📄</div>
+            <div class="file-upload-icon">Document</div>
             <div class="file-upload-text">Drop your files here or click to browse</div>
             <div class="file-upload-subtext">Supports PDF, DOC, DOCX files up to 25MB each</div>
             <input type="file" id="fileInput" name="files" multiple accept=".pdf,.doc,.docx" class="file-input">
@@ -480,7 +478,7 @@
         <div class="form-actions">
           <a href="./app.html" class="btn secondary">Cancel</a>
           <button type="submit" class="btn primary" id="submitBtn">
-            📤 Submit Project
+            Submit Project
           </button>
         </div>
       </form>
@@ -650,7 +648,7 @@
       
       // Start submission
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '⏳ Submitting...';
+      submitBtn.innerHTML = 'Submitting...';
       progressBar.style.display = 'block';
       
       try {
@@ -744,7 +742,7 @@
         progressBar.style.display = 'none';
       } finally {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = '📤 Submit Project';
+        submitBtn.innerHTML = 'Submit Project';
       }
     });
 
