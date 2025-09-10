@@ -9,7 +9,13 @@
       "Bash(git stash:*)",
       "Bash(git rebase:*)",
       "Bash(git remote remove:*)",
-      "Bash(git remote add:*)"
+      "Bash(git remote add:*)",
+      "Bash(python:*)",
+      "Bash(node:*)",
+      "Bash(npx http-server:*)",
+      "Bash(gh run list:*)",
+      "Bash(git restore:*)",
+      "WebFetch(domain:sweetmahalocrozet.com)"
     ],
     "deny": [],
     "ask": []
