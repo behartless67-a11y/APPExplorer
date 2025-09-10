@@ -129,23 +129,33 @@ module.exports = async function (context, req) {
         const accountKey = process.env.AZURE_STORAGE_ACCOUNT_KEY;
         const containerName = process.env.AZURE_STORAGE_CONTAINER_NAME || 'project-files';
         
+        context.log(`=== AZURE STORAGE CONFIG ===`);
+        context.log(`Account Name: ${accountName}`);
+        context.log(`Container Name: ${containerName}`);
+        context.log(`Account Key Present: ${!!accountKey}`);
+        context.log(`File Path: ${filePath}`);
+        
         if (!accountKey) {
             throw new Error('Azure Storage account key not configured');
         }
         
         // Create credentials and blob service client
+        context.log('Creating storage credentials...');
         const sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
         const blobServiceClient = new BlobServiceClient(
             `https://${accountName}.blob.core.windows.net`,
             sharedKeyCredential
         );
         
+        context.log('Getting container and blob clients...');
         // Generate SAS token for the specific blob
         const containerClient = blobServiceClient.getContainerClient(containerName);
         const blobClient = containerClient.getBlobClient(filePath);
         
+        context.log('Checking if blob exists...');
         // Check if blob exists
         const exists = await blobClient.exists();
+        context.log(`Blob exists: ${exists}`);
         if (!exists) {
             context.res = {
                 status: 404,
