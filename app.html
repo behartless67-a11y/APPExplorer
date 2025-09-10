@@ -59,6 +59,25 @@
     .btn.accent:hover { transform: translateY(-1px); box-shadow:var(--shadow-lg); filter: brightness(0.97); }
     .btn:active { transform: translateY(1px); }
     .meta .tag { display:inline-block; border:1px solid var(--brand-border); padding:4px 10px; border-radius:999px; font-size:12px; background:rgba(229,114,0,0.06); box-shadow:var(--shadow); }
+    
+    /* Loading States & Skeleton Screens */
+    .loading-container { opacity: 0.7; pointer-events: none; }
+    .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: skeleton-loading 1.5s infinite; border-radius: 4px; }
+    @keyframes skeleton-loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    .skeleton-card { background:var(--brand-card); border:1px solid var(--brand-border); border-radius:var(--radius); padding:24px; min-height: 300px; }
+    .skeleton-title { height: 20px; width: 75%; margin-bottom: 12px; }
+    .skeleton-text { height: 14px; margin-bottom: 8px; }
+    .skeleton-text:nth-child(2) { width: 90%; }
+    .skeleton-text:nth-child(3) { width: 70%; }
+    .skeleton-text:nth-child(4) { width: 85%; }
+    .skeleton-button { height: 44px; width: 160px; margin-top: 20px; border-radius: 24px; }
+    
+    /* Enhanced Hover States */
+    .card { cursor: pointer; }
+    .card:hover .card h3 { color: var(--brand-accent); }
+    select:hover, input[type="text"]:hover { border-color: var(--brand-accent); transform: translateY(-1px); }
+    .pill:hover { background: rgba(229,114,0,0.12); transform: translateY(-1px); }
+    .meta .tag:hover { background:rgba(229,114,0,0.1); transform: translateY(-1px); }
     .btn.download { 
       background: linear-gradient(135deg, #E57200 0%, #FF8C00 100%); 
       color: white; 
@@ -406,19 +425,25 @@ const App = (()=>{
   };
 
   const render = ()=>{
-    const rowsFiltered = filterRows();
-    const rowsSorted = sortRows(rowsFiltered);
-    const counts = facetCounts(rowsFiltered);
-    renderFilters(counts);
-
-    const countEl = document.getElementById("count");
-    countEl.setAttribute("aria-live","polite");
-    countEl.textContent = `${rowsFiltered.length} project${rowsFiltered.length===1?"":"s"} found.`;
-
+    // Show loading state
     const grid = document.getElementById("grid");
-    grid.innerHTML = "";
+    showLoadingSkeletons(grid);
+    
+    // Simulate async processing for smooth UX
+    setTimeout(() => {
+      const rowsFiltered = filterRows();
+      const rowsSorted = sortRows(rowsFiltered);
+      const counts = facetCounts(rowsFiltered);
+      renderFilters(counts);
 
-    const end = Math.min(S.page * S.pageSize, rowsSorted.length);
+      const countEl = document.getElementById("count");
+      countEl.setAttribute("aria-live","polite");
+      countEl.textContent = `${rowsFiltered.length} project${rowsFiltered.length===1?"":"s"} found.`;
+
+      grid.innerHTML = "";
+      grid.classList.remove('loading-container');
+
+      const end = Math.min(S.page * S.pageSize, rowsSorted.length);
     const visible = rowsSorted.slice(0, end);
     const qNow = S.q;
 
@@ -454,7 +479,29 @@ const App = (()=>{
       btn.addEventListener("click", ()=>{ S.page += 1; onStateChange(false); });
       moreWrap.appendChild(btn);
     }
-    grid.appendChild(moreWrap);
+      grid.appendChild(moreWrap);
+    }, 150); // Short delay for loading effect
+  };
+
+  // Loading skeleton helper function
+  const showLoadingSkeletons = (grid) => {
+    grid.innerHTML = '';
+    grid.classList.add('loading-container');
+    
+    // Create 6 skeleton cards for loading state
+    for (let i = 0; i < 6; i++) {
+      const skeletonCard = document.createElement('div');
+      skeletonCard.className = 'skeleton-card';
+      skeletonCard.innerHTML = `
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div class="skeleton skeleton-text"></div>
+        <div style="flex-grow: 1;"></div>
+        <div class="skeleton skeleton-button"></div>
+      `;
+      grid.appendChild(skeletonCard);
+    }
   };
 
   const exportCurrent = (type="csv")=>{
