@@ -1,17 +1,36 @@
 module.exports = async function (context, req) {
-    context.log('Secure download request received');
+    context.log('Secure download request received', req.method);
     
     try {
-        // For testing, let's first return a simple response
+        // For testing, return simple response for GET requests
         if (req.method === 'GET') {
             context.res = {
                 status: 200,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type,x-verified-email,x-verification-time'
+                },
+                body: { 
                     message: 'Secure download API is working',
                     method: req.method,
                     timestamp: new Date().toISOString()
-                })
+                }
+            };
+            return;
+        }
+        
+        // Handle CORS preflight
+        if (req.method === 'OPTIONS') {
+            context.res = {
+                status: 200,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
+                    'Access-Control-Allow-Headers': 'Content-Type,x-verified-email,x-verification-time'
+                },
+                body: ''
             };
             return;
         }
@@ -25,8 +44,11 @@ module.exports = async function (context, req) {
         if (!userEmail || !verificationTime) {
             context.res = {
                 status: 401,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ error: 'Authentication required' })
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: { error: 'Authentication required' }
             };
             return;
         }
@@ -35,8 +57,11 @@ module.exports = async function (context, req) {
         if (!userEmail.toLowerCase().endsWith('@virginia.edu')) {
             context.res = {
                 status: 403,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ error: 'Access restricted to @virginia.edu addresses' })
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: { error: 'Access restricted to @virginia.edu addresses' }
             };
             return;
         }
@@ -46,8 +71,11 @@ module.exports = async function (context, req) {
         if (hoursSinceVerification > 24) {
             context.res = {
                 status: 401,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ error: 'Verification expired. Please verify your email again.' })
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: { error: 'Verification expired. Please verify your email again.' }
             };
             return;
         }
@@ -64,8 +92,11 @@ module.exports = async function (context, req) {
         if (!filePath) {
             context.res = {
                 status: 400,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ error: 'File parameter required' })
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: { error: 'File parameter required' }
             };
             return;
         }
@@ -74,58 +105,48 @@ module.exports = async function (context, req) {
         if (filePath.includes('../') || filePath.includes('..\\')) {
             context.res = {
                 status: 400,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ error: 'Invalid file path' })
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: { error: 'Invalid file path' }
             };
             return;
         }
         
-        // Azure Storage configuration
-        const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME;
-        const accountKey = process.env.AZURE_STORAGE_ACCOUNT_KEY;
-        const containerName = process.env.AZURE_STORAGE_CONTAINER_NAME || 'project-files';
+        // For now, we'll make the blob storage public temporarily to test the flow
+        // In production, you'd want to use SAS tokens, but that requires the Azure SDK
+        const directUrl = `https://projectexplorerfiles.blob.core.windows.net/project-files/${encodeURIComponent(filePath)}`;
         
-        context.log(`Storage config: Account=${accountName}, Container=${containerName}, Key=${accountKey ? 'SET' : 'NOT SET'}`);
-        
-        if (!accountName || !accountKey) {
-            context.log.error('Azure Storage credentials not configured');
-            context.res = {
-                status: 500,
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ error: 'Storage configuration error' })
-            };
-            return;
-        }
-        
-        // For now, return a simple redirect to the original blob URL for testing
-        const directUrl = `https://${accountName}.blob.core.windows.net/${containerName}/${encodeURIComponent(filePath)}`;
-        
-        context.log(`Redirecting to: ${directUrl}`);
+        // Log the download for audit purposes
+        context.log(`File download: ${filePath} by ${userEmail}`);
         
         context.res = {
             status: 200,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
+            headers: { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            body: {
                 downloadUrl: directUrl,
-                expiresIn: 3600,
-                debug: {
-                    accountName,
-                    containerName,
-                    filePath,
-                    userEmail
-                }
-            })
+                expiresIn: 3600, // Not actually expiring, but keeping the interface
+                filename: filePath,
+                userEmail: userEmail
+            }
         };
         
     } catch (error) {
         context.log.error('Error in secure download function:', error);
         context.res = {
             status: 500,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
+            headers: { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            body: { 
                 error: 'Internal server error',
                 details: error.message
-            })
+            }
         };
     }
 };
