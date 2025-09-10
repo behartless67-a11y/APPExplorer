@@ -1103,21 +1103,33 @@ const App = (()=>{
     
     try {
       // Call our Azure Function for secure download
+      const headers = {
+        'Content-Type': 'application/json',
+        'x-verified-email': verifiedEmail,
+        'x-verification-time': localStorage.getItem('uva_verified_time')
+      };
+      
+      console.log('Download request headers:', headers);
+      console.log('Download request file:', filename);
+      
       const response = await fetch('/api/secure-download', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-verified-email': verifiedEmail,
-          'x-verification-time': localStorage.getItem('uva_verified_time')
-        },
+        headers: headers,
         body: JSON.stringify({
           file: filename
         })
       });
       
       if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || 'Download failed');
+        let errorMessage = 'Download failed';
+        try {
+          const error = await response.json();
+          errorMessage = error.error || `HTTP ${response.status}: ${response.statusText}`;
+        } catch (e) {
+          errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+        }
+        console.error('Download API error:', errorMessage);
+        throw new Error(errorMessage);
       }
       
       const { downloadUrl } = await response.json();
