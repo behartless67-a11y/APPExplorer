@@ -147,9 +147,33 @@ module.exports = async function (context, req) {
             sharedKeyCredential
         );
         
-        context.log('Getting container and blob clients...');
-        // Generate SAS token for the specific blob
+        context.log('Getting container client...');
         const containerClient = blobServiceClient.getContainerClient(containerName);
+        
+        // First, test if we can access the container at all
+        try {
+            context.log('Testing container access...');
+            const containerProps = await containerClient.getProperties();
+            context.log('Container access successful');
+        } catch (containerError) {
+            context.log('Container access failed:', containerError.message);
+            context.res = {
+                status: 500,
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: { 
+                    error: 'Container access failed',
+                    details: containerError.message,
+                    accountName: accountName,
+                    containerName: containerName
+                }
+            };
+            return;
+        }
+        
+        context.log('Getting blob client...');
         const blobClient = containerClient.getBlobClient(filePath);
         
         context.log('Checking if blob exists...');
@@ -163,7 +187,7 @@ module.exports = async function (context, req) {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*'
                 },
-                body: { error: 'File not found' }
+                body: { error: 'File not found', filePath: filePath }
             };
             return;
         }
