@@ -208,15 +208,48 @@
   </header>
 
   <div class="container">
-    <!-- Authentication status -->
-    <div id="authPanel" class="panel" style="margin-bottom: 20px; display: none;">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div>
-          <span id="authStatus">Checking authentication...</span>
+    <!-- Email Verification Authentication -->
+    <div id="authPanel" class="panel" style="margin-bottom: 20px;">
+      <!-- Not authenticated state -->
+      <div id="loginForm" style="display: none;">
+        <h3 style="margin: 0 0 16px 0; color: var(--brand-text);">UVA Access Required</h3>
+        <p style="margin: 0 0 16px 0; color: var(--brand-muted);">Enter your @virginia.edu email address to access project downloads:</p>
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="flex: 1;">
+            <input type="email" id="emailInput" placeholder="your-id@virginia.edu" 
+                   style="width: 100%; padding: 12px 16px; border: 1px solid var(--brand-border); border-radius: 8px; font-size: 14px;">
+            <div id="emailError" style="color: #dc2626; font-size: 13px; margin-top: 4px; display: none;"></div>
+          </div>
+          <button id="sendCodeBtn" class="btn accent">Send Code</button>
         </div>
-        <div>
-          <button id="loginBtn" class="btn accent" style="display: none;">Sign In with UVA</button>
-          <button id="logoutBtn" class="btn" style="display: none;">Sign Out</button>
+      </div>
+      
+      <!-- Verification code state -->
+      <div id="verificationForm" style="display: none;">
+        <h3 style="margin: 0 0 16px 0; color: var(--brand-text);">Check Your Email</h3>
+        <p style="margin: 0 0 16px 0; color: var(--brand-muted);">We sent a 6-digit code to <span id="sentToEmail" style="font-weight: 500;"></span></p>
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <div style="flex: 1;">
+            <input type="text" id="codeInput" placeholder="Enter 6-digit code" maxlength="6"
+                   style="width: 100%; padding: 12px 16px; border: 1px solid var(--brand-border); border-radius: 8px; font-size: 14px; text-align: center; letter-spacing: 0.1em;">
+            <div id="codeError" style="color: #dc2626; font-size: 13px; margin-top: 4px; display: none;"></div>
+          </div>
+          <button id="verifyCodeBtn" class="btn accent">Verify</button>
+        </div>
+        <div style="margin-top: 12px;">
+          <button id="resendCodeBtn" class="btn" style="font-size: 13px; padding: 6px 12px;">Resend Code</button>
+          <button id="changeEmailBtn" class="btn" style="font-size: 13px; padding: 6px 12px; margin-left: 8px;">Change Email</button>
+        </div>
+      </div>
+      
+      <!-- Authenticated state -->
+      <div id="authenticatedState" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <span style="color: #059669; font-weight: 500;">✓ Verified:</span>
+            <span id="verifiedEmail" style="color: var(--brand-text); margin-left: 8px;"></span>
+          </div>
+          <button id="signOutBtn" class="btn">Sign Out</button>
         </div>
       </div>
     </div>
@@ -657,81 +690,240 @@ const App = (()=>{
   }
   window.addEventListener("DOMContentLoaded", init);
   
-  // Authentication Management
-  let currentUser = null;
-  let isUVAUser = false;
+  // Email Verification Authentication System
+  let verifiedEmail = null;
+  let verificationCodes = {};
   
-  async function checkAuth() {
-    try {
-      const response = await fetch('/.auth/me');
-      const payload = await response.json();
-      
-      if (payload.clientPrincipal) {
-        currentUser = payload.clientPrincipal;
-        const userEmail = currentUser.userDetails || '';
-        isUVAUser = userEmail.toLowerCase().endsWith('@virginia.edu');
-        
-        updateAuthUI(true, userEmail, isUVAUser);
+  function checkAuth() {
+    // Check if user is already verified from localStorage
+    const stored = localStorage.getItem('uva_verified_email');
+    const storedTime = localStorage.getItem('uva_verified_time');
+    
+    if (stored && storedTime) {
+      const hoursSinceVerification = (Date.now() - parseInt(storedTime)) / (1000 * 60 * 60);
+      // Keep verification for 24 hours
+      if (hoursSinceVerification < 24) {
+        verifiedEmail = stored;
+        updateAuthUI();
+        return;
       } else {
-        currentUser = null;
-        isUVAUser = false;
-        updateAuthUI(false);
+        // Expired verification
+        localStorage.removeItem('uva_verified_email');
+        localStorage.removeItem('uva_verified_time');
       }
-    } catch (error) {
-      console.log('Auth check failed, assuming local development');
-      // For local development, assume no auth required
-      updateAuthUI(true, 'local@virginia.edu', true);
     }
+    
+    updateAuthUI();
   }
   
-  function updateAuthUI(isAuthenticated, userEmail = '', isValidDomain = false) {
-    const authPanel = document.getElementById('authPanel');
-    const authStatus = document.getElementById('authStatus');
-    const loginBtn = document.getElementById('loginBtn');
-    const logoutBtn = document.getElementById('logoutBtn');
+  function updateAuthUI() {
+    const loginForm = document.getElementById('loginForm');
+    const verificationForm = document.getElementById('verificationForm');
+    const authenticatedState = document.getElementById('authenticatedState');
+    const verifiedEmailSpan = document.getElementById('verifiedEmail');
     const authRequired = document.getElementById('authRequired');
     
-    authPanel.style.display = 'block';
-    
-    if (isAuthenticated && isValidDomain) {
-      authStatus.textContent = `Signed in as ${userEmail}`;
-      authStatus.style.color = 'var(--brand-text)';
-      loginBtn.style.display = 'none';
-      logoutBtn.style.display = 'inline-block';
-      authRequired.style.display = 'none';
-    } else if (isAuthenticated && !isValidDomain) {
-      authStatus.textContent = `Access restricted: ${userEmail} (UVA email required)`;
-      authStatus.style.color = 'var(--brand-accent)';
-      loginBtn.style.display = 'none';
-      logoutBtn.style.display = 'inline-block';
-      authRequired.style.display = 'block';
+    if (verifiedEmail) {
+      // User is authenticated
+      loginForm.style.display = 'none';
+      verificationForm.style.display = 'none';
+      authenticatedState.style.display = 'block';
+      verifiedEmailSpan.textContent = verifiedEmail;
+      if (authRequired) authRequired.style.display = 'none';
+      
+      // Enable download functionality
+      document.querySelectorAll('.download-btn').forEach(btn => {
+        btn.disabled = false;
+        btn.style.opacity = '1';
+      });
     } else {
-      authStatus.textContent = 'Not signed in';
-      authStatus.style.color = 'var(--brand-muted)';
-      loginBtn.style.display = 'inline-block';
-      logoutBtn.style.display = 'none';
-      authRequired.style.display = 'block';
+      // User is not authenticated
+      loginForm.style.display = 'block';
+      verificationForm.style.display = 'none';
+      authenticatedState.style.display = 'none';
+      if (authRequired) authRequired.style.display = 'block';
+      
+      // Disable download functionality
+      document.querySelectorAll('.download-btn').forEach(btn => {
+        btn.disabled = true;
+        btn.style.opacity = '0.5';
+      });
     }
   }
   
-  // Initialize authentication on load
+  function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@virginia\.edu$/i;
+    return emailRegex.test(email);
+  }
+  
+  function generateVerificationCode() {
+    return Math.floor(100000 + Math.random() * 900000).toString();
+  }
+  
+  async function sendVerificationCode(email) {
+    const code = generateVerificationCode();
+    const timestamp = Date.now();
+    
+    // Store code with 15-minute expiration
+    verificationCodes[email] = { code, timestamp };
+    
+    // For demo purposes, show the code in an alert (in production, send via email)
+    alert(`Demo: Verification code for ${email}\nCode: ${code}\n\n(In production, this would be sent via email)`);
+    
+    return true;
+  }
+  
+  function verifyCode(email, inputCode) {
+    const stored = verificationCodes[email];
+    if (!stored) return false;
+    
+    // Check if code has expired (15 minutes)
+    const minutesElapsed = (Date.now() - stored.timestamp) / (1000 * 60);
+    if (minutesElapsed > 15) {
+      delete verificationCodes[email];
+      return false;
+    }
+    
+    // Check if code matches
+    if (stored.code === inputCode) {
+      delete verificationCodes[email];
+      return true;
+    }
+    
+    return false;
+  }
+  
+  function signOut() {
+    verifiedEmail = null;
+    localStorage.removeItem('uva_verified_email');
+    localStorage.removeItem('uva_verified_time');
+    updateAuthUI();
+  }
+  
+  // Initialize email verification on load
   window.addEventListener('DOMContentLoaded', () => {
     checkAuth();
     
-    // Setup auth button handlers
-    const loginBtn = document.getElementById('loginBtn');
-    const logoutBtn = document.getElementById('logoutBtn');
+    // Setup email verification button handlers
+    const sendCodeBtn = document.getElementById('sendCodeBtn');
+    const verifyCodeBtn = document.getElementById('verifyCodeBtn');
+    const resendCodeBtn = document.getElementById('resendCodeBtn');
+    const changeEmailBtn = document.getElementById('changeEmailBtn');
+    const signOutBtn = document.getElementById('signOutBtn');
+    const emailInput = document.getElementById('emailInput');
+    const codeInput = document.getElementById('codeInput');
     
-    if (loginBtn) {
-      loginBtn.addEventListener('click', () => {
-        // Try both possible endpoints for Azure AD
-        window.location.href = '/.auth/login/aad';
+    // Send verification code
+    if (sendCodeBtn) {
+      sendCodeBtn.addEventListener('click', async () => {
+        const email = emailInput.value.trim();
+        const emailError = document.getElementById('emailError');
+        
+        if (!email) {
+          emailError.textContent = 'Please enter your email address';
+          emailError.style.display = 'block';
+          return;
+        }
+        
+        if (!validateEmail(email)) {
+          emailError.textContent = 'Please enter a valid @virginia.edu email address';
+          emailError.style.display = 'block';
+          return;
+        }
+        
+        emailError.style.display = 'none';
+        sendCodeBtn.disabled = true;
+        sendCodeBtn.textContent = 'Sending...';
+        
+        const sent = await sendVerificationCode(email);
+        if (sent) {
+          document.getElementById('sentToEmail').textContent = email;
+          document.getElementById('loginForm').style.display = 'none';
+          document.getElementById('verificationForm').style.display = 'block';
+        } else {
+          emailError.textContent = 'Failed to send verification code. Please try again.';
+          emailError.style.display = 'block';
+        }
+        
+        sendCodeBtn.disabled = false;
+        sendCodeBtn.textContent = 'Send Code';
       });
     }
     
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', () => {
-        window.location.href = '/.auth/logout?post_logout_redirect_uri=' + encodeURIComponent(window.location.href);
+    // Verify code
+    if (verifyCodeBtn) {
+      verifyCodeBtn.addEventListener('click', () => {
+        const email = document.getElementById('sentToEmail').textContent;
+        const code = codeInput.value.trim();
+        const codeError = document.getElementById('codeError');
+        
+        if (!code) {
+          codeError.textContent = 'Please enter the verification code';
+          codeError.style.display = 'block';
+          return;
+        }
+        
+        if (code.length !== 6) {
+          codeError.textContent = 'Please enter the complete 6-digit code';
+          codeError.style.display = 'block';
+          return;
+        }
+        
+        if (verifyCode(email, code)) {
+          // Successful verification
+          verifiedEmail = email;
+          localStorage.setItem('uva_verified_email', email);
+          localStorage.setItem('uva_verified_time', Date.now().toString());
+          updateAuthUI();
+          codeError.style.display = 'none';
+        } else {
+          codeError.textContent = 'Invalid or expired code. Please try again.';
+          codeError.style.display = 'block';
+        }
+      });
+    }
+    
+    // Resend code
+    if (resendCodeBtn) {
+      resendCodeBtn.addEventListener('click', async () => {
+        const email = document.getElementById('sentToEmail').textContent;
+        resendCodeBtn.disabled = true;
+        resendCodeBtn.textContent = 'Sending...';
+        
+        await sendVerificationCode(email);
+        
+        resendCodeBtn.disabled = false;
+        resendCodeBtn.textContent = 'Resend Code';
+      });
+    }
+    
+    // Change email
+    if (changeEmailBtn) {
+      changeEmailBtn.addEventListener('click', () => {
+        document.getElementById('verificationForm').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'block';
+        emailInput.value = '';
+        codeInput.value = '';
+        document.getElementById('emailError').style.display = 'none';
+        document.getElementById('codeError').style.display = 'none';
+      });
+    }
+    
+    // Sign out
+    if (signOutBtn) {
+      signOutBtn.addEventListener('click', signOut);
+    }
+    
+    // Enter key handling
+    if (emailInput) {
+      emailInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') sendCodeBtn.click();
+      });
+    }
+    
+    if (codeInput) {
+      codeInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') verifyCodeBtn.click();
       });
     }
   });
