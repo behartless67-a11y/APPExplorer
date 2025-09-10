@@ -127,7 +127,7 @@ module.exports = async function (context, req) {
         // Azure Storage configuration
         const accountName = process.env.AZURE_STORAGE_ACCOUNT_NAME || 'projectexplorerfiles';
         const accountKey = process.env.AZURE_STORAGE_ACCOUNT_KEY;
-        const containerName = process.env.AZURE_STORAGE_CONTAINER_NAME || 'project-files';
+        const containerName = process.env.AZURE_STORAGE_CONTAINER_NAME || 'projectexplorerfiles';
         
         if (!accountKey) {
             throw new Error('Azure Storage account key not configured');
