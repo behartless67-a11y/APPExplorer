@@ -1050,8 +1050,8 @@ const App = (()=>{
     await loadMap();
     const cards = document.querySelectorAll("#grid .card");
     for (const card of cards){
-      const existing = card.querySelector(".btn.accent[data-dl]");
-      if (existing && existing.getAttribute("href") && existing.getAttribute("href").indexOf(DOWNLOAD_ROOT) === 0) continue;
+      const existing = card.querySelector(".btn[data-dl]");
+      if (existing) continue;
 
       let file = null;
       const id = (card.dataset && (card.dataset.id||"")).trim();
@@ -1067,16 +1067,82 @@ const App = (()=>{
         if (h3) file = bestMatch(h3.textContent||"");
       }
       if (file){
-        const btn = document.createElement("a");
-        btn.href = DOWNLOAD_ROOT + encodeURIComponent(file);
-        btn.className = "btn download";
+        const btn = document.createElement("button");
+        btn.className = "btn download download-btn";
         btn.innerHTML = "⬇️ Download Full Project";
-        btn.setAttribute("download","");
         btn.dataset.dl = "1";
+        btn.dataset.filename = file;
+        btn.addEventListener('click', handleSecureDownload);
+        
         const footer = card.querySelector('.card-footer');
         footer.appendChild(btn);
         card.dataset.id = file.replace(/\.[^.]+$/,'');
+        
+        // Set initial state based on authentication
+        if (!verifiedEmail) {
+          btn.disabled = true;
+          btn.style.opacity = '0.5';
+        }
       }
+    }
+  }
+  
+  async function handleSecureDownload(event) {
+    const btn = event.currentTarget;
+    const filename = btn.dataset.filename;
+    
+    if (!verifiedEmail) {
+      alert('Please verify your @virginia.edu email address first to access downloads.');
+      return;
+    }
+    
+    // Show loading state
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '⏳ Preparing Download...';
+    btn.disabled = true;
+    
+    try {
+      // Call our Azure Function for secure download
+      const response = await fetch('/api/secure-download', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-verified-email': verifiedEmail,
+          'x-verification-time': localStorage.getItem('uva_verified_time')
+        },
+        body: JSON.stringify({
+          file: filename
+        })
+      });
+      
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Download failed');
+      }
+      
+      const { downloadUrl } = await response.json();
+      
+      // Create temporary download link
+      const tempLink = document.createElement('a');
+      tempLink.href = downloadUrl;
+      tempLink.download = filename;
+      tempLink.style.display = 'none';
+      document.body.appendChild(tempLink);
+      tempLink.click();
+      document.body.removeChild(tempLink);
+      
+      // Success feedback
+      btn.innerHTML = '✅ Downloaded!';
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }, 3000);
+      
+    } catch (error) {
+      console.error('Download error:', error);
+      alert(`Download failed: ${error.message}`);
+      btn.innerHTML = originalText;
+      btn.disabled = false;
     }
   }
 
