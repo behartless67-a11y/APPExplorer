@@ -37,6 +37,12 @@ module.exports = async function (context, req) {
     
     const debugInfo = {
         timestamp: new Date().toISOString(),
+        azureStorageConfig: {
+            accountName: process.env.AZURE_STORAGE_ACCOUNT_NAME || 'NOT_SET',
+            accountKey: process.env.AZURE_STORAGE_ACCOUNT_KEY ? 'SET (length: ' + process.env.AZURE_STORAGE_ACCOUNT_KEY.length + ')' : 'NOT_SET',
+            containerName: process.env.AZURE_STORAGE_CONTAINER_NAME || 'NOT_SET',
+            connectionString: process.env.AZURE_STORAGE_CONNECTION_STRING ? 'SET (length: ' + process.env.AZURE_STORAGE_CONNECTION_STRING.length + ')' : 'NOT_SET'
+        },
         headers: {
             'x-forwarded-for': xForwardedFor,
             'x-real-ip': xRealIP,
