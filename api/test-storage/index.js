@@ -49,6 +49,19 @@ module.exports = async function (context, req) {
         const containerProps = await containerClient.getProperties();
         context.log('Container access successful!');
         
+        // List all blobs in the container
+        context.log('Listing blobs in container...');
+        const blobs = [];
+        for await (const blob of containerClient.listBlobsFlat()) {
+            blobs.push({
+                name: blob.name,
+                size: blob.properties.contentLength,
+                lastModified: blob.properties.lastModified,
+                contentType: blob.properties.contentType
+            });
+        }
+        context.log(`Found ${blobs.length} blobs in container`);
+        
         context.res = {
             status: 200,
             headers: { 
@@ -61,6 +74,8 @@ module.exports = async function (context, req) {
                 accountName: accountName,
                 containerName: containerName,
                 containerExists: true,
+                blobCount: blobs.length,
+                blobs: blobs,
                 timestamp: new Date().toISOString()
             }
         };

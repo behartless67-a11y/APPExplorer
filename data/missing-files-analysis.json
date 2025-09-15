@@ -1,0 +1,183 @@
+{
+  "totalProjects": 579,
+  "mappedProjects": 530,
+  "uniqueProjects": 530,
+  "duplicateCount": 49,
+  "unmappedProjects": 0,
+  "azureFiles": 530,
+  "missingFromAzureCount": 0,
+  "unmappedAzureFilesCount": 0,
+  "duplicateProjects": [
+    {
+      "title": "Pathways to Success: Improving the Transparency of Student Outcomes in the Virginia Community College System",
+      "count": 3
+    },
+    {
+      "title": "Improving Small and Medium-Sized Enterprise Productivity in the Senegalese Informal Sector",
+      "count": 2
+    },
+    {
+      "title": "Reducing the Mental Health Treatment Gap in Virginia High Schools",
+      "count": 2
+    },
+    {
+      "title": "Virginia Medicaid Expansion: Informing a Section 1115 Demonstration",
+      "count": 2
+    },
+    {
+      "title": "Solid Waste Management in Delhi: An environmental and social analysis",
+      "count": 2
+    },
+    {
+      "title": "Evidence-Based Services and Foster Care Prevention in Virginia: Policy Alternatives for Scaling Up Parent-Child Interaction Therapy",
+      "count": 2
+    },
+    {
+      "title": "Reducing Vacancy Rates of Albemarle County Boards and Commissions",
+      "count": 2
+    },
+    {
+      "title": "Decreasing Norfolk Obesity Rates: Policy Alternatives to Increase Healthy Food Access and Consumption",
+      "count": 2
+    },
+    {
+      "title": "Protecting Children from the Public Health Harms of Pornography: A Policy Analysis of the Children's Internet Protection Act",
+      "count": 3
+    },
+    {
+      "title": "Expanding Access to Medication-Assisted Treatment in Virginia: Solutions for the Opioid Crisis",
+      "count": 2
+    },
+    {
+      "title": "Increasing Access to Primary Care in Rural Virginia",
+      "count": 2
+    },
+    {
+      "title": "Medicaid Resource Limits and the Economic Health of Virginians in Need of Long-Term Care",
+      "count": 2
+    },
+    {
+      "title": "College Advising in States with Free Community College Programs",
+      "count": 3
+    },
+    {
+      "title": "Access to Primary Care for Virginia?s Medicaid Expansion Population",
+      "count": 3
+    },
+    {
+      "title": "Improving Competition in Virginia's Health Insurance Marketplace",
+      "count": 3
+    },
+    {
+      "title": "Is Lack of Transportation Keeping Low-Income People from Getting Food?",
+      "count": 3
+    },
+    {
+      "title": "Sexual assault prevention programs for teens resettled in the US as refugees",
+      "count": 2
+    },
+    {
+      "title": "Emergency Assistance in the Rural Monticello Area",
+      "count": 3
+    },
+    {
+      "title": "Addressing Food Insecurity in the Jefferson Area",
+      "count": 2
+    },
+    {
+      "title": "Financial Incentives in D.C. Public Schools",
+      "count": 2
+    },
+    {
+      "title": "Revitalizing Transportation in the Milwaukee Metropolitan Area",
+      "count": 2
+    },
+    {
+      "title": "Achieving Oil Independence: Policy Options for Improving Energy Security in America",
+      "count": 2
+    },
+    {
+      "title": "Enabling Opioid Data Sharing in the Northern Shenandoah Valley Region",
+      "count": 2
+    },
+    {
+      "title": "Improving the Aerobic Fitness Outcomes of   U.S. Army Soldiers Deployed to Combat Zones",
+      "count": 2
+    },
+    {
+      "title": "Combatting Statelessness: The Case for Increasing Access to Birth Registration in Côte d?Ivoire",
+      "count": 2
+    },
+    {
+      "title": "Put a Price on Pollution: Reducing Carbon Dioxide Emissions in Maryland",
+      "count": 2
+    },
+    {
+      "title": "Funding Streams for Juvenile Delinquency Prevention",
+      "count": 2
+    },
+    {
+      "title": "INTERSTATE VOLUNTEER RETENTION AT CASA: REVIEW & RECOMMENDATIONS",
+      "count": 2
+    },
+    {
+      "title": "Reducing Inequities in Low-Income Rental Assistance Programs",
+      "count": 2
+    },
+    {
+      "title": "Women?s Economic Integration in Jordan: Improving Workforce Participation",
+      "count": 2
+    },
+    {
+      "title": "An Analysis of Convenience Voting Programs for Virginia",
+      "count": 2
+    },
+    {
+      "title": "Strategic Approach to Development in Yemen: Policy Options to Address Yemen's Humanitarian Crisis",
+      "count": 2
+    },
+    {
+      "title": "Reforming the SBIR Approach Towards Women and Minority Owned Projects",
+      "count": 2
+    },
+    {
+      "title": "Improving Graduation Rates for English Learners",
+      "count": 2
+    },
+    {
+      "title": "Assessing Major League Baseball's Domestic Violence Policy",
+      "count": 2
+    },
+    {
+      "title": "Road to Rehabilitation: Addressing Sexual Assault on Virginia's College Campuses",
+      "count": 2
+    },
+    {
+      "title": "Envisioning Rational Retreat: Investigating Solutions for Federal Managed Retreat from Sea Level Rise",
+      "count": 2
+    },
+    {
+      "title": "Dangers in Diagnosis: Addressing Medical Diagnostic Errors with an Equity Lens on Women and Minorities",
+      "count": 2
+    },
+    {
+      "title": "Addressing the Speech Language Pathologist Shortage in Virginia",
+      "count": 2
+    },
+    {
+      "title": "Countering & Preventing Russian Cyberattacks",
+      "count": 2
+    },
+    {
+      "title": "Water Environment Pollution in Zhuanghe City and Control Solutions",
+      "count": 2
+    },
+    {
+      "title": "Violence at the Border: Helping Migrants and Asylum Seekers Recover from Trauma While They Await Entry to the U.S.",
+      "count": 2
+    }
+  ],
+  "unmappedProjectsList": [],
+  "missingFromAzureList": [],
+  "unmappedAzureFilesList": []
+}
