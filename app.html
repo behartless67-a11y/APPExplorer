@@ -249,6 +249,9 @@
           <p style="margin: 0; color: var(--brand-muted); font-size: 14px; text-align: center;">
             <strong>Current Status:</strong> <span id="networkStatus">Checking network access...</span>
           </p>
+          <div style="text-align: center; margin-top: 8px;">
+            <button id="debugIPBtn" class="btn" style="font-size: 12px; padding: 6px 12px;">Debug IP Info</button>
+          </div>
         </div>
       </div>
     </div>
@@ -1931,6 +1934,46 @@ function handleSecureDownload(event) {
   });
 }
 
+// Debug IP information
+async function debugIPInfo() {
+  try {
+    const response = await fetch('/api/debug-ip', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    });
+    
+    const data = await response.json();
+    
+    // Create a formatted display
+    const debugWindow = window.open('', '_blank', 'width=800,height=600,scrollbars=yes');
+    debugWindow.document.write(`
+      <html>
+        <head><title>IP Debug Information</title></head>
+        <body style="font-family: monospace; padding: 20px;">
+          <h2>IP Debug Information</h2>
+          <h3>Selected IP: ${data.selectedIP}</h3>
+          <h3>UVA Network Test Results:</h3>
+          <pre>${JSON.stringify(data.uvaNetworkTests, null, 2)}</pre>
+          <h3>All Headers:</h3>
+          <pre>${JSON.stringify(data.headers, null, 2)}</pre>
+          <h3>Connection Info:</h3>
+          <pre>${JSON.stringify(data.connection, null, 2)}</pre>
+          <h3>Client IPs Found:</h3>
+          <pre>${JSON.stringify(data.clientIPs, null, 2)}</pre>
+          <h3>Full Debug Data:</h3>
+          <pre>${JSON.stringify(data, null, 2)}</pre>
+        </body>
+      </html>
+    `);
+    
+    console.log('IP Debug Info:', data);
+    
+  } catch (error) {
+    alert('Debug failed: ' + error.message);
+    console.error('Debug failed:', error);
+  }
+}
+
 // Initialize network checking
 document.addEventListener('DOMContentLoaded', async () => {
   // Initial network check
@@ -1938,6 +1981,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   // Recheck every 30 seconds
   setInterval(checkNetworkAccess, 30000);
+  
+  // Add debug button handler
+  const debugBtn = document.getElementById('debugIPBtn');
+  if (debugBtn) {
+    debugBtn.addEventListener('click', debugIPInfo);
+  }
 });
 
 </script>

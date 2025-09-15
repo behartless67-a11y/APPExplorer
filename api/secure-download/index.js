@@ -49,8 +49,9 @@ module.exports = async function (context, req) {
         const uvaNetworks = [
             '137.54.0.0/16',     // UVA public block (confirmed from research)
             '172.16.0.0/12',     // UVA private networks (RFC 1918 - covers 172.16-172.31)
-            '128.143.0.0/16',    // Additional UVA block (common for universities)
-            '199.111.0.0/16'     // UVA block from research
+            '128.143.0.0/16',    // Additional UVA block (common for universities)  
+            '199.111.0.0/16',    // UVA block from research
+            '172.28.0.0/16'      // Specific range for testing (your building)
         ];
         
         function isValidIPv4(ip) {
