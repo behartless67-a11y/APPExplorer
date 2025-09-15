@@ -217,11 +217,18 @@ module.exports = async function (context, req) {
         
         // Create credentials and blob service client
         context.log('Creating storage credentials...');
-        const sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
-        const blobServiceClient = new BlobServiceClient(
-            `https://${accountName}.blob.core.windows.net`,
-            sharedKeyCredential
-        );
+        let sharedKeyCredential, blobServiceClient;
+        try {
+            sharedKeyCredential = new StorageSharedKeyCredential(accountName, accountKey);
+            blobServiceClient = new BlobServiceClient(
+                `https://${accountName}.blob.core.windows.net`,
+                sharedKeyCredential
+            );
+            context.log('Storage client created successfully');
+        } catch (storageError) {
+            context.log.error('Failed to create storage client:', storageError);
+            throw new Error(`Storage client creation failed: ${storageError.message}`);
+        }
         
         context.log('Getting container client...');
         const containerClient = blobServiceClient.getContainerClient(containerName);
@@ -299,6 +306,14 @@ module.exports = async function (context, req) {
         
     } catch (error) {
         context.log.error('Error in secure download function:', error);
+        context.log.error('Error stack:', error.stack);
+        context.log.error('Error details:', {
+            message: error.message,
+            name: error.name,
+            code: error.code,
+            statusCode: error.statusCode
+        });
+        
         context.res = {
             status: 500,
             headers: { 
@@ -308,8 +323,10 @@ module.exports = async function (context, req) {
             body: { 
                 error: 'Internal server error',
                 details: error.message,
-                stack: error.stack,
-                errorType: error.constructor.name
+                errorName: error.name,
+                errorCode: error.code,
+                clientIP: realIP,
+                timestamp: new Date().toISOString()
             }
         };
     }
