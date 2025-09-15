@@ -232,17 +232,11 @@
         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
           <p style="margin: 0; color: var(--brand-muted); font-size: 14px; text-align: center;">
             <strong>Network Status:</strong> <span id="networkStatus">Checking...</span>
+            <span id="vpnInfo" style="display: none; margin-left: 8px; color: var(--brand-text);">
+              | 📥 Downloads require UVA network. <a href="https://virginia.service-now.com/its?id=itsweb_kb_article&sys_id=f24e5cdfdb3acb804f32fb671d9619d0" target="_blank" style="color: var(--brand-accent);">Get VPN setup</a> for off-campus.
+            </span>
+            <button id="debugIPBtn" class="btn" style="font-size: 11px; padding: 2px 6px; margin-left: 12px;">Debug</button>
           </p>
-          <div id="vpnInfo" style="display: none; margin-top: 8px; padding: 8px; background: rgba(229, 114, 0, 0.1); border-radius: 4px;">
-            <p style="margin: 0; color: var(--brand-text); font-size: 13px;">
-              📥 Downloads require UVA network access. 
-              <a href="https://virginia.service-now.com/its?id=itsweb_kb_article&sys_id=f24e5cdfdb3acb804f32fb671d9619d0" 
-                 target="_blank" style="color: var(--brand-accent);">Get VPN setup</a> for off-campus access.
-            </p>
-          </div>
-          <div style="text-align: center; margin-top: 8px;">
-            <button id="debugIPBtn" class="btn" style="font-size: 12px; padding: 4px 8px;">Debug</button>
-          </div>
         </div>
       </div>
     </div>
