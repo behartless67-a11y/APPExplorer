@@ -128,12 +128,7 @@ module.exports = async function (context, req) {
             }
         }
         
-        // TEMPORARY: Always allow access for debugging
-        let isUVANetwork = true;
-        context.log(`TEMP DEBUG MODE: Allowing all IPs. Real IP: ${realIP}`);
-        
-        // Check if client IP is in UVA network ranges (commented out for debugging)
-        /*
+        // Check if client IP is in UVA network ranges
         let isUVANetwork = false;
         
         try {
@@ -180,7 +175,6 @@ module.exports = async function (context, req) {
             };
             return;
         }
-        */
         
         // Get file path from request body
         let filePath;
