@@ -1,4 +1,14 @@
-const { BlobServiceClient, StorageSharedKeyCredential, BlobSASPermissions, generateBlobSASQueryParameters } = require('@azure/storage-blob');
+// Test Azure Storage import first
+let BlobServiceClient, StorageSharedKeyCredential, BlobSASPermissions, generateBlobSASQueryParameters;
+try {
+    const azureStorage = require('@azure/storage-blob');
+    BlobServiceClient = azureStorage.BlobServiceClient;
+    StorageSharedKeyCredential = azureStorage.StorageSharedKeyCredential;
+    BlobSASPermissions = azureStorage.BlobSASPermissions;
+    generateBlobSASQueryParameters = azureStorage.generateBlobSASQueryParameters;
+} catch (importError) {
+    console.error('Failed to import @azure/storage-blob:', importError);
+}
 
 module.exports = async function (context, req) {
     context.log('Secure download request received', req.method);
@@ -213,6 +223,11 @@ module.exports = async function (context, req) {
         
         if (!accountKey) {
             throw new Error('Azure Storage account key not configured');
+        }
+        
+        // Check if Azure Storage was imported successfully
+        if (!BlobServiceClient || !StorageSharedKeyCredential) {
+            throw new Error('Azure Storage library not available - check package.json deployment');
         }
         
         // Create credentials and blob service client
