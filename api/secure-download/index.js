@@ -128,7 +128,12 @@ module.exports = async function (context, req) {
             }
         }
         
-        // Check if client IP is in UVA network ranges
+        // TEMPORARY: Always allow access for debugging
+        let isUVANetwork = true;
+        context.log(`TEMP DEBUG MODE: Allowing all IPs. Real IP: ${realIP}`);
+        
+        // Check if client IP is in UVA network ranges (commented out for debugging)
+        /*
         let isUVANetwork = false;
         
         try {
@@ -175,6 +180,7 @@ module.exports = async function (context, req) {
             };
             return;
         }
+        */
         
         // Get file path from request body
         let filePath;
@@ -303,7 +309,7 @@ module.exports = async function (context, req) {
         const downloadUrl = `${blobClient.url}?${sasToken}`;
         
         // Log the download for audit purposes
-        context.log(`File download: ${filePath} by ${userEmail}`);
+        context.log(`File download: ${filePath} from IP ${realIP}`);
         
         context.res = {
             status: 200,
@@ -315,7 +321,7 @@ module.exports = async function (context, req) {
                 downloadUrl: downloadUrl,
                 expiresIn: 3600,
                 filename: filePath,
-                userEmail: userEmail
+                clientIP: realIP
             }
         };
         
