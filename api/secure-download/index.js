@@ -53,25 +53,96 @@ module.exports = async function (context, req) {
             '199.111.0.0/16'     // UVA block from research
         ];
         
+        function isValidIPv4(ip) {
+            const ipRegex = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/;
+            const match = ip.match(ipRegex);
+            if (!match) return false;
+            
+            return match.slice(1).every(octet => {
+                const num = parseInt(octet, 10);
+                return num >= 0 && num <= 255;
+            });
+        }
+        
+        function ip2long(ip) {
+            if (!isValidIPv4(ip)) return null;
+            const parts = ip.split('.');
+            return ((parseInt(parts[0]) << 24) | 
+                   (parseInt(parts[1]) << 16) | 
+                   (parseInt(parts[2]) << 8) | 
+                   parseInt(parts[3])) >>> 0;
+        }
+        
         function isIPInRange(ip, cidr) {
             try {
+                if (!isValidIPv4(ip)) {
+                    context.log(`Invalid IP format: ${ip}`);
+                    return false;
+                }
+                
                 const [range, bits] = cidr.split('/');
-                const mask = ~(2 ** (32 - bits) - 1);
-                return (ip2long(ip) & mask) === (ip2long(range) & mask);
+                if (!isValidIPv4(range)) {
+                    context.log(`Invalid range format: ${range}`);
+                    return false;
+                }
+                
+                const maskBits = parseInt(bits, 10);
+                if (isNaN(maskBits) || maskBits < 0 || maskBits > 32) {
+                    context.log(`Invalid CIDR bits: ${bits}`);
+                    return false;
+                }
+                
+                const ipLong = ip2long(ip);
+                const rangeLong = ip2long(range);
+                
+                if (ipLong === null || rangeLong === null) {
+                    context.log(`Failed to convert IPs to long: ${ip}, ${range}`);
+                    return false;
+                }
+                
+                const mask = (0xFFFFFFFF << (32 - maskBits)) >>> 0;
+                const result = (ipLong & mask) === (rangeLong & mask);
+                
+                context.log(`IP check: ${ip} (${ipLong}) in ${cidr} (${rangeLong}, mask: ${mask.toString(16)}) = ${result}`);
+                return result;
+                
             } catch (error) {
-                context.log(`Error checking IP range: ${error}`);
+                context.log(`Error in isIPInRange: ${error.message}`);
                 return false;
             }
         }
         
-        function ip2long(ip) {
-            return ip.split('.').reduce((int, octet) => (int << 8) + parseInt(octet, 10), 0) >>> 0;
-        }
-        
         // Check if client IP is in UVA network ranges
-        const isUVANetwork = uvaNetworks.some(network => isIPInRange(realIP, network));
+        let isUVANetwork = false;
         
-        context.log(`IP ${realIP} is in UVA network: ${isUVANetwork}`);
+        try {
+            // Special handling for localhost/development
+            if (realIP === '127.0.0.1' || realIP === 'localhost' || realIP === '::1' || realIP.startsWith('::ffff:127.')) {
+                context.log('Localhost detected - allowing for development');
+                isUVANetwork = true;
+            } else {
+                isUVANetwork = uvaNetworks.some(network => isIPInRange(realIP, network));
+            }
+            
+            context.log(`IP ${realIP} is in UVA network: ${isUVANetwork}`);
+            
+        } catch (error) {
+            context.log(`Error in IP validation: ${error.message}`);
+            // On error, deny access for security
+            context.res = {
+                status: 500,
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: { 
+                    error: 'Network validation error. Please try again.',
+                    details: error.message,
+                    clientIP: realIP
+                }
+            };
+            return;
+        }
         
         if (!isUVANetwork) {
             context.res = {
