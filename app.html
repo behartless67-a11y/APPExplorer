@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <script src="https://alcdn.msauth.net/browser/2.38.3/js/msal-browser.min.js"></script>
   <style>
     :root {
       --brand-bg: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
@@ -95,6 +96,7 @@
     .loading-container { opacity: 0.7; pointer-events: none; }
     .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: skeleton-loading 1.5s infinite; border-radius: 4px; }
     @keyframes skeleton-loading { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     .skeleton-card { background:var(--brand-card); border:1px solid var(--brand-border); border-radius:var(--radius); padding:24px; min-height: 300px; }
     .skeleton-title { height: 20px; width: 75%; margin-bottom: 12px; }
     .skeleton-text { height: 14px; margin-bottom: 8px; }
@@ -226,46 +228,27 @@
   <div class="container">
     <!-- Email Verification Authentication -->
     <div id="authPanel" class="panel" style="margin-bottom: 20px;">
-      <!-- Not authenticated state -->
-      <div id="loginForm" style="display: none;">
-        <h3 style="margin: 0 0 16px 0; color: var(--brand-text);">UVA Access Required</h3>
-        <p style="margin: 0 0 16px 0; color: var(--brand-muted);">Enter your @virginia.edu email address to access project downloads:</p>
-        <div style="display: flex; gap: 12px; align-items: flex-start;">
-          <div style="flex: 1;">
-            <input type="email" id="emailInput" placeholder="your-id@virginia.edu" 
-                   style="width: 100%; padding: 12px 16px; border: 1px solid var(--brand-border); border-radius: 8px; font-size: 14px;">
-            <div id="emailError" style="color: #dc2626; font-size: 13px; margin-top: 4px; display: none;"></div>
+      <div id="networkAccessInfo">
+        <h3 style="margin: 0 0 16px 0; color: var(--brand-text);">🔒 UVA Network Access Required</h3>
+        <div style="background: rgba(229, 114, 0, 0.1); border: 1px solid rgba(229, 114, 0, 0.3); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
+          <p style="margin: 0 0 12px 0; color: var(--brand-text); font-weight: 500;">
+            📥 To download project files, you must be connected to the UVA network:
+          </p>
+          <ul style="margin: 0 0 12px 20px; color: var(--brand-text);">
+            <li><strong>On Campus:</strong> Connected to UVA WiFi or ethernet</li>
+            <li><strong>Off Campus:</strong> Connected to UVA VPN</li>
+          </ul>
+          <div style="text-align: center; margin-top: 12px;">
+            <a href="https://virginia.service-now.com/its?id=itsweb_kb_article&sys_id=f24e5cdfdb3acb804f32fb671d9619d0" 
+               target="_blank" class="btn accent" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+              🔗 Get UVA VPN Setup Instructions
+            </a>
           </div>
-          <button id="sendCodeBtn" class="btn accent">Send Code</button>
         </div>
-      </div>
-      
-      <!-- Verification code state -->
-      <div id="verificationForm" style="display: none;">
-        <h3 style="margin: 0 0 16px 0; color: var(--brand-text);">Check Your Email</h3>
-        <p style="margin: 0 0 16px 0; color: var(--brand-muted);">We sent a 6-digit code to <span id="sentToEmail" style="font-weight: 500;"></span></p>
-        <div style="display: flex; gap: 12px; align-items: flex-start;">
-          <div style="flex: 1;">
-            <input type="text" id="codeInput" placeholder="Enter 6-digit code" maxlength="6"
-                   style="width: 100%; padding: 12px 16px; border: 1px solid var(--brand-border); border-radius: 8px; font-size: 14px; text-align: center; letter-spacing: 0.1em;">
-            <div id="codeError" style="color: #dc2626; font-size: 13px; margin-top: 4px; display: none;"></div>
-          </div>
-          <button id="verifyCodeBtn" class="btn accent">Verify</button>
-        </div>
-        <div style="margin-top: 12px;">
-          <button id="resendCodeBtn" class="btn" style="font-size: 13px; padding: 6px 12px;">Resend Code</button>
-          <button id="changeEmailBtn" class="btn" style="font-size: 13px; padding: 6px 12px; margin-left: 8px;">Change Email</button>
-        </div>
-      </div>
-      
-      <!-- Authenticated state -->
-      <div id="authenticatedState" style="display: none;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <div>
-            <span style="color: #059669; font-weight: 500;">✓ Verified:</span>
-            <span id="verifiedEmail" style="color: var(--brand-text); margin-left: 8px;"></span>
-          </div>
-          <button id="signOutBtn" class="btn">Sign Out</button>
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
+          <p style="margin: 0; color: var(--brand-muted); font-size: 14px; text-align: center;">
+            <strong>Current Status:</strong> <span id="networkStatus">Checking network access...</span>
+          </p>
         </div>
       </div>
     </div>
@@ -277,7 +260,7 @@
         </p>
         <div id="authRequired" style="margin-top: 12px; padding: 12px; background: rgba(229, 114, 0, 0.1); border-radius: 8px; display: none;">
           <p style="margin: 0; color: var(--brand-accent); font-weight: 500;">
-            📋 Sign in with your @virginia.edu account to access project downloads.
+            🔒 Connect to UVA network or VPN to download project files.
           </p>
         </div>
       </div>
@@ -349,6 +332,146 @@
   });
   window.DATA_FIXED = original;
 })();
+
+// Azure AD Configuration
+const msalConfig = {
+  auth: {
+    clientId: "YOUR_CLIENT_ID", // Replace with your Azure AD App Registration Client ID
+    authority: "https://login.microsoftonline.com/YOUR_TENANT_ID", // Replace with UVA tenant ID
+    redirectUri: window.location.origin,
+  },
+  cache: {
+    cacheLocation: "sessionStorage",
+    storeAuthStateInCookie: false,
+  }
+};
+
+const loginRequest = {
+  scopes: ["User.Read", "GroupMember.Read.All"]
+};
+
+let msalInstance = null;
+let currentAccount = null;
+
+// Initialize MSAL
+async function initializeMSAL() {
+  try {
+    msalInstance = new msal.PublicClientApplication(msalConfig);
+    await msalInstance.initialize();
+    
+    // Handle redirect promise
+    const response = await msalInstance.handleRedirectPromise();
+    if (response !== null) {
+      currentAccount = response.account;
+    } else {
+      currentAccount = msalInstance.getActiveAccount();
+      if (!currentAccount) {
+        const accounts = msalInstance.getAllAccounts();
+        if (accounts.length > 0) {
+          currentAccount = accounts[0];
+          msalInstance.setActiveAccount(currentAccount);
+        }
+      }
+    }
+    
+    updateAuthUI();
+  } catch (error) {
+    console.error("MSAL initialization failed:", error);
+    showError("Authentication system failed to initialize: " + error.message);
+  }
+}
+
+// Sign in function
+async function signIn() {
+  showLoading();
+  try {
+    const response = await msalInstance.loginPopup(loginRequest);
+    currentAccount = response.account;
+    msalInstance.setActiveAccount(currentAccount);
+    updateAuthUI();
+  } catch (error) {
+    console.error("Sign in failed:", error);
+    showError("Sign in failed: " + error.message);
+    hideLoading();
+  }
+}
+
+// Sign out function
+async function signOut() {
+  const logoutRequest = {
+    account: currentAccount
+  };
+  await msalInstance.logoutPopup(logoutRequest);
+  currentAccount = null;
+  updateAuthUI();
+}
+
+// Get access token for API calls
+async function getAccessToken() {
+  if (!currentAccount) {
+    throw new Error("No active account. Please sign in first.");
+  }
+  
+  try {
+    const response = await msalInstance.acquireTokenSilent({
+      scopes: loginRequest.scopes,
+      account: currentAccount
+    });
+    return response.accessToken;
+  } catch (error) {
+    console.error("Token acquisition failed:", error);
+    // If silent token acquisition fails, try popup
+    const response = await msalInstance.acquireTokenPopup({
+      scopes: loginRequest.scopes,
+      account: currentAccount
+    });
+    return response.accessToken;
+  }
+}
+
+// UI update functions
+function updateAuthUI() {
+  const loginForm = document.getElementById("loginForm");
+  const loadingState = document.getElementById("loadingState");
+  const authenticatedState = document.getElementById("authenticatedState");
+  const authRequired = document.getElementById("authRequired");
+  
+  if (currentAccount) {
+    // User is signed in
+    loginForm.style.display = "none";
+    loadingState.style.display = "none";
+    authenticatedState.style.display = "block";
+    authRequired.style.display = "none";
+    
+    document.getElementById("userDisplayName").textContent = currentAccount.name || "User";
+    document.getElementById("userEmail").textContent = currentAccount.username;
+  } else {
+    // User is not signed in
+    loginForm.style.display = "block";
+    loadingState.style.display = "none";
+    authenticatedState.style.display = "none";
+    authRequired.style.display = "block";
+  }
+}
+
+function showLoading() {
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("loadingState").style.display = "block";
+  document.getElementById("authenticatedState").style.display = "none";
+}
+
+function hideLoading() {
+  updateAuthUI();
+}
+
+function showError(message) {
+  const errorDiv = document.getElementById("msalError");
+  errorDiv.textContent = message;
+  errorDiv.style.display = "block";
+  setTimeout(() => {
+    errorDiv.style.display = "none";
+  }, 5000);
+}
 
 // App State and Utilities
 const App = (()=>{
@@ -822,22 +945,18 @@ const App = (()=>{
     updateAuthUI();
   }
   
-  // Initialize email verification on load
-  window.addEventListener('DOMContentLoaded', () => {
-    checkAuth();
+  // Initialize Azure AD authentication on load
+  window.addEventListener('DOMContentLoaded', async () => {
+    // Initialize Azure AD
+    await initializeMSAL();
     
-    // Setup email verification button handlers
-    const sendCodeBtn = document.getElementById('sendCodeBtn');
-    const verifyCodeBtn = document.getElementById('verifyCodeBtn');
-    const resendCodeBtn = document.getElementById('resendCodeBtn');
-    const changeEmailBtn = document.getElementById('changeEmailBtn');
-    const signOutBtn = document.getElementById('signOutBtn');
-    const emailInput = document.getElementById('emailInput');
-    const codeInput = document.getElementById('codeInput');
+    // Setup Azure AD button handlers
+    const msalSignInBtn = document.getElementById('msalSignInBtn');
+    const msalSignOutBtn = document.getElementById('msalSignOutBtn');
     
-    // Send verification code
-    if (sendCodeBtn) {
-      sendCodeBtn.addEventListener('click', async () => {
+    // Sign in with Azure AD
+    if (msalSignInBtn) {
+      msalSignInBtn.addEventListener('click', async () => {
         const email = emailInput.value.trim();
         const emailError = document.getElementById('emailError');
         
@@ -1733,6 +1852,94 @@ document.addEventListener('DOMContentLoaded', function() {
     queuePatch();
   });
 })();
+
+// Network Access Control for IP-based Authentication
+async function checkNetworkAccess() {
+  const statusElement = document.getElementById('networkStatus');
+  const authRequiredElement = document.getElementById('authRequired');
+  
+  if (!statusElement) return false;
+  
+  try {
+    statusElement.textContent = 'Checking...';
+    statusElement.style.color = 'var(--brand-muted)';
+    
+    const response = await fetch('/api/secure-download', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ file: 'network-test' }) // Test request
+    });
+    
+    if (response.status === 403) {
+      const data = await response.json();
+      if (data.error && data.error.includes('UVA network')) {
+        statusElement.textContent = '❌ Not connected to UVA network';
+        statusElement.style.color = '#dc2626';
+        if (authRequiredElement) authRequiredElement.style.display = 'block';
+        return false;
+      }
+    }
+    
+    // If we get here, IP check passed (even if file doesn't exist)
+    statusElement.textContent = '✅ Connected to UVA network';
+    statusElement.style.color = '#059669';
+    if (authRequiredElement) authRequiredElement.style.display = 'none';
+    return true;
+    
+  } catch (error) {
+    console.error('Network check failed:', error);
+    statusElement.textContent = '❓ Unable to verify network status';
+    statusElement.style.color = 'var(--brand-muted)';
+    return false;
+  }
+}
+
+// Override the existing handleSecureDownload function for IP-based access
+function handleSecureDownload(event) {
+  const filename = event.target.dataset.filename;
+  
+  fetch('/api/secure-download', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ file: filename })
+  })
+  .then(async response => {
+    if (!response.ok) {
+      const errorData = await response.json();
+      if (response.status === 403 && errorData.error.includes('UVA network')) {
+        alert('⚠️ UVA Network Required\n\nTo download files, you must be connected to:\n• UVA WiFi/ethernet (on campus)\n• UVA VPN (off campus)\n\nClick the "Get UVA VPN Setup Instructions" link above for help.');
+        return null;
+      }
+      throw new Error(`Download failed: ${response.statusText}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    if (!data) return; // Error was handled above
+    
+    // Create download link
+    const link = document.createElement('a');
+    link.href = data.downloadUrl;
+    link.download = filename.split('/').pop();
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  })
+  .catch(error => {
+    console.error('Download failed:', error);
+    alert('Download failed: ' + error.message);
+  });
+}
+
+// Initialize network checking
+document.addEventListener('DOMContentLoaded', async () => {
+  // Initial network check
+  setTimeout(() => checkNetworkAccess(), 1000); // Wait for page to load
+  
+  // Recheck every 30 seconds
+  setInterval(checkNetworkAccess, 30000);
+});
+
 </script>
 <!-- === End Lightweight Download Buttons (Debounced, Safe) === -->
 </body>

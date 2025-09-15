@@ -37,55 +37,54 @@ module.exports = async function (context, req) {
             return;
         }
         
-        // Check if user has valid verification token
-        const userEmail = req.headers['x-verified-email'];
-        const verificationTime = req.headers['x-verification-time'];
+        // Get client IP address
+        const clientIP = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.connection?.remoteAddress || 'unknown';
+        const realIP = clientIP.split(',')[0].trim(); // Handle multiple IPs in x-forwarded-for
         
-        context.log(`=== SECURE DOWNLOAD DEBUG ===`);
-        context.log(`Headers received:`, Object.keys(req.headers));
-        context.log(`User email: '${userEmail}' (type: ${typeof userEmail})`);
-        context.log(`Verification time: '${verificationTime}' (type: ${typeof verificationTime})`);
-        context.log(`Email ends with @virginia.edu?`, userEmail ? userEmail.toLowerCase().endsWith('@virginia.edu') : 'NO EMAIL');
+        context.log(`=== IP-BASED ACCESS CONTROL ===`);
+        context.log(`Client IP: ${realIP}`);
+        context.log(`All headers:`, JSON.stringify(req.headers, null, 2));
         
-        if (!userEmail || !verificationTime) {
-            context.res = {
-                status: 401,
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
-                },
-                body: { error: 'Authentication required' }
-            };
-            return;
+        // UVA IP address ranges
+        const uvaNetworks = [
+            '137.54.0.0/16',     // UVA public block (confirmed from research)
+            '172.16.0.0/12',     // UVA private networks (RFC 1918 - covers 172.16-172.31)
+            '128.143.0.0/16',    // Additional UVA block (common for universities)
+            '199.111.0.0/16'     // UVA block from research
+        ];
+        
+        function isIPInRange(ip, cidr) {
+            try {
+                const [range, bits] = cidr.split('/');
+                const mask = ~(2 ** (32 - bits) - 1);
+                return (ip2long(ip) & mask) === (ip2long(range) & mask);
+            } catch (error) {
+                context.log(`Error checking IP range: ${error}`);
+                return false;
+            }
         }
         
-        // Verify email domain
-        context.log(`About to check email domain...`);
-        context.log(`userEmail.toLowerCase(): '${userEmail.toLowerCase()}'`);
-        context.log(`endsWith check result:`, userEmail.toLowerCase().endsWith('@virginia.edu'));
+        function ip2long(ip) {
+            return ip.split('.').reduce((int, octet) => (int << 8) + parseInt(octet, 10), 0) >>> 0;
+        }
         
-        if (!userEmail.toLowerCase().endsWith('@virginia.edu')) {
+        // Check if client IP is in UVA network ranges
+        const isUVANetwork = uvaNetworks.some(network => isIPInRange(realIP, network));
+        
+        context.log(`IP ${realIP} is in UVA network: ${isUVANetwork}`);
+        
+        if (!isUVANetwork) {
             context.res = {
                 status: 403,
                 headers: { 
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*'
                 },
-                body: { error: 'Access restricted to @virginia.edu addresses' }
-            };
-            return;
-        }
-        
-        // Check if verification is still valid (24 hours)
-        const hoursSinceVerification = (Date.now() - parseInt(verificationTime)) / (1000 * 60 * 60);
-        if (hoursSinceVerification > 24) {
-            context.res = {
-                status: 401,
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
-                },
-                body: { error: 'Verification expired. Please verify your email again.' }
+                body: { 
+                    error: 'Access restricted to UVA network. Please connect to UVA VPN or on-campus network to download files.',
+                    clientIP: realIP,
+                    allowedNetworks: uvaNetworks
+                }
             };
             return;
         }
