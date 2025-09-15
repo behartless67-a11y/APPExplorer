@@ -1,0 +1,15 @@
+{
+  "name": "secure-download",
+  "version": "1.0.0",
+  "description": "Azure Function for secure file downloads with IP-based authentication",
+  "main": "index.js",
+  "dependencies": {
+    "@azure/storage-blob": "^12.17.0"
+  },
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
