@@ -1,0 +1,9 @@
+{
+  "name": "test-storage",
+  "version": "1.0.0",
+  "description": "Test Azure Storage connection",
+  "main": "index.js",
+  "dependencies": {
+    "@azure/storage-blob": "^12.17.0"
+  }
+}
