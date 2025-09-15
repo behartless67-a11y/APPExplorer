@@ -37,9 +37,14 @@ module.exports = async function (context, req) {
             return;
         }
         
-        // Get client IP address
+        // Get client IP address and clean it
         const clientIP = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.connection?.remoteAddress || 'unknown';
-        const realIP = clientIP.split(',')[0].trim(); // Handle multiple IPs in x-forwarded-for
+        let realIP = clientIP.split(',')[0].trim(); // Handle multiple IPs in x-forwarded-for
+        
+        // Remove port number if present (e.g., "199.111.240.7:41552" -> "199.111.240.7")
+        if (realIP.includes(':') && !realIP.startsWith('[')) { // Don't remove from IPv6 addresses
+            realIP = realIP.split(':')[0];
+        }
         
         context.log(`=== IP-BASED ACCESS CONTROL ===`);
         context.log(`Client IP: ${realIP}`);

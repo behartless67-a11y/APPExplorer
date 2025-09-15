@@ -22,10 +22,17 @@ module.exports = async function (context, req) {
     const remoteAddress = req.connection?.remoteAddress;
     const socketRemoteAddress = req.socket?.remoteAddress;
     
-    // Parse the forwarded-for header
+    // Parse the forwarded-for header and clean IPs
     let clientIPs = [];
     if (xForwardedFor) {
-        clientIPs = xForwardedFor.split(',').map(ip => ip.trim());
+        clientIPs = xForwardedFor.split(',').map(ip => {
+            let cleanIP = ip.trim();
+            // Remove port number if present (e.g., "199.111.240.7:41552" -> "199.111.240.7")
+            if (cleanIP.includes(':') && !cleanIP.startsWith('[')) { // Don't remove from IPv6 addresses
+                cleanIP = cleanIP.split(':')[0];
+            }
+            return cleanIP;
+        });
     }
     
     const debugInfo = {
@@ -42,7 +49,7 @@ module.exports = async function (context, req) {
             socketRemoteAddress: socketRemoteAddress
         },
         clientIPs: clientIPs,
-        selectedIP: clientIPs[0] || xRealIP || remoteAddress || 'unknown',
+        selectedIP: clientIPs[0] || (xRealIP && xRealIP.split(':')[0]) || remoteAddress || 'unknown',
         allHeaders: req.headers
     };
     
