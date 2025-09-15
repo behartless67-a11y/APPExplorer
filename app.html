@@ -610,9 +610,14 @@ const App = (()=>{
       }
       const keys = [...groups.keys()].sort((a,b)=> a.localeCompare(b));
       for (const gk of keys){
-        const h = document.createElement("h3");
+        const h = document.createElement("div");
         h.textContent = gk;
-        h.style.marginTop = "12px";
+        h.style.fontWeight = "bold";
+        h.style.fontSize = "18px";
+        h.style.marginTop = "20px";
+        h.style.marginBottom = "10px";
+        h.style.paddingBottom = "5px";
+        h.style.borderBottom = "1px solid #ddd";
         grid.appendChild(h);
         for (const r of groups.get(gk)){
           grid.appendChild(card(r, qNow));
