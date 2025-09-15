@@ -229,28 +229,19 @@
     <!-- Email Verification Authentication -->
     <div id="authPanel" class="panel" style="margin-bottom: 20px;">
       <div id="networkAccessInfo">
-        <h3 style="margin: 0 0 16px 0; color: var(--brand-text);">🔒 UVA Network Access Required</h3>
-        <div style="background: rgba(229, 114, 0, 0.1); border: 1px solid rgba(229, 114, 0, 0.3); border-radius: 8px; padding: 16px; margin-bottom: 16px;">
-          <p style="margin: 0 0 12px 0; color: var(--brand-text); font-weight: 500;">
-            📥 To download project files, you must be connected to the UVA network:
-          </p>
-          <ul style="margin: 0 0 12px 20px; color: var(--brand-text);">
-            <li><strong>On Campus:</strong> Connected to UVA WiFi or ethernet</li>
-            <li><strong>Off Campus:</strong> Connected to UVA VPN</li>
-          </ul>
-          <div style="text-align: center; margin-top: 12px;">
-            <a href="https://virginia.service-now.com/its?id=itsweb_kb_article&sys_id=f24e5cdfdb3acb804f32fb671d9619d0" 
-               target="_blank" class="btn accent" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
-              🔗 Get UVA VPN Setup Instructions
-            </a>
-          </div>
-        </div>
         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
           <p style="margin: 0; color: var(--brand-muted); font-size: 14px; text-align: center;">
-            <strong>Current Status:</strong> <span id="networkStatus">Checking network access...</span>
+            <strong>Network Status:</strong> <span id="networkStatus">Checking...</span>
           </p>
+          <div id="vpnInfo" style="display: none; margin-top: 8px; padding: 8px; background: rgba(229, 114, 0, 0.1); border-radius: 4px;">
+            <p style="margin: 0; color: var(--brand-text); font-size: 13px;">
+              📥 Downloads require UVA network access. 
+              <a href="https://virginia.service-now.com/its?id=itsweb_kb_article&sys_id=f24e5cdfdb3acb804f32fb671d9619d0" 
+                 target="_blank" style="color: var(--brand-accent);">Get VPN setup</a> for off-campus access.
+            </p>
+          </div>
           <div style="text-align: center; margin-top: 8px;">
-            <button id="debugIPBtn" class="btn" style="font-size: 12px; padding: 6px 12px;">Debug IP Info</button>
+            <button id="debugIPBtn" class="btn" style="font-size: 12px; padding: 4px 8px;">Debug</button>
           </div>
         </div>
       </div>
@@ -1860,12 +1851,14 @@ document.addEventListener('DOMContentLoaded', function() {
 async function checkNetworkAccess() {
   const statusElement = document.getElementById('networkStatus');
   const authRequiredElement = document.getElementById('authRequired');
+  const vpnInfoElement = document.getElementById('vpnInfo');
   
   if (!statusElement) return false;
   
   try {
     statusElement.textContent = 'Checking...';
     statusElement.style.color = 'var(--brand-muted)';
+    if (vpnInfoElement) vpnInfoElement.style.display = 'none';
     
     const response = await fetch('/api/secure-download', {
       method: 'POST',
@@ -1876,22 +1869,24 @@ async function checkNetworkAccess() {
     if (response.status === 403) {
       const data = await response.json();
       if (data.error && data.error.includes('UVA network')) {
-        statusElement.textContent = '❌ Not connected to UVA network';
+        statusElement.textContent = '❌ Not connected';
         statusElement.style.color = '#dc2626';
         if (authRequiredElement) authRequiredElement.style.display = 'block';
+        if (vpnInfoElement) vpnInfoElement.style.display = 'block';
         return false;
       }
     }
     
     // If we get here, IP check passed (even if file doesn't exist)
-    statusElement.textContent = '✅ Connected to UVA network';
+    statusElement.textContent = '✅ Connected';
     statusElement.style.color = '#059669';
     if (authRequiredElement) authRequiredElement.style.display = 'none';
+    if (vpnInfoElement) vpnInfoElement.style.display = 'none';
     return true;
     
   } catch (error) {
     console.error('Network check failed:', error);
-    statusElement.textContent = '❓ Unable to verify network status';
+    statusElement.textContent = '❓ Unknown';
     statusElement.style.color = 'var(--brand-muted)';
     return false;
   }
