@@ -618,6 +618,7 @@ const App = (()=>{
         h.style.marginBottom = "10px";
         h.style.paddingBottom = "5px";
         h.style.borderBottom = "1px solid #ddd";
+        h.style.gridColumn = "1 / -1";
         grid.appendChild(h);
         for (const r of groups.get(gk)){
           grid.appendChild(card(r, qNow));
