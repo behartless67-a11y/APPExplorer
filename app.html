@@ -83,6 +83,8 @@
     select:hover, input[type="text"]:hover { border-color: var(--brand-accent); }
     select:focus, input[type="text"]:focus { outline: 2px solid var(--brand-accent); outline-offset: 1px; border-color: var(--brand-accent); box-shadow:var(--shadow-lg); }
     .btn { padding:10px 16px; border-radius:12px; border:1px solid var(--brand-border); background: var(--brand-card); color: var(--brand-text); cursor:pointer; transition: all .2s ease; box-shadow:var(--shadow); }
+    .btn.clear-filters { padding:12px 14px; background: #FFC107; color: #212529; border-color: #FFA000; font-weight: 500; }
+    .btn.clear-filters:hover { background: #FFB300; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3); }
     .btn:hover { background:#f8fafc; transform: translateY(-1px); box-shadow:var(--shadow-lg); }
     .btn.accent { background: var(--brand-accent); color: var(--brand-accent-contrast); border-color: transparent; }
     .btn.accent:hover { transform: translateY(-1px); box-shadow:var(--shadow-lg); filter: brightness(0.97); }
@@ -299,7 +301,7 @@
             </select>
           </div>
           <div style="align-self:flex-end;">
-            <button class="btn" id="clear">Clear Filters</button>
+            <button class="btn clear-filters" id="clear">Clear Filters</button>
           </div>
         </div>
       </div>
