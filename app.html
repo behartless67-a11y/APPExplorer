@@ -220,7 +220,7 @@
         <img src="images/bat_rgb_ko.png" alt="UVA Batten School Logo" style="height:80px; width:auto;">
       </div>
       <div class="nav-links">
-        <a href="./submit.html" class="nav-link">Submit Project →</a>
+        <a href="./submit.html" class="nav-link" id="submitProjectLink">Submit Project →</a>
       </div>
     </div>
   </header>
@@ -1963,7 +1963,20 @@ async function debugIPInfo() {
   }
 }
 
-// Initialize network checking
+// PIN Protection for Submit Project
+function checkSubmitPIN() {
+  const correctPIN = '000235';
+  const enteredPIN = prompt('Please enter the PIN to access Submit Project:');
+  
+  if (enteredPIN === correctPIN) {
+    return true;
+  } else if (enteredPIN !== null) {
+    alert('Incorrect PIN. Access denied.');
+  }
+  return false;
+}
+
+// Initialize network checking and PIN protection
 document.addEventListener('DOMContentLoaded', async () => {
   // Initial network check
   setTimeout(() => checkNetworkAccess(), 1000); // Wait for page to load
@@ -1975,6 +1988,17 @@ document.addEventListener('DOMContentLoaded', async () => {
   const debugBtn = document.getElementById('debugIPBtn');
   if (debugBtn) {
     debugBtn.addEventListener('click', debugIPInfo);
+  }
+  
+  // Add PIN protection to Submit Project link
+  const submitLink = document.getElementById('submitProjectLink');
+  if (submitLink) {
+    submitLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (checkSubmitPIN()) {
+        window.location.href = './submit.html';
+      }
+    });
   }
 });
 
