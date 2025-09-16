@@ -1,35 +1,15 @@
 {
-  "timestamp": "2025-09-16T20:14:57.112Z",
+  "timestamp": "2025-09-16T20:17:58.910Z",
   "summary": {
     "totalProjects": 592,
-    "availableDownloads": 519,
-    "missingFromBlob": 73
+    "availableDownloads": 523,
+    "missingFromBlob": 69
   },
   "missingProjects": [
-    {
-      "title": "Reducing Vacancy Rates of Albemarle County Boards and Commissions",
-      "filename": "407_Lettie Bien APP 2019.pdf",
-      "source": "original"
-    },
-    {
-      "title": "College Advising in States with Free Community College Programs",
-      "filename": "379_College Advising Corps.pdf",
-      "source": "original"
-    },
-    {
-      "title": "Sexual assault prevention programs for teens resettled in the US as refugees",
-      "filename": "367_Sexual Assault Resource Agency.pdf",
-      "source": "original"
-    },
     {
       "title": "Reforming the SBIR Approach Towards Women and Minority Owned Projects",
       "filename": "294_APP 2018 Theodore En-Dao Fergusson.pdf",
       "source": "original"
-    },
-    {
-      "title": "Environmental Justice in Fenceline Communities in Virginia",
-      "filename": "geithclaire_990427_14518072_Claire Geith APP_Anna Thomas.pdf",
-      "source": "fixed"
     },
     {
       "title": "The Effects of Pesticides On Farmworker Health",

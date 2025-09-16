@@ -1,10 +1,10 @@
 {
-  "timestamp": "2025-09-16T20:13:26.121Z",
+  "timestamp": "2025-09-16T20:17:47.591Z",
   "sources": {
     "azureFileList": {
       "path": "C:\\Users\\bh4hb\\OneDrive - University of Virginia\\Desktop\\APPExplorerGit\\APPExplorer\\data\\azure-file-list.txt",
       "exists": true,
-      "count": 531,
+      "count": 536,
       "files": [
         "001_Ramya Ravichandran APP 2019.pdf",
         "002_Maria Loverde APP 2019.pdf",
@@ -536,7 +536,12 @@
         "washingtonandrew_1650_7756656_Drew Washington_Joshua McCray.pdf",
         "westphalsarah_3152_7763853_Sarah_TechnicalRep_Emily Anstett.docx",
         "xueziwei_12495_7762467_Ziwei Victor Xue_APP r_Joshua McCray.pdf",
-        "brunnhannah_LATE_1258558_15130802_Brunn_Final_Anna Thomas.pdf"
+        "brunnhannah_LATE_1258558_15130802_Brunn_Final_Anna Thomas.pdf",
+        "407_Lettie Bien APP 2019.pdf",
+        "379_College Advising Corps.pdf",
+        "367_Sexual Assault Resource Agency.pdf",
+        "294_APP 2018 Theodore En-Dao Fergusson.pdf",
+        "geithclaire_990427_14518072_Claire Geith APP_Anna Thomas.pdf"
       ]
     },
     "downloadMapping": {
