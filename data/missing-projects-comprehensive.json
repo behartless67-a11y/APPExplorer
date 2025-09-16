@@ -1,0 +1,375 @@
+{
+  "timestamp": "2025-09-16T20:14:57.112Z",
+  "summary": {
+    "totalProjects": 592,
+    "availableDownloads": 519,
+    "missingFromBlob": 73
+  },
+  "missingProjects": [
+    {
+      "title": "Reducing Vacancy Rates of Albemarle County Boards and Commissions",
+      "filename": "407_Lettie Bien APP 2019.pdf",
+      "source": "original"
+    },
+    {
+      "title": "College Advising in States with Free Community College Programs",
+      "filename": "379_College Advising Corps.pdf",
+      "source": "original"
+    },
+    {
+      "title": "Sexual assault prevention programs for teens resettled in the US as refugees",
+      "filename": "367_Sexual Assault Resource Agency.pdf",
+      "source": "original"
+    },
+    {
+      "title": "Reforming the SBIR Approach Towards Women and Minority Owned Projects",
+      "filename": "294_APP 2018 Theodore En-Dao Fergusson.pdf",
+      "source": "original"
+    },
+    {
+      "title": "Environmental Justice in Fenceline Communities in Virginia",
+      "filename": "geithclaire_990427_14518072_Claire Geith APP_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "The Effects of Pesticides On Farmworker Health",
+      "filename": "furachel_LATE_1153424_15134579_Rachel Fu tech_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Addressing PFAS Contamination in Virginia's Rivers",
+      "filename": "Entsminger_APP_5_6_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Here Comes the Sun: Community Benefits to be Leveraged on Central Appalachian Solar Developments",
+      "filename": "dojcakrosemarie_LATE_40117_15133985_Final APP_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Addressing Barriers to Utility Scale Solar in Virginia",
+      "filename": "docalovichmatthew_LATE_34021_15066571_APP Tec_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Addressing Rising Homelessness in Charlottesville, VA",
+      "filename": "demarcohenry_1257808_14494867_DeMarco_Technic_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Friendshoring Maintenance in Japan",
+      "filename": "crewssarah_1255535_14364131_Crews APP Technic_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Mitigating Food Insecurity in Southwest Virginia: Recommendations for Expanding Food Access Programming",
+      "filename": "crenshawcarson_33603_14518186_Crenshaw Techni_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Red Tape, Empty Plates: An Analysis of the SNAP ABAWD Work Requirement in Kentucky",
+      "filename": "craigdylan_LATE_1105169_15073418_Dylan_Craig__Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Expanding Access to Cancer Navigators for Federal Employees",
+      "filename": "cohenshane_1257393_14481847_Cohen_Thesis_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Implementing Nine-Year Education for All: Addressing Challenges in Qian County",
+      "filename": "chenyuyan_1091605_15055752_the final draft_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Increasing the Accessibility of Massachusetts Small Claims Courts",
+      "filename": "browncaroline_LATE_27423_15064847_Caroline Br_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Bridging the Gap: A Framework for Supporting Black Entrepreneurship in Charlottesville",
+      "filename": "Akpalu, Priscilla_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "What Works for Workforce? A Report on Advanced Manufacturing Workforce Development",
+      "filename": "barnettsarah_1257831_14485188_Barnett Technic_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Solar Solutions: Policy Analysis for Small-Scale Solar Growth in West Virginia",
+      "filename": "brementskylar_30093_14504891_SBrement_Technic_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Ending Houthi Attacks In The Red Sea and Gulf of Aden",
+      "filename": "cashmankelsey_31860_14499778_Cashman Technica_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Bridging the Gender Gap in Computer Science Education in Virginia",
+      "filename": "bakhithana_LATE_1260016_15163978_APP_Hana_Bak_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Addressing Chronic Absenteeism At Skyline High School",
+      "filename": "berrymorgan_LATE_39576_15044848_APP Technical_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Improving Access to Early-Stage and Seed Capital in Southern West Virginia",
+      "filename": "ashleyadam_32760_14500035_ashley_techreport_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Reducing Maternal Mortality in Lusaka, Zambia",
+      "filename": "APP Final Novak 5.9.2025 (1)_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Cultivating ClimateSmart Cooperation: Incentivizing Chinese and American Rice Farmers to Reduce Methane Emissions",
+      "filename": "spakessarah_1257100_14475807_Spakes_Technical_Susana Columbie Pere.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Changing with the Tides: Addressing Salt Marsh Erosion on Nantucket",
+      "filename": "anstettemily_932730_14496738_AnstettTechnical_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Building Impact: Alleviating Lacking Low-Income Affordable Homeownership",
+      "filename": "sewellcharles_33831_14509949_Final Report_Susana Columbie Pere.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Solving Ambiguity in Role Responsibilities and Communication Practices",
+      "filename": "adamsandrew_1261467_14503320_Final Applied Po_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Autonomous Well-Being: Increasing Access to Contraception Among People Who Use Drugs",
+      "filename": "phanjordan_46941_14475656_Phan_APP_Final-1_Susana Columbie Pere.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "BRIDGING THE GAP: Strategic Policy Interventions for the U.S. Primary Care Physician Shortage",
+      "filename": "russellpeyton_37549_14463455_Assignment 5 - T_Susana Columbie Pere.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Restoring Safety to the Downtown Mall",
+      "filename": "christjames_971827_14473676_Technical Report-_Anna Thomas.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "​Improving Third-Grade Math Proficiency in Sunflower County Consolidated School District ",
+      "filename": "nguyenalvin_47616_14513534_Nguyen_Technical-R_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Preventing Child Recruitment into Gangs in Haiti",
+      "filename": "olivarescarlos_LATE_26882_15053830_Olivares-A_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Addressing the Chronic Absenteeism of McKinney-Vento Students: Policy Alternatives for Virginia Schools",
+      "filename": "ottojenny_1256763_14518098_OTTO_APP_Technical_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Innovation in Education: Analysis and Recommendations",
+      "filename": "padilladianna_1261262_14505549_APP Final Dian_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Building Capacity for Economic Resilience in Jackson, Kentucky",
+      "filename": "pepperkalista_384924_14494025_Technical Repor_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Powering Virginia's Future: Supply-Side Strategies to Meet Rising energy Demand",
+      "filename": "pomeranzandrew_950369_14492288_APP Technical_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Supporting Haitian Immigrants with Employment Outcomes",
+      "filename": "popeallison_1256767_14517791_Technical Report_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "DREAMS: Determined, Resilient, Educated, Aids-free, Mentored, Safe",
+      "filename": "rehmanmaria_1257827_14518271_Maria's Technica_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "The Cost of Corruption: Healthcare Inaccessibility in HOnduras",
+      "filename": "rodriguezashley_1257824_14515923_Technical Re_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Reducing High Levels of Energy Burden Amongst Low-Income Virginians Living In Multi-Family Housing",
+      "filename": "rowsonwill_288903_14514303_Rowson_Technical R_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Bridging the Gap: Strategic Policy Interventions for the US Primary Care Physician Shortage",
+      "filename": "russellpeyton_37549_14463455_Assignment 5 - T_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Rebuilding Forage Fish By Advancing Ecosystem-Based Fishery Management",
+      "filename": "ruzickazane_LATE_104681_14650148_ZR_Technical_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Permission to Launch? The Mission Authorization Gap for Novel Space Activities",
+      "filename": "sanchezcrowecatherine_34044_14486278_APP Tech_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Cultivating Climate-Smart Cooperation: Incentivizing Chinese and American Rice Farmers to Reduce Methane Emissions",
+      "filename": "spakessarah_1257100_14475807_Spakes_Technical_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Protecting and Preserving Loudon's Blue Ridge Corridor: A Policy Analysis",
+      "filename": "stevensonjosh_LATE_1260021_15130776_technical_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Improving Soldier Retention In the Virginia Army National Guard",
+      "filename": "thomasanna_LATE_1256819_15089654_Technical_Re_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Improving Health and Safety for College Football Players in Florida",
+      "filename": "vansantjohn_10814_14504380_Vansant, APP II As_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Addressing Food Insecurity in Fifeville",
+      "filename": "witherspoondorothy_34073_14512728_Witherspoon_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Addressing Impaired Driving Traffic Fatalities: An analysis of evidence-based policy options for reducing impaired driving traffic fatalities in Clark County, Nevada",
+      "filename": "yeagerlexy_LATE_39903_14978663_yeager_technic_Morgan Berry.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Pathways to Stability: Addressing Roanoke's Homelessness Crisis",
+      "filename": "graymakala_257597_14503338_Technical Report_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Best Practices in Teacher Professional Development",
+      "filename": "greubelpeter_1248016_14470464_Greubel_APP_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Improving Lending to the Formerly Incarcerated",
+      "filename": "hamwilliam_LATE_27661_15141999_Ham - APP Tech_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Enhancing Employee Retention in Virginia's Nonprofit Sector",
+      "filename": "hasinahmadyaser_1257798_14518426_APP-Technica_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Preventing Unnecessary Family Separation in Virginia",
+      "filename": "havisonmikayla_49765_14472951_Havison__Techni_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Build, Design, Transform: A Multi-Faceted Approach to Vermont's Housing Affordability Challenge",
+      "filename": "hayterjess_1104598_14514036_Design, Build, Tr_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Enhancing Employee Satisfaction",
+      "filename": "hirtmarvin_1261473_14509969_APP_Final_Report__Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "A Strategic Recommendation for the Charlottesville Police Department",
+      "filename": "huberjenna_1256761_14502377_Huber APP Technic_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Addressing the Healthcare Needs of Patients Experiencing Homelessness: A Policy Analysis for Continuity of Care in Huntington, West Virginia",
+      "filename": "jonesburdickanastasia_1256759_14518623_APPFin_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Bristol, VA: A Sustainable Recycling Strategy ",
+      "filename": "joycesheila_1256780_14447540_APP Technical Re_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Strengthening Maternal Mental Health in the FEHB Program",
+      "filename": "kinghannah_1256765_14493587_APP King Technica_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Sun-Powered Progress: Strengthening Net Metering in Minnesota",
+      "filename": "laffertydavid_1257829_14518526_David Lafferty_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Supporting Tenants Displaced by Expiring LIHTC Housing: Policy Strategies for Protecting Housing Stability for Low-Income Virginians",
+      "filename": "landerganallison_82298_14501952_Landergan-Tec_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "A Review of Alternative Grading Systems",
+      "filename": "leechchrissy_33473_14495217_Leech- Technical_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Preparing American Stakeholders for the Saudi Nuclear Program",
+      "filename": "lozanokrameralejandro_1108861_14506976_Alejan_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Addressing Economic Mobility in Charlottesville",
+      "filename": "madormaanthony_38463_14518391_Madorma_Final D_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Addressing Workplace Violence in Healthcare Through Occupational Safety and Health",
+      "filename": "makingrace_27961_14518099_Makin_Technical_Rep_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Dead End: Policy Interventions to Curb Pedestrian Death in Virginia",
+      "filename": "massingillmike_47859_14440616_Technical Repor_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Reducing Unintentional Shootings by Children in Virginia",
+      "filename": "matthewskaitlyn_34074_14505370_APP Technical_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Addressing High Acuity Foster Youth Displacement",
+      "filename": "mileselizabeth_1257099_14474399_APP Technical_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Improving Employment Outcomes for Individuals in Treatment of Substance Use Disorder",
+      "filename": "mohammedsannimariama_1196450_14510100_APP_TEC_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Social Security's Missing Income: An Evaluation of Proposals to Change the OASI Taxable Income Limit",
+      "filename": "moorejacob_28094_15048411_APP Technical Repor_Carson Crenshaw.pdf",
+      "source": "fixed"
+    },
+    {
+      "title": "Improving Third-Grade Math Proficiency in Sunflower County Consolidated School District",
+      "filename": "nguyenalvin_47616_14513493_Nguyen_Technical-R_Carson Crenshaw.pdf",
+      "source": "fixed"
+    }
+  ]
+}
