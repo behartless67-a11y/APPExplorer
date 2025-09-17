@@ -1,10 +1,47 @@
 {
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/{TENANT_ID}/v2.0",
+          "clientIdSettingName": "AZURE_CLIENT_ID",
+          "clientSecretSettingName": "AZURE_CLIENT_SECRET"
+        }
+      }
+    }
+  },
   "routes": [
+    {
+      "route": "/login",
+      "redirect": "/.auth/login/aad"
+    },
+    {
+      "route": "/logout",
+      "redirect": "/.auth/logout"
+    },
+    {
+      "route": "/api/secure-download",
+      "allowedRoles": ["FBS_StaffAll", "FBS_Community"]
+    },
+    {
+      "route": "/api/getRoles",
+      "allowedRoles": ["authenticated"]
+    },
     {
       "route": "/api/*",
       "allowedRoles": ["anonymous"]
+    },
+    {
+      "route": "/*",
+      "allowedRoles": ["authenticated"]
     }
   ],
+  "responseOverrides": {
+    "401": {
+      "redirect": "/.auth/login/aad",
+      "statusCode": 302
+    }
+  },
   "navigationFallback": {
     "rewrite": "/index.html",
     "exclude": ["/api/*", "*.{css,scss,sass,js,ts,map,ico,png,jpg,gif,svg,eot,otf,ttf,woff,woff2}"]

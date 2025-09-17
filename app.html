@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-  <script src="https://alcdn.msauth.net/browser/2.38.3/js/msal-browser.min.js"></script>
   <style>
     :root {
       --brand-bg: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
@@ -226,16 +225,15 @@
   </header>
 
   <div class="container">
-    <!-- Email Verification Authentication -->
+    <!-- Azure Authentication -->
     <div id="authPanel" class="panel" style="margin-bottom: 20px;">
-      <div id="networkAccessInfo">
+      <div id="authenticationInfo">
         <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
           <p style="margin: 0; color: var(--brand-muted); font-size: 14px; text-align: center;">
-            <strong>Network Status:</strong> <span id="networkStatus">Checking...</span>
-            <span id="vpnInfo" style="display: none; margin-left: 8px; color: var(--brand-text);">
-              | 📥 To download files, you must be connected to the UVA network (on campus) or use <a href="https://virginia.service-now.com/its?id=itsweb_kb_article&sys_id=f24e5cdfdb3acb804f32fb671d9619d0" target="_blank" style="color: var(--brand-accent);">UVA VPN setup instructions</a> for off-campus access.
-            </span>
-            <button id="debugIPBtn" class="btn" style="font-size: 11px; padding: 2px 6px; margin-left: 12px;">Debug</button>
+            <strong>Authentication:</strong> <span id="authStatus">Checking...</span>
+            <span id="userInfo" style="display: none; margin-left: 8px; color: var(--brand-text);"></span>
+            <button id="loginBtn" class="btn" style="font-size: 12px; padding: 4px 8px; margin-left: 12px; display: none;">Login</button>
+            <button id="logoutBtn" class="btn" style="font-size: 12px; padding: 4px 8px; margin-left: 12px; display: none;">Logout</button>
           </p>
         </div>
       </div>
@@ -322,100 +320,10 @@
 })();
 
 // Azure AD Configuration
-const msalConfig = {
-  auth: {
-    clientId: "YOUR_CLIENT_ID", // Replace with your Azure AD App Registration Client ID
-    authority: "https://login.microsoftonline.com/YOUR_TENANT_ID", // Replace with UVA tenant ID
-    redirectUri: window.location.origin,
-  },
-  cache: {
-    cacheLocation: "sessionStorage",
-    storeAuthStateInCookie: false,
-  }
-};
+// Authentication system now handled by Azure Static Web Apps built-in authentication
 
-const loginRequest = {
-  scopes: ["User.Read", "GroupMember.Read.All"]
-};
 
-let msalInstance = null;
-let currentAccount = null;
-
-// Initialize MSAL
-async function initializeMSAL() {
-  try {
-    msalInstance = new msal.PublicClientApplication(msalConfig);
-    await msalInstance.initialize();
-    
-    // Handle redirect promise
-    const response = await msalInstance.handleRedirectPromise();
-    if (response !== null) {
-      currentAccount = response.account;
-    } else {
-      currentAccount = msalInstance.getActiveAccount();
-      if (!currentAccount) {
-        const accounts = msalInstance.getAllAccounts();
-        if (accounts.length > 0) {
-          currentAccount = accounts[0];
-          msalInstance.setActiveAccount(currentAccount);
-        }
-      }
-    }
-    
-    updateAuthUI();
-  } catch (error) {
-    console.error("MSAL initialization failed:", error);
-    showError("Authentication system failed to initialize: " + error.message);
-  }
-}
-
-// Sign in function
-async function signIn() {
-  showLoading();
-  try {
-    const response = await msalInstance.loginPopup(loginRequest);
-    currentAccount = response.account;
-    msalInstance.setActiveAccount(currentAccount);
-    updateAuthUI();
-  } catch (error) {
-    console.error("Sign in failed:", error);
-    showError("Sign in failed: " + error.message);
-    hideLoading();
-  }
-}
-
-// Sign out function
-async function signOut() {
-  const logoutRequest = {
-    account: currentAccount
-  };
-  await msalInstance.logoutPopup(logoutRequest);
-  currentAccount = null;
-  updateAuthUI();
-}
-
-// Get access token for API calls
-async function getAccessToken() {
-  if (!currentAccount) {
-    throw new Error("No active account. Please sign in first.");
-  }
-  
-  try {
-    const response = await msalInstance.acquireTokenSilent({
-      scopes: loginRequest.scopes,
-      account: currentAccount
-    });
-    return response.accessToken;
-  } catch (error) {
-    console.error("Token acquisition failed:", error);
-    // If silent token acquisition fails, try popup
-    const response = await msalInstance.acquireTokenPopup({
-      scopes: loginRequest.scopes,
-      account: currentAccount
-    });
-    return response.accessToken;
-  }
-}
+// Authentication functions removed - now handled by Azure Static Web Apps
 
 // UI update functions
 function updateAuthUI() {
@@ -1844,47 +1752,62 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 })();
 
-// Network Access Control for IP-based Authentication
-async function checkNetworkAccess() {
-  const statusElement = document.getElementById('networkStatus');
-  const authRequiredElement = document.getElementById('authRequired');
-  const vpnInfoElement = document.getElementById('vpnInfo');
-  
+// Azure Static Web Apps Authentication
+async function checkAuthentication() {
+  const statusElement = document.getElementById('authStatus');
+  const userInfoElement = document.getElementById('userInfo');
+  const loginBtn = document.getElementById('loginBtn');
+  const logoutBtn = document.getElementById('logoutBtn');
+
   if (!statusElement) return false;
-  
+
   try {
     statusElement.textContent = 'Checking...';
     statusElement.style.color = 'var(--brand-muted)';
-    if (vpnInfoElement) vpnInfoElement.style.display = 'none';
-    
-    const response = await fetch('/api/secure-download', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ file: 'network-test' }) // Test request
-    });
-    
-    if (response.status === 403) {
-      const data = await response.json();
-      if (data.error && data.error.includes('UVA network')) {
-        statusElement.textContent = '❌ Not connected';
-        statusElement.style.color = '#dc2626';
-        if (authRequiredElement) authRequiredElement.style.display = 'block';
-        if (vpnInfoElement) vpnInfoElement.style.display = 'block';
-        return false;
+
+    // Check authentication status via Azure Static Web Apps built-in endpoint
+    const authResponse = await fetch('/.auth/me');
+    const authData = await authResponse.json();
+
+    if (authData.clientPrincipal) {
+      // User is authenticated
+      const user = authData.clientPrincipal;
+
+      // Get user roles and groups from our API
+      const rolesResponse = await fetch('/api/getRoles');
+      let roleData = { roles: [], hasDownloadAccess: false };
+
+      if (rolesResponse.ok) {
+        roleData = await rolesResponse.json();
       }
+
+      statusElement.textContent = roleData.hasDownloadAccess ? '✅ Authenticated & Authorized' : '⚠️ Authenticated but Not Authorized';
+      statusElement.style.color = roleData.hasDownloadAccess ? '#059669' : '#dc2626';
+
+      if (userInfoElement) {
+        userInfoElement.textContent = `Welcome, ${user.userDetails}`;
+        userInfoElement.style.display = 'inline';
+      }
+
+      if (loginBtn) loginBtn.style.display = 'none';
+      if (logoutBtn) logoutBtn.style.display = 'inline-block';
+
+      return roleData.hasDownloadAccess;
+    } else {
+      // User is not authenticated
+      statusElement.textContent = '🔑 Please login with your UVA account';
+      statusElement.style.color = '#dc2626';
+
+      if (userInfoElement) userInfoElement.style.display = 'none';
+      if (loginBtn) loginBtn.style.display = 'inline-block';
+      if (logoutBtn) logoutBtn.style.display = 'none';
+
+      return false;
     }
-    
-    // If we get here, IP check passed (even if file doesn't exist)
-    statusElement.textContent = '✅ Connected';
-    statusElement.style.color = '#059669';
-    if (authRequiredElement) authRequiredElement.style.display = 'none';
-    if (vpnInfoElement) vpnInfoElement.style.display = 'none';
-    return true;
-    
   } catch (error) {
-    console.error('Network check failed:', error);
-    statusElement.textContent = '❓ Unknown';
-    statusElement.style.color = 'var(--brand-muted)';
+    console.log('Authentication check failed:', error);
+    statusElement.textContent = '❌ Authentication Error';
+    statusElement.style.color = '#dc2626';
     return false;
   }
 }
@@ -1979,20 +1902,29 @@ function checkSubmitPIN() {
   return false;
 }
 
-// Initialize network checking and PIN protection
+// Initialize authentication and PIN protection
 document.addEventListener('DOMContentLoaded', async () => {
-  // Initial network check
-  setTimeout(() => checkNetworkAccess(), 1000); // Wait for page to load
-  
+  // Initial authentication check
+  setTimeout(() => checkAuthentication(), 1000); // Wait for page to load
+
   // Recheck every 30 seconds
-  setInterval(checkNetworkAccess, 30000);
-  
-  // Add debug button handler
-  const debugBtn = document.getElementById('debugIPBtn');
-  if (debugBtn) {
-    debugBtn.addEventListener('click', debugIPInfo);
+  setInterval(checkAuthentication, 30000);
+
+  // Add login/logout button handlers
+  const loginBtn = document.getElementById('loginBtn');
+  if (loginBtn) {
+    loginBtn.addEventListener('click', () => {
+      window.location.href = '/login';
+    });
   }
-  
+
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      window.location.href = '/logout';
+    });
+  }
+
   // Add PIN protection to Submit Project link
   const submitLink = document.getElementById('submitProjectLink');
   if (submitLink) {

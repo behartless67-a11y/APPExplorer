@@ -12,27 +12,8 @@ try {
 
 module.exports = async function (context, req) {
     context.log('Secure download request received', req.method);
-    
+
     try {
-        // For testing, return simple response for GET requests
-        if (req.method === 'GET') {
-            context.res = {
-                status: 200,
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
-                    'Access-Control-Allow-Headers': 'Content-Type,x-verified-email,x-verification-time'
-                },
-                body: { 
-                    message: 'Secure download API is working',
-                    method: req.method,
-                    timestamp: new Date().toISOString()
-                }
-            };
-            return;
-        }
-        
         // Handle CORS preflight
         if (req.method === 'OPTIONS') {
             context.res = {
@@ -40,27 +21,102 @@ module.exports = async function (context, req) {
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                     'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
-                    'Access-Control-Allow-Headers': 'Content-Type,x-verified-email,x-verification-time'
+                    'Access-Control-Allow-Headers': 'Content-Type,x-ms-client-principal'
                 },
                 body: ''
             };
             return;
         }
-        
-        // Get client IP address for logging
-        const clientIP = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.connection?.remoteAddress || 'unknown';
-        let realIP = clientIP.split(',')[0].trim();
 
-        // Remove port number if present
-        if (realIP.includes(':') && !realIP.startsWith('[')) {
-            realIP = realIP.split(':')[0];
+        // Check authentication via Azure Static Web Apps
+        const userClaims = req.headers['x-ms-client-principal'];
+
+        if (!userClaims) {
+            context.log('No authentication header found');
+            context.res = {
+                status: 401,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: { error: 'Authentication required. Please log in.' }
+            };
+            return;
         }
 
-        context.log(`=== DOWNLOAD REQUEST (IP FILTERING DISABLED FOR TESTING) ===`);
-        context.log(`Client IP: ${realIP}`);
+        // Decode and validate user claims
+        let claims;
+        try {
+            claims = JSON.parse(Buffer.from(userClaims, 'base64').toString());
+            context.log('User authenticated:', claims.userDetails);
+        } catch (error) {
+            context.log('Failed to decode user claims:', error);
+            context.res = {
+                status: 401,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: { error: 'Invalid authentication token' }
+            };
+            return;
+        }
 
-        // IP filtering temporarily disabled for testing
-        // Original IP filtering code saved in index.js.with-ip-filtering
+        // Check for required group membership
+        const userGroups = [];
+        if (claims.claims) {
+            claims.claims.forEach(claim => {
+                if (claim.typ === 'groups' || claim.typ === 'http://schemas.microsoft.com/ws/2008/06/identity/claims/groups') {
+                    if (Array.isArray(claim.val)) {
+                        userGroups.push(...claim.val);
+                    } else {
+                        userGroups.push(claim.val);
+                    }
+                }
+            });
+        }
+
+        const hasStaffAccess = userGroups.some(group => group === 'FBS_StaffAll' || group.includes('FBS_StaffAll'));
+        const hasCommunityAccess = userGroups.some(group => group === 'FBS_Community' || group.includes('FBS_Community'));
+
+        if (!hasStaffAccess && !hasCommunityAccess) {
+            context.log('User does not have required group membership:', userGroups);
+            context.res = {
+                status: 403,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: {
+                    error: 'Access denied. You must be a member of FBS_StaffAll or FBS_Community groups.',
+                    userGroups: userGroups
+                }
+            };
+            return;
+        }
+
+        context.log(`=== DOWNLOAD REQUEST - AUTHENTICATED USER ===`);
+        context.log(`User: ${claims.userDetails}`);
+        context.log(`Groups: ${userGroups.join(', ')}`);
+
+        // For testing, return simple response for GET requests
+        if (req.method === 'GET') {
+            context.res = {
+                status: 200,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: {
+                    message: 'Secure download API is working',
+                    user: claims.userDetails,
+                    groups: userGroups,
+                    method: req.method,
+                    timestamp: new Date().toISOString()
+                }
+            };
+            return;
+        }
         
         // Get file path from request body
         let filePath;
