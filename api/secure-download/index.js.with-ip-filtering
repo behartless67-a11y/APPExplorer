@@ -47,20 +47,134 @@ module.exports = async function (context, req) {
             return;
         }
         
-        // Get client IP address for logging
+        // Get client IP address and clean it
         const clientIP = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.connection?.remoteAddress || 'unknown';
-        let realIP = clientIP.split(',')[0].trim();
-
-        // Remove port number if present
-        if (realIP.includes(':') && !realIP.startsWith('[')) {
+        let realIP = clientIP.split(',')[0].trim(); // Handle multiple IPs in x-forwarded-for
+        
+        // Remove port number if present (e.g., "199.111.240.7:41552" -> "199.111.240.7")
+        if (realIP.includes(':') && !realIP.startsWith('[')) { // Don't remove from IPv6 addresses
             realIP = realIP.split(':')[0];
         }
-
-        context.log(`=== DOWNLOAD REQUEST (IP FILTERING DISABLED FOR TESTING) ===`);
+        
+        context.log(`=== IP-BASED ACCESS CONTROL ===`);
         context.log(`Client IP: ${realIP}`);
-
-        // IP filtering temporarily disabled for testing
-        // Original IP filtering code saved in index.js.with-ip-filtering
+        context.log(`All headers:`, JSON.stringify(req.headers, null, 2));
+        
+        // UVA IP address ranges
+        const uvaNetworks = [
+            '137.54.0.0/16',     // UVA public block (confirmed from research)
+            '172.16.0.0/12',     // UVA private networks (RFC 1918 - covers 172.16-172.31)
+            '128.143.0.0/16',    // Additional UVA block (common for universities)  
+            '199.111.0.0/16',    // UVA block from research
+            '172.28.0.0/16'      // Specific range for testing (your building)
+        ];
+        
+        function isValidIPv4(ip) {
+            const ipRegex = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/;
+            const match = ip.match(ipRegex);
+            if (!match) return false;
+            
+            return match.slice(1).every(octet => {
+                const num = parseInt(octet, 10);
+                return num >= 0 && num <= 255;
+            });
+        }
+        
+        function ip2long(ip) {
+            if (!isValidIPv4(ip)) return null;
+            const parts = ip.split('.');
+            return ((parseInt(parts[0]) << 24) | 
+                   (parseInt(parts[1]) << 16) | 
+                   (parseInt(parts[2]) << 8) | 
+                   parseInt(parts[3])) >>> 0;
+        }
+        
+        function isIPInRange(ip, cidr) {
+            try {
+                if (!isValidIPv4(ip)) {
+                    context.log(`Invalid IP format: ${ip}`);
+                    return false;
+                }
+                
+                const [range, bits] = cidr.split('/');
+                if (!isValidIPv4(range)) {
+                    context.log(`Invalid range format: ${range}`);
+                    return false;
+                }
+                
+                const maskBits = parseInt(bits, 10);
+                if (isNaN(maskBits) || maskBits < 0 || maskBits > 32) {
+                    context.log(`Invalid CIDR bits: ${bits}`);
+                    return false;
+                }
+                
+                const ipLong = ip2long(ip);
+                const rangeLong = ip2long(range);
+                
+                if (ipLong === null || rangeLong === null) {
+                    context.log(`Failed to convert IPs to long: ${ip}, ${range}`);
+                    return false;
+                }
+                
+                const mask = (0xFFFFFFFF << (32 - maskBits)) >>> 0;
+                const result = (ipLong & mask) === (rangeLong & mask);
+                
+                context.log(`IP check: ${ip} (${ipLong}) in ${cidr} (${rangeLong}, mask: ${mask.toString(16)}) = ${result}`);
+                return result;
+                
+            } catch (error) {
+                context.log(`Error in isIPInRange: ${error.message}`);
+                return false;
+            }
+        }
+        
+        // Check if client IP is in UVA network ranges
+        let isUVANetwork = false;
+        
+        try {
+            // Special handling for localhost/development
+            if (realIP === '127.0.0.1' || realIP === 'localhost' || realIP === '::1' || realIP.startsWith('::ffff:127.')) {
+                context.log('Localhost detected - allowing for development');
+                isUVANetwork = true;
+            } else {
+                isUVANetwork = uvaNetworks.some(network => isIPInRange(realIP, network));
+            }
+            
+            context.log(`IP ${realIP} is in UVA network: ${isUVANetwork}`);
+            
+        } catch (error) {
+            context.log(`Error in IP validation: ${error.message}`);
+            // On error, deny access for security
+            context.res = {
+                status: 500,
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: { 
+                    error: 'Network validation error. Please try again.',
+                    details: error.message,
+                    clientIP: realIP
+                }
+            };
+            return;
+        }
+        
+        if (!isUVANetwork) {
+            context.res = {
+                status: 403,
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: { 
+                    error: 'Access restricted to UVA network. Please connect to UVA VPN or on-campus network to download files.',
+                    clientIP: realIP,
+                    allowedNetworks: uvaNetworks
+                }
+            };
+            return;
+        }
         
         // Get file path from request body
         let filePath;
