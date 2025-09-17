@@ -338,8 +338,7 @@ const loginRequest = {
   scopes: ["User.Read", "GroupMember.Read.All"]
 };
 
-let msalInstance = null;
-let currentAccount = null;
+// MSAL authentication removed - using network-based IP filtering
 
 // Initialize MSAL
 async function initializeMSAL() {
@@ -937,10 +936,9 @@ const App = (()=>{
     updateAuthUI();
   }
   
-  // Initialize Azure AD authentication on load
+  // Legacy code - authentication now handled by network IP filtering
   window.addEventListener('DOMContentLoaded', async () => {
-    // Initialize Azure AD
-    await initializeMSAL();
+    // MSAL initialization removed
     
     // Setup Azure AD button handlers
     const msalSignInBtn = document.getElementById('msalSignInBtn');
