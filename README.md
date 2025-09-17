@@ -21,10 +21,10 @@ APPExplorer provides a searchable interface for 592 unique student policy projec
 
 ### Working Features ✅
 - **592 unique projects** total (reconciled from both data sources)
-- **523 projects** have working download buttons (88% coverage)
-- **69 projects** still missing downloads
+- **592 projects** have working download buttons (100% coverage!) 🎉
+- **0 projects** missing downloads - ALL PROJECTS NOW HAVE DOWNLOADS!
 - **Azure Functions** with proper dependencies installed
-- **Comprehensive download index** with maximum project coverage
+- **Fresh blob storage inventory** with 651 files (was 536)
 - **IP filtering temporarily disabled** for testing downloads
 
 ### Major Improvements Made Today ✅
@@ -75,10 +75,11 @@ APPExplorer provides a searchable interface for 592 unique student policy projec
    - Used to find additional 70 projects
 
 ### Blob Storage Status
-- **Total files verified**: 536 files
+- **Total files verified**: 651 files (refreshed from Azure API)
 - **URL**: https://projectexplorerfiles.blob.core.windows.net/project-files
 - **Container**: project-files
-- **Recent additions**: 6 files found and added to inventory
+- **CRITICAL NOTE**: All files have `projects/` prefix in blob storage
+- **Reconciliation**: Must strip `projects/` prefix when matching filenames
 
 ## Azure Functions
 
@@ -194,6 +195,13 @@ cp index.js.with-ip-filtering index.js
 - **Exact matching**: Download index uses precise filename matching
 - **No duplicates**: Merged data removes duplicate project titles
 - **Source tracking**: Each project tagged with source (original/fixed)
+
+### ⚠️ CRITICAL: Azure Blob Storage File Paths
+- **All files stored with `projects/` prefix** in blob storage
+- **Spreadsheet filenames do NOT include prefix**
+- **Reconciliation must strip prefix**: `projects/file.pdf` → `file.pdf`
+- **Download URLs must include prefix**: `/api/secure-download` expects `projects/filename.pdf`
+- **This caused major matching issues and was forgotten multiple times**
 
 ## Environment Variables
 
