@@ -1703,7 +1703,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (MAP) return;
     if (EMBED) { MAP = EMBED; return; }
     try {
-      const res = await fetch(DOWNLOAD_ROOT + "projects_downloads_index.json", {cache:"no-store"});
+      const res = await fetch("projects_downloads_index.json", {cache:"no-store"});
       MAP = res.ok ? await res.json() : {};
     } catch(e){ MAP = {}; }
   }
