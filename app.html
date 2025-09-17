@@ -876,10 +876,10 @@ const App = (()=>{
       authenticatedState.style.display = 'none';
       if (authRequired) authRequired.style.display = 'block';
       
-      // Disable download functionality
+      // Download functionality temporarily enabled for testing (authentication disabled)
       document.querySelectorAll('.download-btn').forEach(btn => {
-        btn.disabled = true;
-        btn.style.opacity = '0.5';
+        btn.disabled = false;
+        btn.style.opacity = '1';
       });
     }
   }
@@ -1752,11 +1752,9 @@ document.addEventListener('DOMContentLoaded', function() {
         footer.appendChild(btn);
         card.dataset.id = file.replace(/\.[^.]+$/,'');
         
-        // Set initial state based on authentication
-        if (!window.verifiedUserEmail) {
-          btn.disabled = true;
-          btn.style.opacity = '0.5';
-        }
+        // Authentication temporarily disabled for testing - enable all download buttons
+        btn.disabled = false;
+        btn.style.opacity = '1';
       }
     }
   }
@@ -1765,10 +1763,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const btn = event.currentTarget;
     const filename = btn.dataset.filename;
     
-    if (!window.verifiedUserEmail) {
-      alert('Please verify your @virginia.edu email address first to access downloads.');
-      return;
-    }
+    // Authentication temporarily disabled for testing
+    // if (!window.verifiedUserEmail) {
+    //   alert('Please verify your @virginia.edu email address first to access downloads.');
+    //   return;
+    // }
     
     // Show loading state
     const originalText = btn.innerHTML;
@@ -1776,11 +1775,11 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.disabled = true;
     
     try {
-      // Call our Azure Function for secure download
+      // Call our Azure Function for secure download (authentication disabled for testing)
       const headers = {
         'Content-Type': 'application/json',
-        'x-verified-email': window.verifiedUserEmail,
-        'x-verification-time': localStorage.getItem('uva_verified_time')
+        'x-verified-email': 'testing@virginia.edu',
+        'x-verification-time': Date.now().toString()
       };
       
       console.log('Download request headers:', headers);
