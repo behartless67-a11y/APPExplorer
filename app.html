@@ -6,7 +6,7 @@
   <title>Batten Projects Explorer — Inline (Polish)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:wght@600;700&display=swap" rel="stylesheet">
   <script src="https://alcdn.msauth.net/browser/2.38.3/js/msal-browser.min.js"></script>
   <style>
     :root {
@@ -25,21 +25,30 @@
       --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
     * { box-sizing: border-box; }
-    body { 
-      margin:0; 
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-      background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('./UVA_Zoom-Wallpaper_Rotunda.jpg'); 
-      background-size: cover; 
-      background-position: center center; 
-      background-attachment: fixed; 
-      background-repeat: no-repeat; 
-      color:var(--brand-text); 
-      font-size: 15px; 
-      line-height: 1.6; 
+    body {
+      margin:0;
+      padding: 40px 20px 20px 20px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('./UVA_Zoom-Wallpaper_Rotunda.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color:var(--brand-text);
+      font-size: 15px;
+      line-height: 1.6;
       font-weight: 400;
     }
-    header { padding:20px 24px; background:var(--brand-header-bg); color:var(--brand-header-text);}
-    .nav { display:flex; align-items:center; gap:20px; max-width:1400px; margin:0 auto; }
+    #app-wrapper {
+      max-width: 1840px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 24px 24px 0 0;
+      overflow: hidden;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    }
+    header { padding:20px 24px; background:var(--brand-header-bg); color:var(--brand-header-text); border-bottom: 3px solid var(--brand-accent);}
+    .nav { display:flex; align-items:center; gap:20px; max-width:1800px; margin:0 auto; }
     .nav-links { position: absolute; right: 0; display: flex; gap: 20px; align-items: center; }
     .nav-link { 
       color: var(--brand-header-text); 
@@ -51,14 +60,14 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
     .nav-link:hover { opacity: 0.8; background: rgba(255, 255, 255, 0.1); }
-    .title { 
-      font-family: 'Playfair Display', serif; 
-      font-weight: 800; 
-      font-size: 32px; 
+    .title {
+      font-family: 'Crimson Text', serif;
+      font-weight: 700;
+      font-size: 32px;
       letter-spacing: -0.02em;
       color: var(--brand-header-text);
     }
-    .container { padding:24px 24px; max-width:1400px; margin:0 auto; }
+    .container { padding:24px 24px; max-width:1800px; margin:0 auto; }
     .panel { background:var(--brand-card); border:1px solid var(--brand-border); border-radius:var(--radius); padding:28px; margin-bottom:32px; box-shadow:var(--shadow-lg); transition: transform 0.2s ease, box-shadow 0.2s ease;}
     .filters { display:grid; gap:20px; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
     label { display:block; font-size:13px; font-weight:500; color:var(--brand-text); margin-bottom:8px; letter-spacing:-0.01em; }
@@ -69,6 +78,16 @@
     .pill { display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:999px; border:1.5px solid var(--brand-accent); background: rgba(229,114,0,0.08); font-size:12px; }
     .pill button { border:none; background:transparent; cursor:pointer; font-size:14px; line-height:1; color:var(--brand-accent); }
     .grid { display:grid; gap:18px; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); }
+    .list-view { display:flex; flex-direction:column; gap:12px; }
+    .list-item { background:var(--brand-card); border:1px solid var(--brand-border); border-radius:12px; padding:20px; display:flex; flex-direction:column; gap:12px; box-shadow:var(--shadow); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .list-item:hover { transform: translateX(4px); box-shadow:var(--shadow-lg); }
+    .list-item h3 { margin:0; font-size:16px; font-weight:600; color:var(--brand-text); }
+    .list-item .list-meta { display:flex; gap:12px; flex-wrap:wrap; font-size:13px; color:var(--brand-muted); }
+    .list-item .list-meta-item { display:flex; align-items:center; gap:4px; }
+    .view-toggle { display:flex; gap:4px; background:var(--brand-card); border:1px solid var(--brand-border); border-radius:12px; padding:4px; box-shadow:var(--shadow); }
+    .view-toggle button { padding:8px 16px; border:none; background:transparent; color:var(--brand-text); cursor:pointer; border-radius:8px; transition: all 0.2s ease; font-weight:500; font-size:13px; }
+    .view-toggle button.active { background:var(--brand-accent); color:white; }
+    .view-toggle button:hover:not(.active) { background:rgba(229,114,0,0.1); }
     .card { background:var(--brand-card); border:1px solid var(--brand-border); border-radius:var(--radius); padding:24px; display:flex; flex-direction:column; gap:16px; position:relative; box-shadow:var(--shadow); transition: transform 0.2s ease, box-shadow 0.2s ease; min-height: 300px;}
     .card-content { display:flex; flex-direction:column; gap:14px; flex-grow:1; }
     .card-footer { margin-top:auto; padding-top:20px; }
@@ -83,12 +102,12 @@
     .panel:hover { transform: translateY(-1px); box-shadow:var(--shadow-xl); }
     select:hover, input[type="text"]:hover { border-color: var(--brand-accent); }
     select:focus, input[type="text"]:focus { outline: 2px solid var(--brand-accent); outline-offset: 1px; border-color: var(--brand-accent); box-shadow:var(--shadow-lg); }
-    .btn { padding:10px 16px; border-radius:12px; border:1px solid var(--brand-border); background: var(--brand-card); color: var(--brand-text); cursor:pointer; transition: all .2s ease; box-shadow:var(--shadow); }
-    .btn.clear-filters { padding:12px 14px; background: #FFC107; color: #212529; border-color: #FFA000; font-weight: 500; }
-    .btn.clear-filters:hover { background: #FFB300; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3); }
-    .btn:hover { background:#f8fafc; transform: translateY(-1px); box-shadow:var(--shadow-lg); }
-    .btn.accent { background: var(--brand-accent); color: var(--brand-accent-contrast); border-color: transparent; }
-    .btn.accent:hover { transform: translateY(-1px); box-shadow:var(--shadow-lg); filter: brightness(0.97); }
+    .btn { padding:10px 16px; border-radius:12px; border:1px solid var(--brand-border); background: var(--brand-card); color: var(--brand-text); cursor:pointer; transition: all .2s ease; box-shadow:var(--shadow); font-weight: 500; }
+    .btn.clear-filters { padding:12px 14px; background: var(--brand-accent); color: white; border-color: var(--brand-accent); font-weight: 600; }
+    .btn.clear-filters:hover { background: #FF8C00; border-color: #FF8C00; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(229, 114, 0, 0.3); }
+    .btn:hover { background:#f8fafc; border-color: var(--brand-accent); transform: translateY(-1px); box-shadow:var(--shadow-lg); }
+    .btn.accent { background: var(--brand-accent); color: var(--brand-accent-contrast); border-color: transparent; font-weight: 600; }
+    .btn.accent:hover { background: #FF8C00; transform: translateY(-1px); box-shadow:var(--shadow-lg); }
     .btn:active { transform: translateY(1px); }
     .meta .tag { display:inline-block; border:1px solid var(--brand-border); padding:4px 10px; border-radius:999px; font-size:12px; background:rgba(229,114,0,0.06); box-shadow:var(--shadow); }
     
@@ -214,18 +233,19 @@
 </head>
 <body>
 
-  <header>
-    <div class="nav" style="position: relative;">
-      <div style="display: flex; justify-content: center; width: 100%;">
-        <img src="images/bat_rgb_ko.png" alt="UVA Batten School Logo" style="height:80px; width:auto;">
+  <div id="app-wrapper">
+    <header>
+      <div class="nav" style="position: relative;">
+        <div style="display: flex; align-items: center;">
+          <img src="images/bat_rgb_ko.png" alt="UVA Batten School Logo" style="height:60px; width:auto;">
+        </div>
+        <div class="nav-links">
+          <a href="./submit.html" class="nav-link" id="submitProjectLink">Submit Project →</a>
+        </div>
       </div>
-      <div class="nav-links">
-        <a href="./submit.html" class="nav-link" id="submitProjectLink">Submit Project →</a>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <div class="container">
+    <div class="container">
     <!-- Email Verification Authentication -->
     <div id="authPanel" class="panel" style="margin-bottom: 20px;">
       <div id="networkAccessInfo">
@@ -273,6 +293,12 @@
           </div>
           <div style="align-self:flex-end;">
             <button class="btn clear-filters" id="clear">Clear Filters</button>
+          </div>
+          <div style="align-self:flex-end;">
+            <div class="view-toggle">
+              <button id="viewCards" class="active" title="Card View">🎴 Cards</button>
+              <button id="viewList" title="List View">📋 List</button>
+            </div>
           </div>
         </div>
       </div>
@@ -470,6 +496,7 @@ const App = (()=>{
     groupBy: "",  // "", "instructor", "client_org_type", "problem_level"
     pageSize: 40,
     page: 1,
+    viewMode: "cards", // "cards" or "list"
   };
 
   const META = DATA_FIXED.meta;
@@ -688,6 +715,23 @@ const App = (()=>{
     return el;
   };
 
+  const listItem = (row, qNow)=>{
+    const el = document.createElement("div");
+    el.className = "list-item";
+    const title = row[META.title_col] || "(Untitled)";
+    const summary = row[META.summary_col] || "";
+
+    el.innerHTML = `
+      <h3>${highlight(title, qNow)}</h3>
+      <div class="muted" style="font-size:14px;">${highlight(summary, qNow)}</div>
+      <div class="list-meta">
+        ${FILTER_COLS.map(col=>`<span class="list-meta-item"><strong>${labelFor(col)}:</strong> ${escapeHtml(row[col]||"(Unspecified)")}</span>`).join("")}
+      </div>
+      <div class="list-footer" style="margin-top:12px;"></div>
+    `;
+    return el;
+  };
+
   const render = ()=>{
     // Show loading state
     const grid = document.getElementById("grid");
@@ -707,9 +751,18 @@ const App = (()=>{
       grid.innerHTML = "";
       grid.classList.remove('loading-container');
 
+      // Update grid class based on view mode
+      if (S.viewMode === "list") {
+        grid.className = "list-view";
+      } else {
+        grid.className = "grid";
+      }
+
       const end = Math.min(S.page * S.pageSize, rowsSorted.length);
     const visible = rowsSorted.slice(0, end);
     const qNow = S.q;
+
+    const renderItem = S.viewMode === "list" ? listItem : card;
 
     if (S.groupBy){
       const groups = new Map();
@@ -728,15 +781,15 @@ const App = (()=>{
         h.style.marginBottom = "10px";
         h.style.paddingBottom = "5px";
         h.style.borderBottom = "1px solid #ddd";
-        h.style.gridColumn = "1 / -1";
+        if (S.viewMode === "cards") h.style.gridColumn = "1 / -1";
         grid.appendChild(h);
         for (const r of groups.get(gk)){
-          grid.appendChild(card(r, qNow));
+          grid.appendChild(renderItem(r, qNow));
         }
       }
     } else {
       for (const r of visible){
-        grid.appendChild(card(r, qNow));
+        grid.appendChild(renderItem(r, qNow));
       }
     }
 
@@ -810,6 +863,22 @@ const App = (()=>{
       S.page = 1;
       document.getElementById("q").value = "";
       onStateChange();
+    });
+
+    // View toggle buttons
+    const viewCards = document.getElementById("viewCards");
+    const viewList = document.getElementById("viewList");
+    viewCards.addEventListener("click", ()=>{
+      S.viewMode = "cards";
+      viewCards.classList.add("active");
+      viewList.classList.remove("active");
+      render();
+    });
+    viewList.addEventListener("click", ()=>{
+      S.viewMode = "list";
+      viewList.classList.add("active");
+      viewCards.classList.remove("active");
+      render();
     });
 
     onStateChange(false);
@@ -1726,7 +1795,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   async function addButtons(){
     await loadMap();
-    const cards = document.querySelectorAll("#grid .card");
+    const cards = document.querySelectorAll("#grid .card, #grid .list-item");
     for (const card of cards){
       const existing = card.querySelector(".btn[data-dl]");
       if (existing) continue;
@@ -1752,8 +1821,8 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.dataset.filename = file;
         btn.addEventListener('click', handleSecureDownload);
         
-        const footer = card.querySelector('.card-footer');
-        footer.appendChild(btn);
+        const footer = card.querySelector('.card-footer, .list-footer');
+        if (footer) footer.appendChild(btn);
         card.dataset.id = file.replace(/\.[^.]+$/,'');
         
         // Authentication temporarily disabled for testing - enable all download buttons
@@ -1954,7 +2023,8 @@ async function debugIPInfo() {
           <pre>${JSON.stringify(data.clientIPs, null, 2)}</pre>
           <h3>Full Debug Data:</h3>
           <pre>${JSON.stringify(data, null, 2)}</pre>
-        </body>
+          </div> <!-- end app-wrapper -->
+</body>
       </html>
     `);
     
@@ -2007,5 +2077,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 </script>
 <!-- === End Lightweight Download Buttons (Debounced, Safe) === -->
+  </div> <!-- end app-wrapper -->
 </body>
 </html>
