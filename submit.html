@@ -278,7 +278,7 @@
           Submit Your Applied Policy Project
         </h1>
         <p style="margin: 0; font-size: 16px; color: var(--brand-muted); line-height: 1.5;">
-          Share your project with the Batten School community. All submitted projects will be reviewed before appearing in the public explorer.
+          Share your project with the Batten School community. Submitted projects will appear in the public explorer shortly after submission.
         </p>
       </div>
 
@@ -412,9 +412,9 @@
 
           <div class="form-row">
             <div class="form-col">
-              <label for="problemLevel">Problem Level <span class="required">*</span></label>
-              <select id="problemLevel" name="problem_level" required>
-                <option value="">Select problem level...</option>
+              <label for="geographicLevel">Geographic Level <span class="required">*</span></label>
+              <select id="geographicLevel" name="geographic_level" required>
+                <option value="">Select geographic level...</option>
                 <option value="City/Municipal">City/Municipal</option>
                 <option value="State/Province">State/Province</option>
                 <option value="National">National</option>
@@ -470,7 +470,7 @@
         </div>
 
         <div class="success-message" id="successMessage">
-          <strong>✅ Success!</strong> Your project has been submitted successfully. You'll receive a confirmation email shortly.
+          <strong>✅ Success!</strong> Your project has been submitted successfully and will appear in the library momentarily.
         </div>
 
         <div class="error-message" id="errorMessage">
@@ -622,14 +622,16 @@
       successMessage.style.display = 'none';
       errorMessage.style.display = 'none';
       
-      // Validate required fields based on simplified form
-      const requiredFields = ['projectName', 'studentName', 'instructor', 'projectStartTerm', 'problemLevel'];
+      // Validate required fields using actual form field IDs
+      const requiredFields = ['title', 'studentName', 'instructor', 'projectStartTerm', 'problemLevel'];
       let isValid = true;
-      
+
       for (let fieldId of requiredFields) {
         const field = document.getElementById(fieldId);
-        if (!field.value.trim()) {
-          field.style.borderColor = '#dc2626';
+        if (!field || !field.value.trim()) {
+          if (field) {
+            field.style.borderColor = '#dc2626';
+          }
           isValid = false;
         } else {
           field.style.borderColor = '';
@@ -654,19 +656,20 @@
       progressBar.style.display = 'block';
       
       try {
-        // Create submission data object
+        // Create submission data object using actual form field IDs
         const submissionData = {
-          projectName: document.getElementById('projectName').value.trim(),
-          studentName: document.getElementById('studentName').value.trim(),
+          title: document.getElementById('title').value.trim(),
+          summary: document.getElementById('summary').value.trim(),
+          name: document.getElementById('studentName').value.trim(),
           instructor: document.getElementById('instructor').value.trim(),
-          projectStartTerm: document.getElementById('projectStartTerm').value.trim(),
-          problemLevel: document.getElementById('problemLevel').value.trim(),
-          clientOrgName: document.getElementById('clientOrgName')?.value?.trim() || '',
-          clientContactName: document.getElementById('clientContactName')?.value?.trim() || '',
-          clientContactTitle: document.getElementById('clientContactTitle')?.value?.trim() || '',
-          primaryTopic: document.getElementById('primaryTopic')?.value?.trim() || '',
-          projectSummary: document.getElementById('projectSummary')?.value?.trim() || '',
-          geographicScope: document.getElementById('geographicScope')?.value?.trim() || '',
+          project_start_term: document.getElementById('projectStartTerm').value.trim(),
+          problem_level: document.getElementById('problemLevel').value.trim(),
+          client_org_name: document.getElementById('clientOrgName')?.value?.trim() || '',
+          client_org_type: document.getElementById('clientOrgType')?.value?.trim() || '',
+          client_contact_name: document.getElementById('clientContactName')?.value?.trim() || '',
+          client_contact_title: document.getElementById('clientContactTitle')?.value?.trim() || '',
+          geographic_scope_of_this_applied_policy_project: document.getElementById('geographicScope')?.value?.trim() || '',
+          comments: document.getElementById('comments')?.value?.trim() || '',
           files: selectedFiles.map(file => ({
             name: file.name,
             size: file.size,
@@ -748,15 +751,7 @@
       }
     });
 
-    // Email validation
-    document.getElementById('studentEmail').addEventListener('input', (e) => {
-      const email = e.target.value;
-      if (email && !email.endsWith('@virginia.edu')) {
-        e.target.style.borderColor = '#dc2626';
-      } else {
-        e.target.style.borderColor = '';
-      }
-    });
+    // Form is ready for submissions
   </script>
 </body>
 </html>
