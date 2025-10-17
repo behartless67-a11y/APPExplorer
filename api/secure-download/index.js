@@ -92,7 +92,9 @@ module.exports = async function (context, req) {
         const userGroups = [];
         if (claims.claims) {
             claims.claims.forEach(claim => {
-                if (claim.typ === 'groups' || claim.typ === 'http://schemas.microsoft.com/ws/2008/06/identity/claims/groups') {
+                if (claim.typ === 'groups' ||
+                    claim.typ === 'http://schemas.microsoft.com/ws/2008/06/identity/claims/groups' ||
+                    claim.typ === 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role') {
                     if (Array.isArray(claim.val)) {
                         userGroups.push(...claim.val);
                     } else {
@@ -103,10 +105,19 @@ module.exports = async function (context, req) {
         }
 
         context.log('User groups:', userGroups);
+        context.log('Full claims structure:', JSON.stringify(claims, null, 2));
 
         // Check if user has required group membership
-        const hasStaffAccess = userGroups.some(group => group === 'FBS_StaffAll' || group.includes('FBS_StaffAll'));
-        const hasCommunityAccess = userGroups.some(group => group === 'FBS_Community' || group.includes('FBS_Community'));
+        // Check for group names OR Object IDs
+        const FBS_COMMUNITY_ID = 'b747678a-05a5-4965-bf23-436edec61fa4';
+
+        const hasStaffAccess = userGroups.some(group =>
+            group === 'FBS_StaffAll' ||
+            group.includes('FBS_StaffAll'));
+        const hasCommunityAccess = userGroups.some(group =>
+            group === 'FBS_Community' ||
+            group.includes('FBS_Community') ||
+            group === FBS_COMMUNITY_ID);
 
         if (!hasStaffAccess && !hasCommunityAccess) {
             context.res = {
