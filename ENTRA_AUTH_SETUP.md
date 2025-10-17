@@ -48,20 +48,13 @@ The APPExplorer application now uses **Azure Entra ID (formerly Azure Active Dir
 
 ---
 
-## Security Groups
+## Access Control
 
-### FBS_Community
-- **Object ID**: `b747678a-05a5-4965-bf23-436edec61fa4`
-- **Type**: Security
-- **Source**: Windows Server AD (synced)
-- **Membership Type**: Assigned
-- **Purpose**: General community access to view and download projects
+**Authentication Model**: Any authenticated user with UVA credentials can access and download files.
 
-### FBS_StaffAll
-- **Purpose**: Staff-level access to view and download projects
-- **Access Level**: Same as FBS_Community (both groups have equal download permissions)
+**No Group-Based Restrictions**: Group membership checks have been removed. If a user can authenticate through Azure AD, they have full access to the application and all downloads.
 
-**Note**: Users must be members of either `FBS_StaffAll` OR `FBS_Community` to access the application.
+**Rationale**: Simplified access control - if you can see the page, you can download files.
 
 ---
 
@@ -184,23 +177,9 @@ if (claims.claims) {
     });
 }
 
-// Check if user has required group membership
-const hasStaffAccess = userGroups.some(group =>
-    group === 'FBS_StaffAll' || group.includes('FBS_StaffAll'));
-const hasCommunityAccess = userGroups.some(group =>
-    group === 'FBS_Community' || group.includes('FBS_Community'));
-
-if (!hasStaffAccess && !hasCommunityAccess) {
-    context.res = {
-        status: 403,
-        body: {
-            error: 'Access denied. You must be a member of FBS_StaffAll or FBS_Community groups to download files.',
-            userEmail: userEmail,
-            userGroups: userGroups
-        }
-    };
-    return;
-}
+// User is authenticated - grant access
+// Group checking removed: if authenticated, allow download
+context.log(`Access granted for authenticated user: ${userEmail}`);
 
 // Log download for audit purposes
 context.log(`File download: ${filePath} by user ${userEmail}`);
@@ -209,8 +188,8 @@ context.log(`File download: ${filePath} by user ${userEmail}`);
 **Key Features**:
 - Reads user claims from `x-ms-client-principal` header (provided by Azure SWA)
 - Decodes Base64-encoded JSON claims
-- Checks for group membership in claims
-- Returns 401 for unauthenticated, 403 for unauthorized
+- Simple access control: authenticated = authorized
+- Returns 401 for unauthenticated users
 - Logs downloads by user email for auditing
 
 ### 3. app.html
@@ -305,15 +284,14 @@ function signOut() {
 4. Successful redirect back to application
 5. User able to browse and download projects
 
-### Group-Based Authorization ✅
-- Users in `FBS_Community`: Access granted
-- Users in `FBS_StaffAll`: Access granted
-- Users in neither group: Access denied with 403 error
+### Access Authorization ✅
+- Authenticated users: Access granted (can browse and download)
+- Unauthenticated users: Redirected to login
 
 ### Error Handling ✅
 - Unauthenticated users: Redirected to login
-- Unauthorized users: Clear error message with group requirements
 - Failed authentication: Proper error display
+- File not found: 404 error with clear message
 
 ---
 
@@ -342,13 +320,13 @@ function signOut() {
 - Callback URL pattern: `/.auth/login/{provider_name}/callback`
 - Contact Azure admin to add missing redirect URIs if needed
 
-#### Issue: User Not in Required Group
-**Error**: `403 - Access denied. You must be a member of FBS_StaffAll or FBS_Community groups`
+#### Issue: Downloads Failing After Authentication
+**Symptom**: User is logged in but downloads fail
 
 **Solution**:
-- Verify user is added to one of the required Azure AD groups
-- Contact UVA IT admin to add user to appropriate group
-- Group membership sync can take up to 24 hours
+- Check browser console for error messages
+- Verify Azure Storage credentials are configured
+- Check API logs in Azure Portal for detailed error messages
 
 #### Issue: Client Secret Expired
 **Symptom**: Authentication fails with 401 errors
