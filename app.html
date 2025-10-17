@@ -268,7 +268,7 @@
         </p>
         <div id="authRequired" style="margin-top: 12px; padding: 12px; background: rgba(229, 114, 0, 0.1); border-radius: 8px; display: none;">
           <p style="margin: 0; color: var(--brand-accent); font-weight: 500;">
-            🔒 Please <a href="/.auth/login/azuread" style="color: var(--brand-accent); text-decoration: underline;">sign in with your UVA account</a> to access project files.
+            🔒 Please <a href="/.auth/login/aad" style="color: var(--brand-accent); text-decoration: underline;">sign in with your UVA account</a> to access project files.
           </p>
         </div>
       </div>
@@ -377,7 +377,7 @@ async function checkAuth() {
 
 // Sign in - redirect to Azure AD
 function signIn() {
-  window.location.href = '/.auth/login/azuread?post_login_redirect_uri=' + window.location.pathname;
+  window.location.href = '/.auth/login/aad?post_login_redirect_uri=' + window.location.pathname;
 }
 
 // Sign out - redirect to Azure logout

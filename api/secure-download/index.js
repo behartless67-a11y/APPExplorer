@@ -59,7 +59,7 @@ module.exports = async function (context, req) {
                 },
                 body: {
                     error: 'Authentication required. Please log in to download files.',
-                    loginUrl: '/.auth/login/azuread'
+                    loginUrl: '/.auth/login/aad'
                 }
             };
             return;
