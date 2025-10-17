@@ -12,19 +12,19 @@ try {
 
 module.exports = async function (context, req) {
     context.log('Secure download request received', req.method);
-    
+
     try {
         // For testing, return simple response for GET requests
         if (req.method === 'GET') {
             context.res = {
                 status: 200,
-                headers: { 
+                headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*',
                     'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
-                    'Access-Control-Allow-Headers': 'Content-Type,x-verified-email,x-verification-time'
+                    'Access-Control-Allow-Headers': 'Content-Type,x-ms-client-principal'
                 },
-                body: { 
+                body: {
                     message: 'Secure download API is working',
                     method: req.method,
                     timestamp: new Date().toISOString()
@@ -32,7 +32,7 @@ module.exports = async function (context, req) {
             };
             return;
         }
-        
+
         // Handle CORS preflight
         if (req.method === 'OPTIONS') {
             context.res = {
@@ -40,127 +40,75 @@ module.exports = async function (context, req) {
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                     'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
-                    'Access-Control-Allow-Headers': 'Content-Type,x-verified-email,x-verification-time'
+                    'Access-Control-Allow-Headers': 'Content-Type,x-ms-client-principal'
                 },
                 body: ''
             };
             return;
         }
-        
-        // Get client IP address for logging
-        const clientIP = req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || req.connection?.remoteAddress || 'unknown';
-        let realIP = clientIP.split(',')[0].trim();
 
-        // Remove port number if present
-        if (realIP.includes(':') && !realIP.startsWith('[')) {
-            realIP = realIP.split(':')[0];
-        }
+        // Get user claims from Azure Static Web Apps authentication
+        const userClaims = req.headers['x-ms-client-principal'];
 
-        context.log(`=== IP-BASED ACCESS CONTROL ===`);
-        context.log(`Client IP: ${realIP}`);
-        context.log(`All headers:`, JSON.stringify(req.headers, null, 2));
-
-        // UVA IP address ranges
-        const uvaNetworks = [
-            '137.54.0.0/16',     // UVA public block (confirmed from research)
-            '172.16.0.0/12',     // UVA private networks (RFC 1918 - covers 172.16-172.31)
-            '128.143.0.0/16',    // Additional UVA block (common for universities)
-            '199.111.0.0/16',    // UVA block from research
-            '172.28.0.0/16'      // Specific range for testing (your building)
-        ];
-
-        function isValidIPv4(ip) {
-            const ipRegex = /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/;
-            const match = ip.match(ipRegex);
-            if (!match) return false;
-
-            return match.slice(1).every(octet => {
-                const num = parseInt(octet, 10);
-                return num >= 0 && num <= 255;
-            });
-        }
-
-        function ip2long(ip) {
-            if (!isValidIPv4(ip)) return null;
-            const parts = ip.split('.');
-            return ((parseInt(parts[0]) << 24) |
-                   (parseInt(parts[1]) << 16) |
-                   (parseInt(parts[2]) << 8) |
-                   parseInt(parts[3])) >>> 0;
-        }
-
-        function isIPInRange(ip, cidr) {
-            try {
-                if (!isValidIPv4(ip)) {
-                    context.log(`Invalid IP format: ${ip}`);
-                    return false;
-                }
-
-                const [range, bits] = cidr.split('/');
-                if (!isValidIPv4(range)) {
-                    context.log(`Invalid range format: ${range}`);
-                    return false;
-                }
-
-                const maskBits = parseInt(bits, 10);
-                if (isNaN(maskBits) || maskBits < 0 || maskBits > 32) {
-                    context.log(`Invalid CIDR bits: ${bits}`);
-                    return false;
-                }
-
-                const ipLong = ip2long(ip);
-                const rangeLong = ip2long(range);
-
-                if (ipLong === null || rangeLong === null) {
-                    context.log(`Failed to convert IPs to long: ${ip}, ${range}`);
-                    return false;
-                }
-
-                const mask = (0xFFFFFFFF << (32 - maskBits)) >>> 0;
-                const result = (ipLong & mask) === (rangeLong & mask);
-
-                context.log(`IP check: ${ip} (${ipLong}) in ${cidr} (${rangeLong}, mask: ${mask.toString(16)}) = ${result}`);
-                return result;
-
-            } catch (error) {
-                context.log(`Error in isIPInRange: ${error.message}`);
-                return false;
-            }
-        }
-
-        // Check if client IP is in UVA network ranges
-        let isUVANetwork = false;
-
-        try {
-            // Special handling for localhost/development
-            if (realIP === '127.0.0.1' || realIP === 'localhost' || realIP === '::1' || realIP.startsWith('::ffff:127.')) {
-                context.log('Localhost detected - allowing for development');
-                isUVANetwork = true;
-            } else {
-                isUVANetwork = uvaNetworks.some(network => isIPInRange(realIP, network));
-            }
-
-            context.log(`IP ${realIP} is in UVA network: ${isUVANetwork}`);
-
-        } catch (error) {
-            context.log(`Error in IP validation: ${error.message}`);
-            // On error, deny access for security
+        if (!userClaims) {
             context.res = {
-                status: 500,
+                status: 401,
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': '*'
                 },
                 body: {
-                    error: 'Network validation error. Please try again.',
-                    details: error.message,
-                    clientIP: realIP
+                    error: 'Authentication required. Please log in to download files.',
+                    loginUrl: '/.auth/login/azuread'
                 }
             };
             return;
         }
 
-        if (!isUVANetwork) {
+        // Decode the base64 encoded user claims
+        let claims, userEmail;
+        try {
+            claims = JSON.parse(Buffer.from(userClaims, 'base64').toString());
+            userEmail = claims.userDetails || claims.userId || 'unknown';
+            context.log('User authenticated:', userEmail);
+            context.log('User claims:', JSON.stringify(claims, null, 2));
+        } catch (error) {
+            context.log.error('Failed to decode user claims:', error);
+            context.res = {
+                status: 401,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                body: {
+                    error: 'Invalid authentication token',
+                    details: error.message
+                }
+            };
+            return;
+        }
+
+        // Extract groups from claims
+        const userGroups = [];
+        if (claims.claims) {
+            claims.claims.forEach(claim => {
+                if (claim.typ === 'groups' || claim.typ === 'http://schemas.microsoft.com/ws/2008/06/identity/claims/groups') {
+                    if (Array.isArray(claim.val)) {
+                        userGroups.push(...claim.val);
+                    } else {
+                        userGroups.push(claim.val);
+                    }
+                }
+            });
+        }
+
+        context.log('User groups:', userGroups);
+
+        // Check if user has required group membership
+        const hasStaffAccess = userGroups.some(group => group === 'FBS_StaffAll' || group.includes('FBS_StaffAll'));
+        const hasCommunityAccess = userGroups.some(group => group === 'FBS_Community' || group.includes('FBS_Community'));
+
+        if (!hasStaffAccess && !hasCommunityAccess) {
             context.res = {
                 status: 403,
                 headers: {
@@ -168,13 +116,15 @@ module.exports = async function (context, req) {
                     'Access-Control-Allow-Origin': '*'
                 },
                 body: {
-                    error: 'Access restricted to UVA network. Please connect to UVA VPN or on-campus network to download files.',
-                    clientIP: realIP,
-                    allowedNetworks: uvaNetworks
+                    error: 'Access denied. You must be a member of FBS_StaffAll or FBS_Community groups to download files.',
+                    userEmail: userEmail,
+                    userGroups: userGroups
                 }
             };
             return;
         }
+
+        context.log(`Access granted for user: ${userEmail} (groups: ${userGroups.join(', ')})`)
         
         // Get file path from request body
         let filePath;
@@ -301,13 +251,13 @@ module.exports = async function (context, req) {
         
         const sasToken = generateBlobSASQueryParameters(sasOptions, sharedKeyCredential).toString();
         const downloadUrl = `${blobClient.url}?${sasToken}`;
-        
+
         // Log the download for audit purposes
-        context.log(`File download: ${filePath} from IP ${realIP}`);
-        
+        context.log(`File download: ${filePath} by user ${userEmail}`);
+
         context.res = {
             status: 200,
-            headers: { 
+            headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
             },
@@ -315,7 +265,7 @@ module.exports = async function (context, req) {
                 downloadUrl: downloadUrl,
                 expiresIn: 3600,
                 filename: filePath,
-                clientIP: realIP
+                userEmail: userEmail
             }
         };
         
@@ -335,12 +285,11 @@ module.exports = async function (context, req) {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
             },
-            body: { 
+            body: {
                 error: 'Internal server error',
                 details: error.message,
                 errorName: error.name,
                 errorCode: error.code,
-                clientIP: realIP,
                 timestamp: new Date().toISOString()
             }
         };

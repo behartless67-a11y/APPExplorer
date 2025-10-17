@@ -268,7 +268,7 @@
         </p>
         <div id="authRequired" style="margin-top: 12px; padding: 12px; background: rgba(229, 114, 0, 0.1); border-radius: 8px; display: none;">
           <p style="margin: 0; color: var(--brand-accent); font-weight: 500;">
-            🔒 Connect to UVA network or VPN to download project files.
+            🔒 Please <a href="/.auth/login/azuread" style="color: var(--brand-accent); text-decoration: underline;">sign in with your UVA account</a> to access project files.
           </p>
         </div>
       </div>
@@ -347,143 +347,66 @@
   window.DATA_FIXED = original;
 })();
 
-// Azure AD Configuration
-const msalConfig = {
-  auth: {
-    clientId: "0b45a06e-6b4a-4c3e-80ff-01d0c11a9def",
-    authority: "https://login.microsoftonline.com/7b3480c7-3707-4873-8b77-e216733a65ac",
-    redirectUri: window.location.origin,
-  },
-  cache: {
-    cacheLocation: "sessionStorage",
-    storeAuthStateInCookie: false,
-  }
-};
+// Azure Static Web Apps Authentication
+let currentUser = null;
 
-const loginRequest = {
-  scopes: ["User.Read", "GroupMember.Read.All"]
-};
-
-// MSAL authentication removed - using network-based IP filtering
-
-// Initialize MSAL
-async function initializeMSAL() {
+// Check authentication status using Azure SWA's built-in auth
+async function checkAuth() {
   try {
-    msalInstance = new msal.PublicClientApplication(msalConfig);
-    await msalInstance.initialize();
-    
-    // Handle redirect promise
-    const response = await msalInstance.handleRedirectPromise();
-    if (response !== null) {
-      currentAccount = response.account;
+    const response = await fetch('/.auth/me');
+    const payload = await response.json();
+    const { clientPrincipal } = payload;
+
+    if (clientPrincipal) {
+      currentUser = clientPrincipal;
+      console.log('User authenticated:', currentUser);
     } else {
-      currentAccount = msalInstance.getActiveAccount();
-      if (!currentAccount) {
-        const accounts = msalInstance.getAllAccounts();
-        if (accounts.length > 0) {
-          currentAccount = accounts[0];
-          msalInstance.setActiveAccount(currentAccount);
-        }
-      }
+      currentUser = null;
+      console.log('User not authenticated');
     }
-    
+
     updateAuthUI();
+    return currentUser;
   } catch (error) {
-    console.error("MSAL initialization failed:", error);
-    showError("Authentication system failed to initialize: " + error.message);
-  }
-}
-
-// Sign in function
-async function signIn() {
-  showLoading();
-  try {
-    const response = await msalInstance.loginPopup(loginRequest);
-    currentAccount = response.account;
-    msalInstance.setActiveAccount(currentAccount);
+    console.error('Error checking auth:', error);
+    currentUser = null;
     updateAuthUI();
-  } catch (error) {
-    console.error("Sign in failed:", error);
-    showError("Sign in failed: " + error.message);
-    hideLoading();
+    return null;
   }
 }
 
-// Sign out function
-async function signOut() {
-  const logoutRequest = {
-    account: currentAccount
-  };
-  await msalInstance.logoutPopup(logoutRequest);
-  currentAccount = null;
-  updateAuthUI();
+// Sign in - redirect to Azure AD
+function signIn() {
+  window.location.href = '/.auth/login/azuread?post_login_redirect_uri=' + window.location.pathname;
 }
 
-// Get access token for API calls
-async function getAccessToken() {
-  if (!currentAccount) {
-    throw new Error("No active account. Please sign in first.");
-  }
-  
-  try {
-    const response = await msalInstance.acquireTokenSilent({
-      scopes: loginRequest.scopes,
-      account: currentAccount
-    });
-    return response.accessToken;
-  } catch (error) {
-    console.error("Token acquisition failed:", error);
-    // If silent token acquisition fails, try popup
-    const response = await msalInstance.acquireTokenPopup({
-      scopes: loginRequest.scopes,
-      account: currentAccount
-    });
-    return response.accessToken;
-  }
+// Sign out - redirect to Azure logout
+function signOut() {
+  window.location.href = '/.auth/logout?post_logout_redirect_uri=/';
 }
 
 // UI update functions
 function updateAuthUI() {
-  const loginForm = document.getElementById("loginForm");
-  const loadingState = document.getElementById("loadingState");
-  const authenticatedState = document.getElementById("authenticatedState");
   const authRequired = document.getElementById("authRequired");
-  
-  if (currentAccount) {
-    // User is signed in
-    loginForm.style.display = "none";
-    loadingState.style.display = "none";
-    authenticatedState.style.display = "block";
-    authRequired.style.display = "none";
-    
-    document.getElementById("userDisplayName").textContent = currentAccount.name || "User";
-    document.getElementById("userEmail").textContent = currentAccount.username;
+
+  if (currentUser) {
+    // User is signed in - hide auth required message
+    if (authRequired) authRequired.style.display = "none";
+
+    // Update any user display elements if they exist
+    const userDisplay = document.getElementById("userDisplayName");
+    const userEmail = document.getElementById("userEmail");
+    if (userDisplay) userDisplay.textContent = currentUser.userDetails || currentUser.userId;
+    if (userEmail) userEmail.textContent = currentUser.userDetails || currentUser.userId;
   } else {
-    // User is not signed in
-    loginForm.style.display = "block";
-    loadingState.style.display = "none";
-    authenticatedState.style.display = "none";
-    authRequired.style.display = "block";
+    // User is not signed in - they will be redirected by SWA config
+    if (authRequired) authRequired.style.display = "block";
   }
 }
 
-function showLoading() {
-  document.getElementById("loginForm").style.display = "none";
-  document.getElementById("loadingState").style.display = "block";
-  document.getElementById("authenticatedState").style.display = "none";
-}
-
-function hideLoading() {
-  updateAuthUI();
-}
-
 function showError(message) {
-  const errorDiv = document.getElementById("msalError");
-  errorDiv.textContent = message;
-  errorDiv.style.display = "block";
-  setTimeout(() => {
-    errorDiv.style.display = "none";
-  }, 5000);
+  console.error(message);
+  alert(message);
 }
 
 // App State and Utilities
@@ -2049,20 +1972,17 @@ function checkSubmitPIN() {
   return false;
 }
 
-// Initialize network checking and PIN protection
+// Initialize authentication and PIN protection
 document.addEventListener('DOMContentLoaded', async () => {
-  // Initial network check
-  setTimeout(() => checkNetworkAccess(), 1000); // Wait for page to load
-  
-  // Recheck every 30 seconds
-  setInterval(checkNetworkAccess, 30000);
-  
-  // Add debug button handler
+  // Check authentication status
+  await checkAuth();
+
+  // Add debug button handler if it exists
   const debugBtn = document.getElementById('debugIPBtn');
   if (debugBtn) {
     debugBtn.addEventListener('click', debugIPInfo);
   }
-  
+
   // Add PIN protection to Submit Project link
   const submitLink = document.getElementById('submitProjectLink');
   if (submitLink) {

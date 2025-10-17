@@ -1,10 +1,46 @@
 {
+  "auth": {
+    "identityProviders": {
+      "customOpenIdConnectProviders": {
+        "azuread": {
+          "registration": {
+            "clientIdSettingName": "AZURE_CLIENT_ID",
+            "clientCredential": {
+              "clientSecretSettingName": "AZURE_CLIENT_SECRET"
+            },
+            "openIdConnectConfiguration": {
+              "wellKnownOpenIdConfiguration": "https://login.microsoftonline.com/7b3480c7-3707-4873-8b77-e216733a65ac/v2.0/.well-known/openid-configuration"
+            }
+          },
+          "login": {
+            "nameClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+            "scopes": ["openid", "profile", "email"],
+            "loginParameterNames": []
+          }
+        }
+      }
+    }
+  },
   "routes": [
     {
-      "route": "/api/*",
-      "allowedRoles": ["anonymous"]
+      "route": "/login",
+      "rewrite": "/.auth/login/azuread"
+    },
+    {
+      "route": "/logout",
+      "rewrite": "/.auth/logout"
+    },
+    {
+      "route": "/*",
+      "allowedRoles": ["authenticated"]
     }
   ],
+  "responseOverrides": {
+    "401": {
+      "redirect": "/.auth/login/azuread",
+      "statusCode": 302
+    }
+  },
   "navigationFallback": {
     "rewrite": "/index.html",
     "exclude": ["/api/*", "*.{css,scss,sass,js,ts,map,ico,png,jpg,gif,svg,eot,otf,ttf,woff,woff2}"]
