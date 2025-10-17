@@ -16,7 +16,16 @@ module.exports = async function (context, req) {
         // Decode the base64 encoded user claims
         const claims = JSON.parse(Buffer.from(userClaims, 'base64').toString());
 
+        context.log('=== FULL USER CLAIMS DEBUG ===');
         context.log('User claims:', JSON.stringify(claims, null, 2));
+        context.log('Claims array length:', claims.claims ? claims.claims.length : 0);
+
+        // Log each claim individually
+        if (claims.claims) {
+            claims.claims.forEach((claim, index) => {
+                context.log(`Claim ${index}: typ="${claim.typ}", val="${claim.val}"`);
+            });
+        }
 
         // Extract user information
         const user = {
@@ -77,7 +86,14 @@ module.exports = async function (context, req) {
             roles: userRoles,
             accessLevel: accessLevel,
             hasDownloadAccess: accessLevel === 'authorized',
-            timestamp: new Date().toISOString()
+            timestamp: new Date().toISOString(),
+            debug: {
+                rawClaims: claims.claims || [],
+                identityProvider: claims.identityProvider,
+                userId: claims.userId,
+                userDetails: claims.userDetails,
+                allClaimTypes: claims.claims ? claims.claims.map(c => c.typ) : []
+            }
         };
 
         context.log('Returning response:', JSON.stringify(response, null, 2));
