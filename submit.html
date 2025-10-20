@@ -6,7 +6,7 @@
   <title>Submit Your Project — UVA Batten School</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --brand-bg: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
@@ -24,25 +24,49 @@
       --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
     * { box-sizing: border-box; }
-    body { 
-      margin:0; 
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-      background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('./UVA_Zoom-Wallpaper_Rotunda.jpg'); 
-      background-size: cover; 
-      background-position: center center; 
-      background-attachment: fixed; 
-      background-repeat: no-repeat; 
-      color:var(--brand-text); 
-      font-size: 15px; 
-      line-height: 1.6; 
+    body {
+      margin:0;
+      font-family: 'Libre Baskerville', Georgia, serif;
+      background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('./garrett-hall-sunset.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color:var(--brand-text);
+      font-size: 15px;
+      line-height: 1.6;
       font-weight: 400;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('./garrett-hall-sunset.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      filter: grayscale(100%);
+      z-index: -2;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.85);
+      z-index: -1;
     }
     header { padding:20px 24px; background:var(--brand-header-bg); color:var(--brand-header-text);}
     .nav { display:flex; align-items:center; gap:20px; max-width:1400px; margin:0 auto; justify-content: center; position: relative; }
-    .title { 
-      font-family: 'Playfair Display', serif; 
-      font-weight: 800; 
-      font-size: 32px; 
+    .title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-weight: 700;
+      font-size: 32px;
       letter-spacing: -0.02em;
       color: var(--brand-header-text);
     }
@@ -488,6 +512,23 @@
   </div>
 
   <script>
+    // Passcode protection - check on page load
+    (function() {
+      const CORRECT_PASSCODE = '000235';
+      const hasAccess = sessionStorage.getItem('submitAccessGranted');
+
+      if (hasAccess !== 'true') {
+        const enteredPasscode = prompt('Please enter the passcode to access the project submission form:');
+
+        if (enteredPasscode === CORRECT_PASSCODE) {
+          sessionStorage.setItem('submitAccessGranted', 'true');
+        } else {
+          alert('Incorrect passcode. Access denied.');
+          window.location.href = './app.html';
+        }
+      }
+    })();
+
     // Character counters
     function setupCharacterCounter(inputId, counterId, maxLength) {
       const input = document.getElementById(inputId);

@@ -6,7 +6,7 @@
   <title>Batten Projects Explorer — Inline (Polish)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Crimson+Text:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://alcdn.msauth.net/browser/2.38.3/js/msal-browser.min.js"></script>
   <style>
     :root {
@@ -28,8 +28,8 @@
     body {
       margin:0;
       padding: 40px 20px 20px 20px;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('./UVA_Zoom-Wallpaper_Rotunda.jpg');
+      font-family: 'Libre Baskerville', Georgia, serif;
+      background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('./garrett-hall-sunset.jpg');
       background-size: cover;
       background-position: center center;
       background-attachment: fixed;
@@ -38,6 +38,31 @@
       font-size: 15px;
       line-height: 1.6;
       font-weight: 400;
+      filter: grayscale(0);
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('./garrett-hall-sunset.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      filter: grayscale(100%);
+      z-index: -2;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.85);
+      z-index: -1;
     }
     #app-wrapper {
       max-width: 1840px;
@@ -61,7 +86,7 @@
     }
     .nav-link:hover { opacity: 0.8; background: rgba(255, 255, 255, 0.1); }
     .title {
-      font-family: 'Crimson Text', serif;
+      font-family: 'Libre Baskerville', Georgia, serif;
       font-weight: 700;
       font-size: 32px;
       letter-spacing: -0.02em;
@@ -246,20 +271,6 @@
     </header>
 
     <div class="container">
-    <!-- Email Verification Authentication -->
-    <div id="authPanel" class="panel" style="margin-bottom: 20px;">
-      <div id="networkAccessInfo">
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
-          <p style="margin: 0; color: var(--brand-muted); font-size: 14px; text-align: center;">
-            <strong>Network Status:</strong> <span id="networkStatus">Checking...</span>
-            <span id="vpnInfo" style="display: none; margin-left: 8px; color: var(--brand-text);">
-              | 📥 To download files, you must be connected to the UVA network (on campus) or use <a href="https://virginia.service-now.com/its?id=itsweb_kb_article&sys_id=f24e5cdfdb3acb804f32fb671d9619d0" target="_blank" style="color: var(--brand-accent);">UVA VPN setup instructions</a> for off-campus access.
-            </span>
-            <button id="debugIPBtn" class="btn" style="font-size: 11px; padding: 2px 6px; margin-left: 12px;">Debug</button>
-          </p>
-        </div>
-      </div>
-    </div>
 
     <div class="panel">
       <div style="margin-bottom: 20px;">
@@ -1963,8 +1974,10 @@ async function debugIPInfo() {
 function checkSubmitPIN() {
   const correctPIN = '000235';
   const enteredPIN = prompt('Please enter the PIN to access Submit Project:');
-  
+
   if (enteredPIN === correctPIN) {
+    // Store access in sessionStorage so they don't get prompted again on submit.html
+    sessionStorage.setItem('submitAccessGranted', 'true');
     return true;
   } else if (enteredPIN !== null) {
     alert('Incorrect PIN. Access denied.');
