@@ -26,19 +26,22 @@
     }
     * { box-sizing: border-box; }
     body {
-      margin: 0;
-      padding: 0;
+      margin:0;
+      padding: 40px 20px 20px 20px;
       font-family: 'Libre Baskerville', Georgia, serif;
-      color: var(--brand-text);
+      background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('./garrett-hall-sunset.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color:var(--brand-text);
       font-size: 15px;
       line-height: 1.6;
       font-weight: 400;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      filter: grayscale(0);
     }
-
-    /* Background Image Layer */
-    .background-image {
+    body::before {
+      content: '';
       position: fixed;
       top: 0;
       left: 0;
@@ -48,36 +51,28 @@
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      background-repeat: no-repeat;
       filter: grayscale(100%);
-      z-index: -10;
+      z-index: -2;
     }
-
-    /* Background Overlay Layer */
-    .background-overlay {
+    body::after {
+      content: '';
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
       background: rgba(255, 255, 255, 0.85);
-      z-index: -10;
+      z-index: -1;
     }
-
     #app-wrapper {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      position: relative;
+      max-width: 1840px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 24px 24px 0 0;
+      overflow: hidden;
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
     }
-    header {
-      background: #232D4B;
-      color: white;
-      padding: 1.5rem 2rem;
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+    header { padding:20px 24px; background:var(--brand-header-bg); color:var(--brand-header-text); border-bottom: 3px solid var(--brand-accent);}
     .nav { display:flex; align-items:center; gap:20px; max-width:1800px; margin:0 auto; }
     .nav-links { position: absolute; right: 0; display: flex; gap: 20px; align-items: center; }
     .nav-link { 
@@ -97,13 +92,7 @@
       letter-spacing: -0.02em;
       color: var(--brand-header-text);
     }
-    .container {
-      flex: 1;
-      max-width: 1840px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 0 2rem 3rem 2rem;
-    }
+    .container { padding:24px 24px; max-width:1800px; margin:0 auto; }
     .panel { background:var(--brand-card); border:1px solid var(--brand-border); border-radius:var(--radius); padding:28px; margin-bottom:32px; box-shadow:var(--shadow-lg); transition: transform 0.2s ease, box-shadow 0.2s ease;}
     .filters { display:grid; gap:20px; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
     label { display:block; font-size:13px; font-weight:500; color:var(--brand-text); margin-bottom:8px; letter-spacing:-0.01em; }
@@ -265,136 +254,29 @@
     .btn.download:active {
       transform: translateY(-1px);
     }
-
-    /* Page Title Section */
-    .page-title-section {
-      padding: 3rem 0 2rem 0;
-    }
-
-    .page-title {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 2.5rem;
-      font-weight: 400;
-      color: #232D4B;
-      margin: 0 0 1rem 0;
-      letter-spacing: -0.02em;
-      padding-bottom: 0.75rem;
-      border-bottom: 4px solid #E57200;
-      display: inline-block;
-    }
-
-    .page-description {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 1.125rem;
-      line-height: 1.75;
-      color: #232D4B;
-      margin: 0;
-      max-width: 60rem;
-    }
-
-    /* User Authentication Styles */
-
-    .nav-link {
-      font-family: 'Inter', sans-serif;
-      background: transparent;
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 150ms;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .nav-link:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.5);
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .user-info {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 0.125rem;
-      text-align: right;
-    }
-
-    .user-name {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: white;
-    }
-
-    .user-role {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: #d1d5db;
-    }
-
-    .sign-out-btn {
-      font-family: 'Inter', sans-serif;
-      background: #E57200;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background-color 150ms;
-    }
-
-    .sign-out-btn:hover {
-      background: #F28C28;
-    }
   </style>
 </head>
 <body>
-  <!-- Background Image -->
-  <div class="background-image"></div>
-
-  <!-- Background Overlay -->
-  <div class="background-overlay"></div>
 
   <div id="app-wrapper">
     <header>
-      <div class="nav" style="position: relative; max-width: 80rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
-        <div class="header-left" style="display: flex; flex-direction: column; gap: 0.125rem;">
-          <h1 style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.5rem; font-weight: 700; margin: 0; color: white; letter-spacing: normal;">The Batten Space</h1>
-          <p style="font-family: 'Libre Baskerville', Georgia, serif; font-size: 0.875rem; font-weight: 400; margin: 0; color: #d1d5db; letter-spacing: normal;">Applied Policy Project Explorer</p>
+      <div class="nav" style="position: relative;">
+        <div style="display: flex; align-items: center;">
+          <img src="images/bat_rgb_ko.png" alt="UVA Batten School Logo" style="height:60px; width:auto;">
         </div>
-        <div class="header-right">
-          <a href="./submit.html" class="nav-link" id="submitProjectLink" style="font-family: 'Inter', sans-serif; background: transparent; color: white; border: 1px solid rgba(255, 255, 255, 0.3); padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: all 150ms; text-decoration: none; display: inline-flex; align-items: center;">Submit Project →</a>
-          <div class="user-info" id="headerUserInfo">
-            <span class="user-name">Loading...</span>
-            <span class="user-role"></span>
-          </div>
-          <button class="sign-out-btn" onclick="window.location.href='/.auth/logout'">Sign Out</button>
+        <div class="nav-links">
+          <a href="./submit.html" class="nav-link" id="submitProjectLink">Submit Project →</a>
         </div>
       </div>
     </header>
 
     <div class="container">
-      <!-- Page Title Section -->
-      <div class="page-title-section">
-        <h2 class="page-title">Applied Policy Projects</h2>
-        <p class="page-description">Explore Applied Policy Projects from UVA Batten School students. Search and filter by instructor, organization type, problem level, and geographic scope to discover policy solutions across diverse domains.</p>
-      </div>
 
     <div class="panel">
       <div style="margin-bottom: 20px;">
+        <p style="font-size: 16px; color: var(--brand-text); margin: 0; line-height: 1.5; text-align: left;">
+          Explore Applied Policy Projects from UVA Batten School students. Search and filter by instructor, organization type, problem level, and geographic scope to discover policy solutions across diverse domains.
+        </p>
         <div id="authRequired" style="margin-top: 12px; padding: 12px; background: rgba(229, 114, 0, 0.1); border-radius: 8px; display: none;">
           <p style="margin: 0; color: var(--brand-accent); font-weight: 500;">
             🔒 Please <a href="/.auth/login/aad" style="color: var(--brand-accent); text-decoration: underline;">sign in with your UVA account</a> to access project files.
@@ -2125,71 +2007,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 });
-
-
-// Load user authentication info into header
-async function loadHeaderUserInfo() {
-  try {
-    const response = await fetch('/.auth/me');
-    const payload = await response.json();
-    const userInfo = payload.clientPrincipal;
-
-    if (userInfo) {
-      let displayName = userInfo.userDetails;
-
-      // Extract from claims
-      const claims = userInfo.claims;
-      if (claims) {
-        const givenName = claims.find(c => c.typ === 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname')?.val;
-        const surname = claims.find(c => c.typ === 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname')?.val;
-
-        if (givenName && surname) {
-          displayName = `${givenName} ${surname}`;
-        }
-      }
-
-      // Format email-based usernames
-      if (displayName.includes('@')) {
-        const namePart = displayName.split('@')[0];
-        displayName = namePart.split('.').map(part =>
-          part.charAt(0).toUpperCase() + part.slice(1)
-        ).join(' ');
-      }
-
-      // Get roles
-      const roles = userInfo.userRoles.filter(role => role !== 'anonymous' && role !== 'authenticated');
-      const roleDisplay = roles.length > 0 ? roles.join(', ') : 'Staff';
-
-      // Update DOM
-      const userInfoDiv = document.getElementById('headerUserInfo');
-      if (userInfoDiv) {
-        userInfoDiv.innerHTML = `
-          <span class="user-name">${displayName}</span>
-          <span class="user-role">${roleDisplay}</span>
-        `;
-      }
-    } else {
-      // No user info, show sign in prompt
-      const userInfoDiv = document.getElementById('headerUserInfo');
-      if (userInfoDiv) {
-        userInfoDiv.innerHTML = `
-          <span class="user-name">Not signed in</span>
-        `;
-      }
-    }
-  } catch (error) {
-    console.error('Error loading user info:', error);
-    const userInfoDiv = document.getElementById('headerUserInfo');
-    if (userInfoDiv) {
-      userInfoDiv.innerHTML = `
-        <span class="user-name">Guest</span>
-      `;
-    }
-  }
-}
-
-// Call on page load
-document.addEventListener('DOMContentLoaded', loadHeaderUserInfo);
 
 </script>
 <!-- === End Lightweight Download Buttons (Debounced, Safe) === -->
