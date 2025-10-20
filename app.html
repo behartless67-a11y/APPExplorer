@@ -359,6 +359,31 @@
     .sign-out-btn:hover {
       background: #F28C28;
     }
+
+    /* Back to Dashboard Link */
+    .back-to-dashboard {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #232D4B;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      margin-bottom: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .back-to-dashboard:hover {
+      color: #E57200;
+      transform: translateX(-4px);
+    }
+
+    .back-to-dashboard svg {
+      width: 1rem;
+      height: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -387,6 +412,14 @@
     </header>
 
     <div class="container">
+      <!-- Back to Dashboard Link -->
+      <a href="https://www.thebattenspace.org/" class="back-to-dashboard">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Dashboard
+      </a>
+
       <!-- Page Title Section -->
       <div class="page-title-section">
         <h2 class="page-title">Applied Policy Projects</h2>
