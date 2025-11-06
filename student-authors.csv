@@ -1,0 +1,638 @@
+Filename,Student Author,Extraction Pattern,Status
+"001_Ramya Ravichandran APP 2019.pdf","RAMYA RAVICHANDRAN",ALL_CAPS,success
+"002_Maria Loverde APP 2019.pdf","Maria Loverde",WITH_MPP,success
+"003_Molly Martin APP 2019.pdf","MOLLY MARTIN",ALL_CAPS,success
+"004_Charlottesville Climate Collaborative.pdf",,,error
+"005_Walter Herring Jr.pdf",,,not_found
+"006_Samuel Morales APP 2019.pdf","Prepared by Sam Morales",WITH_MPP,success
+"007_Cory Harris APP 2019.pdf","By: Cory Harris",WITH_MPP,success
+"008_Lauren Schnepper APP 2019.pdf",,,not_found
+"009_APP 2020.pdf","J. Thomas Roberts",BEFORE_MPP,success
+"010_APP 2020 (1).pdf",,,not_found
+"011_APP 2020 (2).pdf",,,not_found
+"012_APP 2020 (3).pdf",,,not_found
+"013_APP 2020 (4).pdf",,,not_found
+"014_APP 2020 (5).pdf",,,not_found
+"015_APP 2020 (6).pdf",,,not_found
+"016_APP 2020 (7).pdf","Emma R. Finkelstein",WITH_MPP,success
+"017_APP 2020 (8).pdf","CHRISTIAN TJOA",ALL_CAPS,success
+"018_APP 2020 (9).pdf",,,not_found
+"019_APP 2020 (11).pdf",,,not_found
+"020_APP 2020 (10).pdf",,,not_found
+"021_APP 2020 (12).pdf",,,not_found
+"022_APP 2020 (13).pdf",,,not_found
+"023_APP 2020 (14).pdf","Maureen Coffey",WITH_MPP,success
+"024_APP 2020 (15).pdf",,,not_found
+"025_APP 2020 (16).pdf","SEARA MAINOR",BEFORE_MPP,success
+"026_APP 2020 (17).pdf",,,not_found
+"027_APP 2020 (18).pdf","Nicholas J Newton",BEFORE_INSTITUTION,success
+"028_APP 2020 (19).pdf","Sean Bielawski",WITH_MPP,success
+"029_APP 2020 (20).pdf",,,not_found
+"030_APP 2020 (21).pdf","VIOLENCE AT THE BORDER",ALL_CAPS,success
+"031_APP 2020 (22).pdf","VIOLENCE AT THE BORDER",ALL_CAPS,success
+"032_APP 2020 (23).pdf",,,not_found
+"033_APP 2020 (24).pdf","Zack Kathol",BEFORE_MPP,success
+"034_APP 2020 (25).pdf",,,not_found
+"035_APP 2020 (26).pdf",,,not_found
+"036_APP 2020 (27).pdf","Mazzen S. Shalaby",WITH_MPP,success
+"037_APP 2020 (28).pdf",,,not_found
+"038_APP 2020 (29).pdf",,,not_found
+"039_APP 2020 (30).pdf",,,not_found
+"040_APP 2020 (31).pdf",,,not_found
+"041_APP 2020 (32).pdf",,,not_found
+"042_APP 2020 (33).pdf","ALLIE STREHLE",BEFORE_MPP,success
+"043_APP 2020 (34).pdf",,,not_found
+"044_APP 2020 (35).pdf",,,not_found
+"045_APP 2020 (36).pdf","BUILDING BETTER BAG BEHAVIORS",ALL_CAPS,success
+"046_APP 2020 (37).pdf",,,not_found
+"047_APP 2020 (38).pdf","KYLE STILTNER",ALL_CAPS,success
+"048_APP 2020 (39).pdf","Bridget Elise Rizzo",BEFORE_INSTITUTION,success
+"049_APP 2020 (40).pdf",,,not_found
+"050_APP 2020 (41).pdf","Amanda Rosensky",BEFORE_INSTITUTION,success
+"051_APP 2020 (42).pdf","Audrey McClurg",BEFORE_MPP,success
+"052_APP 2020 (43).pdf",,,not_found
+"053_APP 2020 (44).pdf","LINCOLN AMBROSE",ALL_CAPS,success
+"054_APP 2020 (45).pdf","Morgan Smith",WITH_MPP,success
+"055_APP 2020 (46).pdf","Escaping the Central Bind",BEFORE_INSTITUTION,success
+"056_APP 2020 (47).pdf",,,not_found
+"057_APP 2020 (48).pdf",,,not_found
+"058_APP 2020 (49).pdf","HENRICO COUNTY",ALL_CAPS,success
+"059_APP 2020 (50).pdf",,,not_found
+"060_APP 2020 (51).pdf",,,not_found
+"061_APP 2020 (52).pdf",,,not_found
+"062_APP 2020 (54).pdf",,,not_found
+"063_APP 2020 (53).pdf","Low-Income Renters",BEFORE_INSTITUTION,success
+"064_APP 2020 (55).pdf","RISING PRESCRIPTION DRUG EXPENDITURES",ALL_CAPS,success
+"065_APP 2020 (56).pdf","Bethany Baron",BEFORE_INSTITUTION,success
+"066_APP 2020 (57).pdf",,,not_found
+"067_APP 2020 (58).pdf",,,not_found
+"068_APP 2020 (59).pdf","BENJAMIN DOOLEY",ALL_CAPS,success
+"069_APP 2020 (60).pdf","NORA SURBEY",ALL_CAPS,success
+"070_APP 2020 (61).pdf","Charlottesville's Affordable Housing Crisis",BEFORE_INSTITUTION,success
+"071_APP 2020 (62).pdf","Rachel Walet,",WITH_MPP,success
+"072_APP 2020 (63).pdf",,,not_found
+"073_APP 2020 (64).pdf",,,not_found
+"074_APP 2020 (65).pdf","Katarina Naworol",WITH_MPP,success
+"075_APP 2020 (66).pdf","MEGAN RIVERA",BEFORE_MPP,success
+"076_APP 2021.pdf",,,not_found
+"077_APP 2021 (1).pdf","ADDRESSING RADIO FREQUENCY INTERFERENCE",ALL_CAPS,success
+"078_APP 2021 (2).pdf",,,not_found
+"079_APP 2021 (3).pdf",,,not_found
+"080_APP 2021 (4).pdf",,,not_found
+"081_APP 2021 (5).pdf","Cameron Anderson,",WITH_MPP,success
+"082_APP 2021 (6).pdf",,,not_found
+"083_APP 2021 (7).pdf","Trevor A. Doiron",WITH_MPP,success
+"084_APP 2021 (9).pdf",,,not_found
+"085_APP 2021 (8).pdf",,,not_found
+"086_APP 2021 (10).pdf",,,not_found
+"087_APP 2021 (11).pdf",,,not_found
+"088_APP 2021 (12).pdf","CITY AND CONTROL SOLUTIONS",ALL_CAPS,success
+"089_APP 2021 (13).pdf","CITY AND CONTROL SOLUTIONS",ALL_CAPS,success
+"090_APP 2021 (14).pdf",,,not_found
+"091_APP 2021 (15).pdf","PREPARED BY: Allisa Coles",WITH_MPP,success
+"092_APP 2021 (16).pdf","AUSTIN KATSTRA",ALL_CAPS,success
+"093_APP 2021 (17).pdf","Alexandria Pinckney",BEFORE_MPP,success
+"094_APP 2021 (18).pdf",,,not_found
+"095_APP 2021 (19).pdf","VALERY SCHNEIDER",BEFORE_MPP,success
+"096_APP 2021 (20).pdf",,,not_found
+"097_APP 2021 (21).pdf","David Erzen",WITH_MPP,success
+"098_APP 2021 (22).pdf",,,not_found
+"099_APP 2021 (23).pdf",,,not_found
+"100_APP 2021 (24).pdf","PRESENTED TO",ALL_CAPS,success
+"101_APP 2021 (25).pdf",,,not_found
+"102_APP 2021 (26).pdf",,,not_found
+"103_APP 2021 (27).pdf",,,not_found
+"104_APP 2021 (28).pdf",,,not_found
+"105_APP 2021 (29).pdf",,,not_found
+"106_APP 2021 (30).pdf","Margaret Stanley",BEFORE_INSTITUTION,success
+"107_APP 2021 (31).pdf",,,not_found
+"108_APP 2021 (32).pdf",,,not_found
+"109_APP 2021 (33).pdf",,,not_found
+"110_APP 2021 (34).pdf",,,not_found
+"111_APP 2021 (35).pdf",,,not_found
+"112_APP 2021 (36).pdf",,,not_found
+"113_APP 2021 (37).pdf",,,not_found
+"114_APP 2021 (38).pdf",,,not_found
+"115_APP 2021 (39).pdf",,,not_found
+"116_APP 2021 (41).pdf","Logan Botts",WITH_MPP,success
+"117_APP 2021 (40).pdf",,,not_found
+"118_APP 2021 (42).pdf","Marisa Lemma",WITH_MPP,success
+"119_APP 2021 (45).pdf","Allison Brown",WITH_MPP,success
+"120_APP 2021 (43).pdf",,,not_found
+"121_APP 2021 (44).pdf",,,not_found
+"122_APP 2021 (47).pdf",,,not_found
+"123_APP 2021 (50).pdf",,,not_found
+"124_APP 2021 (51).pdf","Nithin Seelan",BEFORE_MPP,success
+"125_APP 2021 (46).pdf","PRESENTED TO",ALL_CAPS,success
+"126_APP 2021 (52).pdf",,,not_found
+"127_APP 2021 (53).pdf","Julian Brock,",WITH_MPP,success
+"128_APP 2021 (49).pdf",,,not_found
+"129_APP 2021 (48).pdf","FARMER TO FARMER",ALL_CAPS,success
+"130_APP 2021 (54).pdf","Caleb G. Tisdale",WITH_MPP,success
+"131_APP 2021 (55).pdf","EMMA KARNES",ALL_CAPS,success
+"132_APP 2021 (56).pdf","PREPARED BY",ALL_CAPS,success
+"133_APP 2021 (57).pdf",,,not_found
+"134_APP 2021 (58).pdf","A HOME FOR ALL",ALL_CAPS,success
+"135_APP 2021 (59).pdf","County, Texas",BEFORE_INSTITUTION,success
+"136_APP 2021 (60).pdf",,,not_found
+"138_APP 2021 (61).pdf","Hannah Kay Byrum",BEFORE_MPP,success
+"139_APP 2021 (62).pdf",,,not_found
+"140_APP 2021 (63).pdf",,,not_found
+"141_APP 2021 (64).pdf","ADDRESSING COLLEGE ATHLETIC RECRUITING",ALL_CAPS,success
+"142_APP 2021 (65).pdf","Elizabeth Padhi",WITH_MPP,success
+"143_APP 2021 (66).pdf","Diana Gaiter",BEFORE_INSTITUTION,success
+"144_APP 2021 (67).pdf",,,not_found
+"145_APP 2021 (68).pdf",,,not_found
+"146_APP 2021 (69).pdf",,,not_found
+"147_APP 2021 (70).pdf",,,not_found
+"148_APP 2021 (71).pdf",,,not_found
+"149_APP 2021 (72).pdf","Prepared By: Erin Melly",BEFORE_MPP,success
+"150_APP 2021 (73).pdf",,,not_found
+"151_APP 2021 (74).pdf",,,not_found
+"152_APP 2021 (75).pdf",,,not_found
+"153_APP 2021 (76).pdf",,,not_found
+"154_APP 2021 (77).pdf","From Islands of Excellence to Universal Literacy",PREPARED_BY,success
+"155_APP 2021 (78).pdf",,,not_found
+"156_APP 2021 (79).pdf",,,not_found
+"157_APP 2021 (80).pdf","Ethan Betterton",WITH_MPP,success
+"158_APP 2021 (81).pdf","Aubrey Hobby",BEFORE_INSTITUTION,success
+"159_APP 2021 (82).pdf",,,not_found
+"160_APP 2021 (83).pdf","Claire Alysse Berg",BEFORE_MPP,success
+"161_APP 2021 (84).pdf",,,not_found
+"162_APP 2021 (85).pdf",,,not_found
+"163_APP 2021 (86).pdf","Caleb G. Tisdale",WITH_MPP,success
+"164_APP 2021 (87).pdf","Dual Eligible Hospitalizations",BEFORE_INSTITUTION,success
+"165_APP 2021 (88).pdf","Cultivating Resilience",BEFORE_INSTITUTION,success
+"166_APP 2021 (89).pdf",,,not_found
+"167_APP 2021 (90).pdf","By Tihana Stojsavljevic",BEFORE_INSTITUTION,success
+"168_APP 2021 (91).pdf","U.S. priorities in space",BEFORE_INSTITUTION,success
+"169_APP 2021 (92).pdf",,,not_found
+"170_APP 2021 (93).pdf","Wade Griggs",BEFORE_INSTITUTION,success
+"171_APP 2021 (94).pdf",,,not_found
+"172_APP 2021 (95).pdf","Deebii Duguma",BEFORE_MPP,success
+"173_APP 2021 (96).pdf","POVERTY IN RICHMOND",ALL_CAPS,success
+"174_APP 2021 (97).pdf","Prepared by: Hannah Griffin",WITH_MPP,success
+"175_APP 2021 (98).pdf","AIRCRAFT MAINTENANCE",ALL_CAPS,success
+"176_APP 2021 (99).pdf","SARAH R. SIMBA",WITH_MPP,success
+"177_APP 2020 (67).pdf","Teka Lenahan,",PREPARED_BY,success
+"178_APP 2020 (71).pdf",,,not_found
+"179_APP 2020 (69).pdf",,,not_found
+"180_APP 2020 (70).pdf",,,not_found
+"181_APP 2020 (68).pdf","Prepared by Monica Marciano",WITH_MPP,success
+"182_APP 2020 (72).pdf",,,not_found
+"183_APP 2020 (74).pdf","Michael Salgueiro",BEFORE_INSTITUTION,success
+"184_APP 2020 (75).pdf","Neela Saha",BEFORE_MPP,success
+"185_APP 2020 (73).pdf",,,not_found
+"186_APP 2020 (76).pdf",,,not_found
+"187_APP 2020 (77).pdf","JACK C. LARKIN",WITH_MPP,success
+"188_APP 2020 (78).pdf",,,not_found
+"189_APP 2020 (79).pdf","THE CANNABIS EQUITY",ALL_CAPS,success
+"190_APP 2020 (80).pdf","NORA SURBEY",ALL_CAPS,success
+"191_APP 2020 (81).pdf","EDWINA JOSEPH",WITH_MPP,success
+"192_APP 2020 (82).pdf",,,not_found
+"193_APP 2020 (83).pdf","By Maggie Servais",BEFORE_INSTITUTION,success
+"194_APP 2020 (84).pdf",,,not_found
+"195_APP 2020 (85).pdf",,,not_found
+"196_APP 2020 (86).pdf","Habert 1",BEFORE_INSTITUTION,success
+"197_APP 2020 (87).pdf",,,not_found
+"198_Nicholas Matthews APP 2019.pdf","Nicholas Richardson Matthews",WITH_MPP,success
+"199_Taylor Boomer APP 2019.pdf","Digital Credit in Kenya",BEFORE_INSTITUTION,success
+"200_Ellie Beahm APP 2019.pdf","Ellen Beahm",BEFORE_MPP,success
+"201_David Bartha - APP 2019.pdf",,,not_found
+"202_Kate Landers APP 2019.pdf","Katharine Landers",BEFORE_MPP,success
+"203_Luke Tassopoulos APP 2019.pdf","Luke Tassopoulos",WITH_MPP,success
+"204_vn6vf APP 2020.pdf",,,not_found
+"205_rkd3mc APP 2020.pdf",,,not_found
+"206_kvp3n APP 2020.pdf",,,not_found
+"207_wes4du APP 2020.pdf",,,not_found
+"208_trr2vy APP 2020.pdf",,,not_found
+"209_brc4cb APP 2020.pdf",,,not_found
+"210_sah4vy APP 2020.pdf","FROM ABUSE TO",ALL_CAPS,success
+"211_wlw5bc APP 2020.pdf",,,not_found
+"212_lg2bs APP 2020.pdf","LeAnn Golding",BEFORE_MPP,success
+"213_acp3bk APP 2020.pdf","Athena Post",BEFORE_INSTITUTION,success
+"214_rh6vf APP 2020.pdf",,,not_found
+"215_cnh5vf APP 2020.pdf","CAMERON HADDAD",BEFORE_MPP,success
+"216_Hattar_Final APP.pdf","ELECTRIC POWER SECTOR",ALL_CAPS,success
+"217_tec5ae APP 2020.pdf",,,not_found
+"218_sm8fq APP 2020.pdf","SOCIOECONOMIC DIVERSITY",ALL_CAPS,success
+"219_sz7up APP 2020.pdf",,,not_found
+"220_ah2fq APP 2020.pdf",,,not_found
+"221_xl5wv APP 2020.pdf","Fintech as a Potential Solution",BEFORE_MPP,success
+"222_hcp9ur APP 2020.pdf",,,not_found
+"223_mal2aq APP 2020.pdf",,,not_found
+"224_ljk9s APP 2020.pdf","NEW SUPPORT FOR REFUGEE",ALL_CAPS,success
+"225_ir7at APP 2020.pdf",,,not_found
+"226_dcd4ab APP 2020.pdf",,,not_found
+"227_Boguslav_APP_revised.pdf",,,not_found
+"228_mr5gn APP 2020.pdf","MADELINE ROTH",BEFORE_MPP,success
+"229_ab7tk APP 2020.pdf",,,not_found
+"230_mmj2jm APP 2020.pdf","Michael Jarosz",BEFORE_INSTITUTION,success
+"231_Paige Karp APP 2020.pdf",,,not_found
+"232_rt2rb APP 2020.pdf",,,not_found
+"233_SenecaT_revisedFinalAPP_May1.pdf","Reducing Substance Abuse Relapse",BEFORE_INSTITUTION,success
+"234_Molly_APP_May1.pdf","INCREASING SAFE HOUSE UPTAKE",ALL_CAPS,success
+"235_jmp3yh APP 2020.pdf","FOOD FINANCING IN",ALL_CAPS,success
+"236_mml3hb APP 2020.pdf","Maggie Linden",BEFORE_MPP,success
+"237_pg2ad_APP_final_edit.pdf",,,not_found
+"238_tjc2cr APP 2020.pdf","Boston's Big Break",BEFORE_INSTITUTION,success
+"239_mew8we APP 2020.pdf",,,not_found
+"240_hkg2vn APP 2020.pdf","Hannah Gavin",BEFORE_INSTITUTION,success
+"241_20200501_JamesReed-APP.pdf",,,not_found
+"242_cjc2yk APP 2020.pdf",,,not_found
+"243_zjd8df APP 2020.pdf",,,not_found
+"244_mc4cc APP 2020.pdf","NG SEA LEVEL RISE",ALL_CAPS,success
+"245_bc9cd APP 2020.pdf",,,not_found
+"246_Final APP - Askari (1).pdf","Written for Jusoor",BEFORE_INSTITUTION,success
+"247_maw9ee APP 2020.pdf",,,not_found
+"248_cmf5bh APP 2020.pdf","CATHERINE FARNSLER",BEFORE_MPP,success
+"249_knj6df APP 2020.pdf","Options for Internal Change Towards Equity",BEFORE_MPP,success
+"250_mmb4ef APP 2020.pdf",,,not_found
+"251_ger3aj APP 2020.pdf",,,not_found
+"252_ms8xp APP 2020.pdf",,,not_found
+"253_ls8ay APP 2020.pdf","Renewable Natural Gas",BEFORE_INSTITUTION,success
+"254_srl7ea APP 2020.pdf",,,not_found
+"255_pck4ac APP 2020.pdf",,,not_found
+"256_aeh4pc APP 2020.pdf",,,not_found
+"257_jec2ec APP 2020.pdf",,,not_found
+"258_Lester Coleman APP (2).pdf",,,not_found
+"259_jrc3cf APP 2020.pdf",,,not_found
+"260_alc4yt APP 2020.pdf","SETTING UP SUCCESS",ALL_CAPS,success
+"261_sat9ck APP 2020.pdf",,,not_found
+"262_rmc4cs APP 2020.pdf","RUTH CHECKNOFF",BEFORE_MPP,success
+"263_jrb6xb APP 2020.pdf",,,not_found
+"264_arb5mr APP 2020.pdf",,,not_found
+"265_awb7v APP 2020.pdf",,,not_found
+"266_dpk5nw APP 2020.pdf","David King",BEFORE_INSTITUTION,success
+"267_co4qz APP 2020.pdf","CARRIE O'FORAN",BEFORE_MPP,success
+"268_mer3xc APP 2020.pdf","Madison Roberts",BEFORE_MPP,success
+"269_cb5xy APP 2020.pdf",,,not_found
+"270_nm6jz APP 2020.pdf",,,not_found
+"271_jh4un APP 2020.pdf","Jordan Hollinger",BEFORE_INSTITUTION,success
+"272_ah4kn APP 2020.pdf",,,not_found
+"273_Cjg8pa APP 2020.pdf","Combating Wealth Inequality Through",BEFORE_INSTITUTION,success
+"274_Ben Stolz APP 2020 FINAL.pdf",,,not_found
+"275_bn7ue APP 2020.pdf",,,not_found
+"276_ldg5nv APP 2020.pdf","By Laura Daniela Gonzalez",WITH_MPP,success
+"277_APP 2020 (88).pdf","Jordan Sicklick",WITH_MPP,success
+"278_APP 2018 Garland Mooney (1).pdf",,,not_found
+"279_APP 2018 Travis Grubbs (1).pdf",,,not_found
+"280_APP 2018 Joshua Sagartz.pdf","For: Ismael C.I. Yacoubou Djima",PREPARED_BY,success
+"281_APP 2018 Eric Prince.pdf","Eric Prince,",WITH_MPP,success
+"282_Kesick_APP_Final.pdf",,,not_found
+"283_APP 2018 Anna Troutman.pdf",,,not_found
+"284_APP 2018 Stephen Thomson (1).pdf",,,not_found
+"285_APP 2018 Dana Kiernan (1).pdf",,,not_found
+"286_APP 2018 Ross Johndrow.pdf",,,not_found
+"287_APP 2018 Henry Pollock (1).pdf",,,not_found
+"288_APP 2018 Georgia Ratcliff.pdf",,,not_found
+"289_APP 2018 Jacob Cash.pdf","JACOB CASH",ALL_CAPS,success
+"290_APP 2018 Parks H Daniel.pdf",,,not_found
+"291_APP 2018 Emily Ewing.pdf","Emily Ewing",WITH_MPP,success
+"292_APP 2018 James Joo.pdf","James Hyung Jin Joo",WITH_MPP,success
+"293_APP 2018 Margaret Anderson.pdf",,,not_found
+"294_APP 2018 Theodore En-Dao Fergusson.pdf",,,not_found
+"296_APP 2018 Alexander Knutson.pdf",,,not_found
+"297_APP 2018 Avery Moyler.pdf",,,not_found
+"298_APP 2018 West Connors.pdf","Prepared by West Connors",WITH_MPP,success
+"299_APP 2018 West Connors (1).pdf","Prepared by West Connors",WITH_MPP,success
+"300_APP 2018 Leah Day.pdf",,,not_found
+"301_APP 2018 Leah Day (1).pdf",,,not_found
+"302_APP 2018 Kristin Fioretti.pdf","Kristin M. Fioretti",WITH_MPP,success
+"303_APP 2018 Kristin Fioretti (1).pdf","Kristin M. Fioretti",WITH_MPP,success
+"304_APP 2018 Vijay Menon.pdf",,,not_found
+"305_APP 2018 Vijay Menon (1).pdf",,,not_found
+"306_APP 2018 Lydia Chu (1).pdf","Charlottesville, VA",BEFORE_INSTITUTION,success
+"307_APP 2018 Lydia Chu (1) (1).pdf","Charlottesville, VA",BEFORE_INSTITUTION,success
+"308_APP 2018 Ali C.pdf",,,not_found
+"309_APP 2018 Ali C (1).pdf",,,not_found
+"310_APP 2018 Lena Lewis (1).pdf","Lena Lewis",WITH_MPP,success
+"311_APP 2018 Lena Lewis (1) (1).pdf","Lena Lewis",WITH_MPP,success
+"312_APP 2018 Phillip Louis Menard (1).pdf","Phillip L. Menard",BEFORE_INSTITUTION,success
+"313_APP 2018 Phillip Louis Menard (1) (1).pdf","Phillip L. Menard",BEFORE_INSTITUTION,success
+"314_APP 2018 Maggie Gratz.pdf","A TRANSFORMATIONAL LEGISLATIVE WORKPLACE",ALL_CAPS,success
+"315_APP 2018 Maggie Gratz (1).pdf","A TRANSFORMATIONAL LEGISLATIVE WORKPLACE",ALL_CAPS,success
+"316_APP 2018 Madison Kaye Lahey.pdf",,,not_found
+"317_APP 2018 Madison Kaye Lahey (1).pdf",,,not_found
+"318_APP 2018 Katherine Brandon.pdf",,,not_found
+"319_APP 2018 Katherine Brandon (1).pdf",,,not_found
+"320_APP 2018 Anthony Dunavant.pdf",,,not_found
+"321_APP 2018 Anthony Dunavant (1).pdf",,,not_found
+"322_APP 2018 Lianne T.pdf","Lianne T. Provenzano",WITH_MPP,success
+"323_APP 2018 Lianne T (1).pdf","Lianne T. Provenzano",WITH_MPP,success
+"324_APP 2018 Kylie Anglin.pdf",,,not_found
+"325_APP 2018 Allison Brooks Owens.pdf","PREPARED BY: ALLISON OWENS,",WITH_MPP,success
+"326_APP 2018 Kaitlyn Kozlowski.pdf","Prepared by Kaitlyn M Kozlowski",BEFORE_MPP,success
+"327_APP 2018 Matthew Tryst Hensell.pdf","Prepared by Matthew Hensell",WITH_MPP,success
+"328_APP 2018 Emily Wiseman (1).pdf","Emily Wiseman",BEFORE_INSTITUTION,success
+"329_Wiseman_APP_Final_5.14.pdf","Emily Wiseman",BEFORE_INSTITUTION,success
+"330_APP 2018 Kelsey J Hunt.pdf",,,not_found
+"331_APP 2018 Dylan Kolb.pdf",,,not_found
+"332_APP 2018 Kyaw Moe Khine.pdf",,,not_found
+"333_APP 2018 Althea Pickering.pdf",,,not_found
+"334_APP 2018 Charlotte Marie Carr.pdf",,,not_found
+"335_APP 2018 Thanh-Truc Vo (1).pdf","Truc Vo",BEFORE_MPP,success
+"336_APP 2018 Spencer Seongjun Park.pdf","Prepared by Spencer Seongjun Park",WITH_MPP,success
+"337_APP 2018 Ransom Holliday.pdf",,,not_found
+"338_APP 2018 Shu Dai.pdf",,,not_found
+"339_APP 2018 Olivia Roat.pdf",,,not_found
+"340_APP 2018 Evelyn Immonen.pdf","Evelyn Immonen",BEFORE_INSTITUTION,success
+"341_APP 2018 Justin Brian Doromal.pdf",,,not_found
+"342_APP 2018 Ramsay Stewart.pdf",,,not_found
+"343_APP 2018 Sierra Leickert (1).pdf","Prepared by Sierra Leickert",WITH_MPP,success
+"344_APP 2018 Sofia Victoria McKewen Moreno.pdf",,,not_found
+"345_APP 2018 Tianwei Qu.pdf",,,not_found
+"346_APP 2018 Adam Prevost.pdf","ADAM PREVOST",ALL_CAPS,success
+"347_APP 2018 Grant J Schwab.pdf",,,not_found
+"348_APP 2018 Isabela Medina-Mate.pdf","Prepared by Isabela Medina-Mat�",WITH_MPP,success
+"349_APP 2018 Mary Greeson.pdf","Mary Greeson",WITH_MPP,success
+"350_APP 2018 Carly Gorelick.pdf",,,not_found
+"351_APP 2018 Clara Gainey.pdf","Prepared by Clara E. Gainey",WITH_MPP,success
+"352_APP 2018 Aran Teeling.pdf",,,not_found
+"353_APP 2018 Jesse Beau Berman (1).pdf",,,not_found
+"354_APP 2018 Ben Yahnian (1).pdf","Ben Yahnian",BEFORE_MPP,success
+"355_APP 2018 Nardos Assefa.pdf","IMPROVING ADULT VOLUNTEERING RATES",ALL_CAPS,success
+"356_LouisianaMaternalIncarceration.pdf","PREVENTING INTERGENERATIONAL TRAUMA",ALL_CAPS,success
+"357_APP 2018 Makayla Palazzo.pdf",,,not_found
+"358_APP 2018 Daniel Niez.pdf","Prepared by Daniel Niez",WITH_MPP,success
+"359_APP 2018 Allison Turner (1).pdf",,,not_found
+"360_APP 2018 Casey Boyette.pdf","Casey Boyette",WITH_MPP,success
+"361_Carolyn Ours APP 2019.pdf","Options for a Sustainable Future",BEFORE_MPP,success
+"362_Jefferson Area CHIP.pdf",,,error
+"363_Stephanie Ibanez APP 2019.pdf",,,not_found
+"365_Monticello Area Community Action Agency.pdf",,,error
+"366_Stuart deButts APP 2019.pdf",,,not_found
+"367_Sexual Assault Resource Agency.pdf",,,error
+"369_Loaves & Fishes Food Pantry.pdf",,,not_found
+"370_Loaves & Fishes Food Pantry PDF.pdf",,,not_found
+"371_Ryan McDowell APP 2019.pdf",,,not_found
+"372_Grace Erard_APP.pdf",,,not_found
+"374_Virginia Joint Legislative Audit and Review Commission (JLARC).pdf",,,error
+"375_Ainsley Walker APP 2019.pdf","Prepared by: Ainsley Walker,",WITH_MPP,success
+"376_Ainsley Walker APP 2019 (1).pdf","Prepared by: Ainsley Walker,",WITH_MPP,success
+"377_Department of Medical Assistance Services.pdf",,,error
+"379_College Advising Corps.pdf",,,error
+"380_Kathryn Babbin APP 2019.pdf","COMMUNITY COLLEGE PROGRAMS",ALL_CAPS,success
+"381_Suguru Amano APP 2019.pdf",,,not_found
+"382_Conor Boyle APP 2019.pdf","Long-Term Care",BEFORE_INSTITUTION,success
+"383_Medicaid and CHIP Payment and Access Commission (MACPAC).pdf",,,not_found
+"384_James Leckie APP 2019.pdf",,,not_found
+"385_Virginia Rural Health Association.pdf",,,error
+"386_Jack DiMatteo APP 2019.pdf","Source: Mark Lennihan (AP)",BEFORE_INSTITUTION,success
+"387_Virginia Dept.pdf",,,error
+"388_APP 2019 Raleigh Sims.pdf",,,not_found
+"389_Raleigh Sims APP 2019.pdf",,,not_found
+"390_The National Center on Sexual Exploitation.pdf",,,error
+"391_Turner LaBrie APP 2019.pdf","TURNER LABRIE",ALL_CAPS,success
+"392_Ruhama Yared APP 2019.pdf","Prepared by Ruhama Yared",WITH_MPP,success
+"393_City of Norfolk.pdf",,,error
+"394_Norah McDonald APP 2019.pdf",,,not_found
+"395_Monika Merk APP 2019.pdf",,,not_found
+"396_Catherine Griesedieck APP 2019.pdf",,,not_found
+"397_Rita Cliffton APP 2019.pdf","Prepared by Rita Cliffton",WITH_MPP,success
+"398_Maia Rosewelsh APP 2019.pdf","Prepared by Maia Rosewelsh",WITH_MPP,success
+"399_Brian Kelley APP 2019.pdf","Brian J. Kelley",BEFORE_INSTITUTION,success
+"400_Jake Blank APP 2019.pdf",,,not_found
+"401_Maggie Cherry APP 2019.pdf","Maggie Cherry",WITH_MPP,success
+"402_Naomi Gaba APP 2019.pdf",,,not_found
+"403_Amanda Pickens APP 2019.pdf",,,not_found
+"404_Care Shoaibi APP 2019.pdf",,,not_found
+"405_Hannah Sullivan APP 2019.pdf",,,not_found
+"407_Lettie Bien APP 2019.pdf","BOARDS AND COMMISSIONS",ALL_CAPS,success
+"408_Kristine Viray APP 2019.pdf",,,not_found
+"409_Commitment Criteria Workgroup of SJ 47.pdf",,,error
+"410_Aerospace Corporation.pdf",,,not_found
+"411_Dillon Wild APP 2019.pdf","By: Dillon Wild",WITH_MPP,success
+"412_Voices for Virginia's Children.pdf",,,error
+"413_Stephanie Davis APP 2019.pdf",,,not_found
+"414_Joshua Margulies APP 2019.pdf","JOSHUA MARGULIES",ALL_CAPS,success
+"415_Chintan Environmental Research and Action Group.pdf",,,error
+"416_Janie Hammaker APP 2019.pdf",,,not_found
+"417_Brandon Goldstein APP 2019.pdf",,,not_found
+"418_Ryan LaRochelle APP 2019.pdf",,,not_found
+"419_Danielle Spach APP 2019.pdf","Danielle Spach",BEFORE_INSTITUTION,success
+"420_Rachel Astorquiza APP 2019.pdf",,,not_found
+"421_Bradley Katcher APP 2019.pdf",,,not_found
+"422_Virginia Department of Medical Assistance Services.pdf",,,not_found
+"423_Amy Dalrymple APP 2019.pdf","AMY DALRYMPLE",WITH_MPP,success
+"424_Alice Thomson APP 2019.pdf",,,not_found
+"425_Elizabeth Spach APP 2019.pdf","Prepared by Elizabeth Spach",WITH_MPP,success
+"426_Po Efekoro APP 2019.pdf","Prepared by Oghenakpobo Efekoro",WITH_MPP,success
+"427_Joe Boelsche APP 2019.pdf","Joe Boelsche",BEFORE_INSTITUTION,success
+"428_James Williams APP 2019.pdf","Drug Markets",BEFORE_INSTITUTION,success
+"429_Defense Health Agency.pdf",,,error
+"430_Cara Snead APP 2019.pdf",,,not_found
+"431_Alex Hassler APP 2019.pdf",,,not_found
+"432_Yue Li APP 2019.pdf","Prepared by Yue Li",WITH_MPP,success
+"433_Maeve Curtin APP 2019.pdf","Maeve Curtin",BEFORE_MPP,success
+"434_Brett Curtis APP 2019.pdf",,,not_found
+"435_Layla Bryant APP 2019.pdf","LAYLA A. BRYANT",ALL_CAPS,success
+"436_Longfei Xu APP 2019.pdf",,,not_found
+"437_Prince William County Police Deparment.pdf",,,error
+"438_Sisi Fan APP 2019.pdf","Client: PYXERA Global, China",BEFORE_INSTITUTION,success
+"439_Olivia Davis APP 2019.pdf","ADDRESSING POVERTY I N",ALL_CAPS,success
+"440_Kay Khosbayar APP 2019.pdf","KHONGORZUL KHOSBAYAR",WITH_MPP,success
+"441_Isabel Coughlin APP 2019.pdf",,,not_found
+"442_Aidan Brown APP 2019.pdf","Aidan Brown",BEFORE_INSTITUTION,success
+"443_Virginia Department of Education.pdf",,,not_found
+"444_Alexandre Fall APP 2019.pdf","Alexandre Fall",WITH_MPP,success
+"445_UNACOIS Jappo.pdf",,,error
+"446_Anna Higgins APP 2019.pdf","ANNA HIGGINS",WITH_MPP,success
+"447_APP Draft BK 19-05-15.pdf",,,not_found
+"448_Brian Kim APP 2019.pdf",,,error
+"449_Virginia Community College System.pdf",,,not_found
+"450_Reducing Unnecessary Separation of Children from Domestic Abuse Survivors.pdf",,,not_found
+"451_Addressing Flood and Drought Risks in Humanitarian Settings through Disaster Risk Management and Anticipatory Action.pdf",,,not_found
+"452_Improving Retention in Richmond Public Schools.pdf",,,not_found
+"453_Increasing Remote Patient Monitoring in the Veterans Health Administration.pdf","Presented by",BEFORE_INSTITUTION,success
+"454_Improving Henrico County's Mental Health Service Delivery.pdf",,,not_found
+"455_Accounting for Teachers’ Non-Academic Skill Contributions within Teacher Evaluation.pdf",,,not_found
+"456_Maryland’s Teacher Diversity Disparity- Examining Strategies to Improve Completion of Educator Preparation Programs.pdf",,,not_found
+"457_Why Is It So Hard to Run For Office in Virginia- - Administrative Burden and its Effects on Minority Candidates.pdf","PREPARED BY MAGIN MISAEL SANCHEZ,",WITH_MPP,success
+"458_Accessing EVs at the Margins- Increasing Electric Vehicle Adoption in Rural Virginia.pdf",,,not_found
+"459_Expanding Maternal Health Care Services Within the Federal Employees Health Benefits (FEHB) Program.pdf",,,not_found
+"460_A multi-sectional approach to reduce the many out of school children in Lagos state.pdf","FOR THE DESTINY TRUST",ALL_CAPS,success
+"461_Constructing Diverse and Inclusive Pre-K in Charlottesville through Montessori.pdf",,,not_found
+"462_-Driving- Electric Vehicle Adoption in Rhode Island.pdf",,,not_found
+"463_Breaking the Barrier- Empowering Women to Lead in Wyoming Politics.pdf","LEAD IN WYOMING POLITICS",ALL_CAPS,success
+"464_Knowing and Being Known- Increasing Visibility for LifeSpring, a Pregnancy Care Center in Central Virginia.pdf",,,not_found
+"465_Protecting Women's Intimate Data in a Post-Roe World.pdf","Shannon Foster",BEFORE_MPP,success
+"466_Invisible and Disproportionate Casualties.pdf","Invisible and Disproportionate Casualties",BEFORE_INSTITUTION,success
+"467_Virginia’s Youth Mental Health Crisis- School-based alternatives to improve identification of crisis-level mental health concerns.pdf",,,not_found
+"468_Increasing Private Residential Uptake of Solar Generation in New York City.pdf",,,not_found
+"469_Swimming Upstream- Furthering Collaborative Care in Blue Ridge Health District.pdf",,,not_found
+"470_Data Mining of Fertility Tracking apps.pdf","SENATOR GHAZALA HASHMI",ALL_CAPS,success
+"471_Increasing Kindergarten Readiness amongst Special Education Students in D.C. Public Preschools.pdf","Increasing Kindergarten Readiness amongst",BEFORE_INSTITUTION,success
+"472_Addressing the use of Payday Loans Among Habitat Families.pdf",,,not_found
+"473_Got College- An Analysis of Policy Options to preserve North Carolina’s Greatest Asset- The University of North Carolina System.pdf",,,not_found
+"474_The Future is Electric.pdf",,,not_found
+"475_Improving Domestic Resiliency to Disinformation Targeting the U.S. Justice System.pdf",,,not_found
+"476_Economic Development Strategies to Address the Gentrification of Bailey’s Crossroads.pdf",,,not_found
+"477_New Growth- Addressing Educational Barriers to Sustainable Agriculture Adoption in Virginia.pdf","NEW GROWTH",ALL_CAPS,success
+"478_Preparing Correctional Facilities for an Infectious Disease Outbreak.pdf","Mehrisa Shah",BEFORE_MPP,success
+"479_Improving Team One Love Clubs on College Campuses.pdf",,,not_found
+"480_Reducing the Effect of Turnover.pdf","REDUCING THE EFFECT OF TURNOVER",BEFORE_MPP,success
+"481_Evaluating the Regional Economic Impacts of Land Conversions to Solar Energy Production.pdf",,,not_found
+"482_Decarbonization of New York City Residential Buildings.pdf",,,not_found
+"483_Increasing Equitable Access to the Child Care Subsidy in Washington, DC.pdf",,,not_found
+"484_Preventing Right-Wing Extremist Use of Social Media.pdf","Shivapriya Viswanathan",BEFORE_MPP,success
+"485_Preventing Radicalization in the Al-Hol Camp.pdf",,,not_found
+"486_Standardization of Civil Commitment Processes Across the State of Oregon.pdf",,,not_found
+"487_Hearts, Minds, and kWh- Rooftop Solar as a Mechanism for Community Engagement in West Virginia.pdf","HEARTS, MINDS, & kWh",BEFORE_INSTITUTION,success
+"488_Critical Energy Infrastructure Cybersecurity.pdf",,,not_found
+"489_Improving Unaccompanied Refugee Minors Quality of Life in Virginia.pdf",,,not_found
+"490_Racial and Economic Integration of Alabama K-12 Public Schools.pdf",,,not_found
+"491_Electrifying Passenger Rail in Virginia.pdf","ELECTRIFYING PASSENGER RAIL IN",ALL_CAPS,success
+"492_Antiquated Authorizers- A Nationwide Analysis of Charter School Authorization Policies.pdf","AIDAN DOUD",ALL_CAPS,success
+"493_Informational Deficits- Women Farmers in India are Particularly Vulnerable to Climate Change.pdf",,,not_found
+"494_Improving Early Childhood Development in Rural Uganda.pdf",,,not_found
+"495_Increasing Community Engagement in Williamsburg Virginia.pdf",,,not_found
+"496_Addressing Substitute Teacher Shortages in Harrisonburg City Public Schools.pdf",,,not_found
+"497_Addressing the Rise of Forest Service Suppression Costs.pdf",,,not_found
+"498_Track to Development - Increasing the Research Capacity and Productivity of the Philippines.pdf","TRACK TO DEVELOPMENT",ALL_CAPS,success
+"499_Algorithmic Amplification- Reducing Radicalizing Online Content in Europe.pdf",,,not_found
+"500_ZONING DENSITY AND CLIMATE- ENERGY COSTS IN CHARLOTTESVILLE.pdf",,,not_found
+"501_The Future of Displaced Coal Miners in Southwest Virginia.pdf",,,not_found
+"502_Sub-Sahara African Climate-Based Migration Resilience.pdf",,,not_found
+"503_Community Space in Atlanta's District 2.pdf",,,not_found
+"504_Countering Disinformation in Fragile States.pdf","COUNTERING DISINFORMATION IN",ALL_CAPS,success
+"505_Considering Equity Within the Distribution of Innovative Approaches to Literacy Grant Funds.pdf",,,not_found
+"506_How to Stay- Addressing the Challenges of Humanitarian Remote Management in Myanmar through Localization.pdf","HOW TO STAY",ALL_CAPS,success
+"507_Migrant Crisis in the Darien Gap- Addressing the Demand for Humanitarian Aid.pdf",,,not_found
+"508_Defeating Domestic Violence- Protecting Virginia's Survivors.pdf","DEFEA ING DOMES IC",ALL_CAPS,success
+"509_Improving Youth Mental Health Using Social and Emotional Learning Tools.pdf",,,not_found
+"510_Increasing Black Homeownership in the City of Richmond.pdf",,,not_found
+"511_Network Adequacy in Mental Healthcare.pdf",,,not_found
+"512_Investigating Strategies for Greater Inclusion and Fairness.pdf",,,not_found
+"513_Beyond Food- Addressing Food Insecurity through Food Pantry Interventions.pdf",,,not_found
+"514_Evaluating Emergency Rental Assistance During Covid-19- A Strategy to Mitigate Eviction Outcomes in Future National Crisis.pdf",,,not_found
+"515_Opportunity to Increase Affordable Housing at 10th and Wertland Street.pdf",,,not_found
+"516_Hypersonic Strategies to Secure Rare Earth Magnet Supply Chains.pdf",,,not_found
+"517_Optimizing Energy Management- Strategies for Achieving 2030 Facility Sustainable Energy Goals.pdf",,,not_found
+"518_Reducing K-12 Anti-Asian Hate Incidents in California.pdf",,,not_found
+"519_Incentivizing Conservation Practices through Government Cost-Share Programs in Virginia.pdf","Megan Finney",BEFORE_MPP,success
+"520_Decreasing Evictions in Public Housing.pdf","Prepared by Maria Morrissey",WITH_MPP,success
+"521_The Road to Comprehensive Sex Education.pdf",,,not_found
+"522_The Fight for 5G- Competing with China for 5G Exports in the Middle East and North Africa.pdf","EAST AND NORTH AFRICA",ALL_CAPS,success
+"adamsandrew_1261467_14503320_Final Applied Po_Anna Thomas.pdf",,,not_found
+"Akpalu, Priscilla_Anna Thomas.pdf","Priscilla Akpalu",BEFORE_INSTITUTION,success
+"anstettemily_932730_14496738_AnstettTechnical_Anna Thomas.pdf",,,not_found
+"APP Final Novak 5.9.2025 (1)_Anna Thomas.pdf",,,not_found
+"ashleyadam_32760_14500035_ashley_techreport_Anna Thomas.pdf",,,not_found
+"avitabileandrew_14394_7757558_avitabile_APP_t_Emily Anstett.pdf",,,not_found
+"bakhithana_LATE_1260016_15163978_APP_Hana_Bak_Anna Thomas.pdf",,,not_found
+"barbourkatharine_11214_7742567_BarbourKathari_Emily Anstett.pdf",,,not_found
+"barnettsarah_1257831_14485188_Barnett Technic_Anna Thomas.pdf","Sarah Barnett,",WITH_MPP,success
+"beigermatt_11363_7776075_Matt Beiger- APP Tec_Emily Anstett.pdf","PREPARED BY Matt Beiger",BEFORE_MPP,success
+"berrymorgan_LATE_39576_15044848_APP Technical_Anna Thomas.pdf","ADDRESSING CHRONIC ABSENTEEISM AT",ALL_CAPS,success
+"bochessarah_11221_7765712_Technical Repot_Emily Anstett.pdf",,,not_found
+"bowerslogan_13500_7766396_APP Final Technical_Emily Anstett.pdf","LOGAN BOWERS",ALL_CAPS,success
+"brementskylar_30093_14504891_SBrement_Technic_Anna Thomas.pdf","SOLAR SOLUTIONS",ALL_CAPS,success
+"browncaroline_LATE_27423_15064847_Caroline Br_Anna Thomas.pdf",,,not_found
+"brownpatrick_12946_7782532_APP technical repo_Emily Anstett.pdf",,,not_found
+"brunnhannah_LATE_1258558_15130802_Brunn_Final_Anna Thomas.pdf",,,not_found
+"bunthoambunlayasuka_2719_7779104_APP Technica_Emily Anstett.pdf",,,not_found
+"cashmankelsey_31860_14499778_Cashman Technica_Anna Thomas.pdf",,,not_found
+"chenyuyan_1091605_15055752_the final draft_Anna Thomas.pdf",,,not_found
+"christjames_971827_14473676_Technical Report-_Anna Thomas.pdf",,,not_found
+"cohenmadison_9564_7757396_Madison_APP_Technic_Emily Anstett.pdf",,,not_found
+"cohenshane_1257393_14481847_Cohen_Thesis_Anna Thomas.pdf","Shane Cohen",PREPARED_BY,success
+"corvalanmariamj_LATE_1373_7782583_Technical R_Joshua McCray.pdf",,,not_found
+"craigdylan_LATE_1105169_15073418_Dylan_Craig__Anna Thomas.pdf","Prepared by Dylan Craig,",WITH_MPP,success
+"cramerwilliam_5605_7762775_APP Technical Repo_Joshua McCray.pdf",,,not_found
+"crenshawcarson_33603_14518186_Crenshaw Techni_Anna Thomas.pdf",,,not_found
+"crewssarah_1255535_14364131_Crews APP Technic_Anna Thomas.pdf",,,not_found
+"cummingsnick_8610_7775960_APP Technical Repor_Emily Anstett.pdf",,,not_found
+"dedmonsean_9630_7748387_APP_FINAL_DRAFT_Emily Anstett.pdf","SEAN DEDMON",ALL_CAPS,success
+"demarcohenry_1257808_14494867_DeMarco_Technic_Anna Thomas.pdf",,,not_found
+"dickinsonlindsay_9540_7781130_Lindsay Dickins_Joshua McCray.pdf",,,not_found
+"dlabachisabel_6427_7780162_Dlabach Technical_Joshua McCray.pdf","Isabel Dlabach",WITH_MPP,success
+"docalovichmatthew_LATE_34021_15066571_APP Tec_Anna Thomas.pdf","PREPARED BY: MATTHEW DOCALOVICH",WITH_MPP,success
+"dojcakrosemarie_LATE_40117_15133985_Final APP_Anna Thomas.pdf",,,not_found
+"emericmartinezchristine_9856_7771644_Heritage_Joshua McCray.pdf",,,not_found
+"Entsminger_APP_5_6_Anna Thomas.pdf",,,not_found
+"Feeney, Quinn_Morgan Berry.pdf",,,not_found
+"fosstorie_3090_7761141_TFoss_APPFinal_Joshua McCray.pdf",,,not_found
+"furachel_LATE_1153424_15134579_Rachel Fu tech_Anna Thomas.pdf",,,not_found
+"geithclaire_990427_14518072_Claire Geith APP_Anna Thomas.pdf",,,not_found
+"georgemarina_9084_7759511_APP Technical Repor_Joshua McCray.pdf",,,not_found
+"graymakala_257597_14503338_Technical Report_Carson Crenshaw.pdf",,,not_found
+"greubelpeter_1248016_14470464_Greubel_APP_Carson Crenshaw.pdf",,,not_found
+"hamwilliam_LATE_27661_15141999_Ham - APP Tech_Carson Crenshaw.pdf","PRESENTED BY William R. Ham",WITH_MPP,success
+"hasinahmadyaser_1257798_14518426_APP-Technica_Carson Crenshaw.pdf",,,not_found
+"havisonmikayla_49765_14472951_Havison__Techni_Carson Crenshaw.pdf","By Mikayla Havison",BEFORE_INSTITUTION,success
+"hayterjess_1104598_14514036_Design, Build, Tr_Carson Crenshaw.pdf",,,not_found
+"heetderksanna_LATE_4891_7793632_FINAL APP tec_Joshua McCray.pdf",,,not_found
+"hirtmarvin_1261473_14509969_APP_Final_Report__Carson Crenshaw.pdf","ENHANCING EMPLOYEE SATISFACTION",ALL_CAPS,success
+"huberjenna_1256761_14502377_Huber APP Technic_Carson Crenshaw.pdf","JENNA LEILANI CHONG HUBER",BEFORE_MPP,success
+"hundleyalicia_5880_7766768_APP Technical Repo_Joshua McCray.pdf",,,not_found
+"jonesburdickanastasia_1256759_14518623_APPFin_Carson Crenshaw.pdf",,,not_found
+"joycesheila_1256780_14447540_APP Technical Re_Carson Crenshaw.pdf",,,not_found
+"kimsarah_9481_7782513_technical_report_draft1_Joshua McCray.pdf","Table of Contents",PREPARED_BY,success
+"kimvictoria_3154_7768050_APP_Joshua McCray.pdf","VICTORIA KIM",ALL_CAPS,success
+"kinghannah_1256765_14493587_APP King Technica_Carson Crenshaw.pdf",,,not_found
+"laffertydavid_1257829_14518526_David Lafferty_Carson Crenshaw.pdf","Sun-Powered Progress",BEFORE_INSTITUTION,success
+"landerganallison_82298_14501952_Landergan-Tec_Carson Crenshaw.pdf",,,not_found
+"leechchrissy_33473_14495217_Leech- Technical_Carson Crenshaw.pdf",,,not_found
+"linkelizabeth_3956_7753434_Link_TechnicalRepo_Joshua McCray.pdf",,,not_found
+"lozanokrameralejandro_1108861_14506976_Alejan_Carson Crenshaw.pdf","Alejandro Lozano-Kramer",PREPARED_BY,success
+"madormaanthony_38463_14518391_Madorma_Final D_Carson Crenshaw.pdf",,,not_found
+"makingrace_27961_14518099_Makin_Technical_Rep_Carson Crenshaw.pdf","Prepared by Grace Makin",WITH_MPP,success
+"marshjulianna_14733_7782566_Final-Text_Joshua McCray.pdf",,,not_found
+"massingillmike_47859_14440616_Technical Repor_Carson Crenshaw.pdf",,,not_found
+"matthewskaitlyn_34074_14505370_APP Technical_Carson Crenshaw.pdf",,,not_found
+"mileselizabeth_1257099_14474399_APP Technical_Carson Crenshaw.pdf",,,not_found
+"mohammedsannimariama_1196450_14510100_APP_TEC_Carson Crenshaw.pdf",,,not_found
+"moorejacob_28094_15048411_APP Technical Repor_Carson Crenshaw.pdf",,,not_found
+"nguyenalvin_47616_14513493_Nguyen_Technical-R_Carson Crenshaw.pdf","Content",PREPARED_BY,success
+"nguyenalvin_47616_14513534_Nguyen_Technical-R_Morgan Berry.pdf",,,not_found
+"odonnellconor_14069_7782507_O'Donnell - APP T_Emily Anstett.pdf",,,not_found
+"olivarescarlos_LATE_26882_15053830_Olivares-A_Morgan Berry.pdf",,,not_found
+"ottojenny_1256763_14518098_OTTO_APP_Technical_Morgan Berry.pdf",,,not_found
+"padilladianna_1261262_14505549_APP Final Dian_Morgan Berry.pdf","Dianna E. Padilla",WITH_MPP,success
+"pepperkalista_384924_14494025_Technical Repor_Morgan Berry.pdf",,,not_found
+"phanjordan_46941_14475656_Phan_APP_Final-1_Morgan Berry.pdf","Jordan Phan",WITH_MPP,success
+"phanjordan_46941_14475656_Phan_APP_Final-1_Susana Columbie Pere.pdf","Jordan Phan",WITH_MPP,success
+"pomeranzandrew_950369_14492288_APP Technical_Morgan Berry.pdf",,,not_found
+"popeallison_1256767_14517791_Technical Report_Morgan Berry.pdf","Allison Pope",WITH_MPP,success
+"powelleileen_LATE_3770_7823702_Final Technica_Joshua McCray.pdf",,,not_found
+"Prober, Eliana_Morgan Berry.pdf",,,not_found
+"Quigley, Collin_Morgan Berry.pdf",,,not_found
+"rampollastephen_11676_7771973_APP Technical R_Joshua McCray.pdf",,,not_found
+"Randolph, Meredith_Morgan Berry.pdf",,,not_found
+"rehmanmaria_1257827_14518271_Maria's Technica_Morgan Berry.pdf",,,not_found
+"Reynolds, Donna_Morgan Berry.pdf",,,not_found
+"Roche, Sam_Morgan Berry.pdf","Sam Roche,",WITH_MPP,success
+"rodriguezashley_1257824_14515923_Technical Re_Morgan Berry.pdf",,,not_found
+"rowsonwill_288903_14514303_Rowson_Technical R_Morgan Berry.pdf",,,not_found
+"rungtadhruv_LATE_7429_7823900_Technical Repor_Joshua McCray.pdf",,,not_found
+"russellpeyton_37549_14463455_Assignment 5 - T_Morgan Berry.pdf","PEYTON RUSSELL",ALL_CAPS,success
+"russellpeyton_37549_14463455_Assignment 5 - T_Susana Columbie Pere.pdf","PEYTON RUSSELL",ALL_CAPS,success
+"ruszkowskinicholas_3172_7773196_Mitigating Da_Joshua McCray.pdf",,,not_found
+"ruzickazane_LATE_104681_14650148_ZR_Technical_Morgan Berry.pdf",,,not_found
+"samadanikayvon_LATE_13853_7796566_Samadani_Ka_Joshua McCray.pdf","TREADING MURKY WATERS",ALL_CAPS,success
+"sanchezcrowecatherine_34044_14486278_APP Tech_Morgan Berry.pdf",,,not_found
+"Savage, Kaitlyn_Morgan Berry.pdf",,,not_found
+"schardeinky_LATE_8267_7795299_Schardein_Techn_Joshua McCray.pdf","Forging Digital Resiliency",BEFORE_INSTITUTION,success
+"Sebastian, Singh_Morgan Berry.pdf","NAVIGATING THE TIDE",ALL_CAPS,success
+"seskertyler_9892_7773975_APP Full Draft-1_Joshua McCray.pdf",,,not_found
+"sewellcharles_33831_14509949_Final Report_Morgan Berry.pdf",,,not_found
+"sewellcharles_33831_14509949_Final Report_Susana Columbie Pere.pdf",,,not_found
+"spakessarah_1257100_14475807_Spakes_Technical_Morgan Berry.pdf",,,not_found
+"spakessarah_1257100_14475807_Spakes_Technical_Susana Columbie Pere.pdf",,,not_found
+"sparlingmargaret_1335_7728394_5 Technical Rep_Joshua McCray.pdf",,,not_found
+"stevensonjosh_LATE_1260021_15130776_technical_Morgan Berry.pdf",,,not_found
+"Strand, Ryan_Morgan Berry.pdf",,,not_found
+"Studenic, Ethan_Morgan Berry.pdf","Ethan Studenic",BEFORE_MPP,success
+"thomasanna_LATE_1256819_15089654_Technical_Re_Morgan Berry.pdf",,,not_found
+"townesamber_9043_7774390_Amber A Townes techn_Joshua McCray.pdf","TABLE OF CONTENTS",ALL_CAPS,success
+"tranjenny_2848_7757014_Tran-Jenny-TechnicalRe_Emily Anstett.pdf","Jenny Ha Tran",WITH_MPP,success
+"vansantjohn_10814_14504380_Vansant, APP II As_Morgan Berry.pdf",,,not_found
+"Vargas, Gabriella_Morgan Berry.pdf","ALBEMARLE COUNTY",ALL_CAPS,success
+"vedbeejal_10085_7776730_Beejal Ved APP Techni_Joshua McCray.pdf","JAIL DIVERSION IN OREGON",ALL_CAPS,success
+"Wagner, Amelia_Morgan Berry.pdf",,,not_found
+"washingtonandrew_1650_7756656_Drew Washington_Joshua McCray.pdf",,,not_found
+"witherspoondorothy_34073_14512728_Witherspoon_Morgan Berry.pdf","Prepared by Dorothy Witherspoon",WITH_MPP,success
+"Wuco, Isabella_Morgan Berry.pdf",,,not_found
+"xueziwei_12495_7762467_Ziwei Victor Xue_APP r_Joshua McCray.pdf","ZIWEI VICTOR XUE",BEFORE_MPP,success
+"yeagerlexy_LATE_39903_14978663_yeager_technic_Morgan Berry.pdf","Lexy Yeager",WITH_MPP,success

@@ -1,0 +1,3852 @@
+{
+  "metadata": {
+    "total_files": 637,
+    "extracted": 252,
+    "not_found": 367,
+    "errors": 18,
+    "extraction_date": "2025-11-06T22:11:45.426Z",
+    "success_rate": "40%"
+  },
+  "authors": [
+    {
+      "filename": "001_Ramya Ravichandran APP 2019.pdf",
+      "author": "RAMYA RAVICHANDRAN",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "002_Maria Loverde APP 2019.pdf",
+      "author": "Maria Loverde",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "003_Molly Martin APP 2019.pdf",
+      "author": "MOLLY MARTIN",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "004_Charlottesville Climate Collaborative.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/004_Charlottesville Climate Collaborative.pdf\" - 2>&1"
+    },
+    {
+      "filename": "005_Walter Herring Jr.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "006_Samuel Morales APP 2019.pdf",
+      "author": "Prepared by Sam Morales",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "007_Cory Harris APP 2019.pdf",
+      "author": "By: Cory Harris",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "008_Lauren Schnepper APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "009_APP 2020.pdf",
+      "author": "J. Thomas Roberts",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "010_APP 2020 (1).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "011_APP 2020 (2).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "012_APP 2020 (3).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "013_APP 2020 (4).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "014_APP 2020 (5).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "015_APP 2020 (6).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "016_APP 2020 (7).pdf",
+      "author": "Emma R. Finkelstein",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "017_APP 2020 (8).pdf",
+      "author": "CHRISTIAN TJOA",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "018_APP 2020 (9).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "019_APP 2020 (11).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "020_APP 2020 (10).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "021_APP 2020 (12).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "022_APP 2020 (13).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "023_APP 2020 (14).pdf",
+      "author": "Maureen Coffey",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "024_APP 2020 (15).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "025_APP 2020 (16).pdf",
+      "author": "SEARA MAINOR",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "026_APP 2020 (17).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "027_APP 2020 (18).pdf",
+      "author": "Nicholas J Newton",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "028_APP 2020 (19).pdf",
+      "author": "Sean Bielawski",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "029_APP 2020 (20).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "030_APP 2020 (21).pdf",
+      "author": "VIOLENCE AT THE BORDER",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "031_APP 2020 (22).pdf",
+      "author": "VIOLENCE AT THE BORDER",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "032_APP 2020 (23).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "033_APP 2020 (24).pdf",
+      "author": "Zack Kathol",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "034_APP 2020 (25).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "035_APP 2020 (26).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "036_APP 2020 (27).pdf",
+      "author": "Mazzen S. Shalaby",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "037_APP 2020 (28).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "038_APP 2020 (29).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "039_APP 2020 (30).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "040_APP 2020 (31).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "041_APP 2020 (32).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "042_APP 2020 (33).pdf",
+      "author": "ALLIE STREHLE",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "043_APP 2020 (34).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "044_APP 2020 (35).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "045_APP 2020 (36).pdf",
+      "author": "BUILDING BETTER BAG BEHAVIORS",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "046_APP 2020 (37).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "047_APP 2020 (38).pdf",
+      "author": "KYLE STILTNER",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "048_APP 2020 (39).pdf",
+      "author": "Bridget Elise Rizzo",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "049_APP 2020 (40).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "050_APP 2020 (41).pdf",
+      "author": "Amanda Rosensky",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "051_APP 2020 (42).pdf",
+      "author": "Audrey McClurg",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "052_APP 2020 (43).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "053_APP 2020 (44).pdf",
+      "author": "LINCOLN AMBROSE",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "054_APP 2020 (45).pdf",
+      "author": "Morgan Smith",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "055_APP 2020 (46).pdf",
+      "author": "Escaping the Central Bind",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "056_APP 2020 (47).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "057_APP 2020 (48).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "058_APP 2020 (49).pdf",
+      "author": "HENRICO COUNTY",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "059_APP 2020 (50).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "060_APP 2020 (51).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "061_APP 2020 (52).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "062_APP 2020 (54).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "063_APP 2020 (53).pdf",
+      "author": "Low-Income Renters",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "064_APP 2020 (55).pdf",
+      "author": "RISING PRESCRIPTION DRUG EXPENDITURES",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "065_APP 2020 (56).pdf",
+      "author": "Bethany Baron",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "066_APP 2020 (57).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "067_APP 2020 (58).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "068_APP 2020 (59).pdf",
+      "author": "BENJAMIN DOOLEY",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "069_APP 2020 (60).pdf",
+      "author": "NORA SURBEY",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "070_APP 2020 (61).pdf",
+      "author": "Charlottesville's Affordable Housing Crisis",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "071_APP 2020 (62).pdf",
+      "author": "Rachel Walet,",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "072_APP 2020 (63).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "073_APP 2020 (64).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "074_APP 2020 (65).pdf",
+      "author": "Katarina Naworol",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "075_APP 2020 (66).pdf",
+      "author": "MEGAN RIVERA",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "076_APP 2021.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "077_APP 2021 (1).pdf",
+      "author": "ADDRESSING RADIO FREQUENCY INTERFERENCE",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "078_APP 2021 (2).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "079_APP 2021 (3).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "080_APP 2021 (4).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "081_APP 2021 (5).pdf",
+      "author": "Cameron Anderson,",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "082_APP 2021 (6).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "083_APP 2021 (7).pdf",
+      "author": "Trevor A. Doiron",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "084_APP 2021 (9).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "085_APP 2021 (8).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "086_APP 2021 (10).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "087_APP 2021 (11).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "088_APP 2021 (12).pdf",
+      "author": "CITY AND CONTROL SOLUTIONS",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "089_APP 2021 (13).pdf",
+      "author": "CITY AND CONTROL SOLUTIONS",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "090_APP 2021 (14).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "091_APP 2021 (15).pdf",
+      "author": "PREPARED BY: Allisa Coles",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "092_APP 2021 (16).pdf",
+      "author": "AUSTIN KATSTRA",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "093_APP 2021 (17).pdf",
+      "author": "Alexandria Pinckney",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "094_APP 2021 (18).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "095_APP 2021 (19).pdf",
+      "author": "VALERY SCHNEIDER",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "096_APP 2021 (20).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "097_APP 2021 (21).pdf",
+      "author": "David Erzen",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "098_APP 2021 (22).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "099_APP 2021 (23).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "100_APP 2021 (24).pdf",
+      "author": "PRESENTED TO",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "101_APP 2021 (25).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "102_APP 2021 (26).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "103_APP 2021 (27).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "104_APP 2021 (28).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "105_APP 2021 (29).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "106_APP 2021 (30).pdf",
+      "author": "Margaret Stanley",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "107_APP 2021 (31).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "108_APP 2021 (32).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "109_APP 2021 (33).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "110_APP 2021 (34).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "111_APP 2021 (35).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "112_APP 2021 (36).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "113_APP 2021 (37).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "114_APP 2021 (38).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "115_APP 2021 (39).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "116_APP 2021 (41).pdf",
+      "author": "Logan Botts",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "117_APP 2021 (40).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "118_APP 2021 (42).pdf",
+      "author": "Marisa Lemma",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "119_APP 2021 (45).pdf",
+      "author": "Allison Brown",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "120_APP 2021 (43).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "121_APP 2021 (44).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "122_APP 2021 (47).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "123_APP 2021 (50).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "124_APP 2021 (51).pdf",
+      "author": "Nithin Seelan",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "125_APP 2021 (46).pdf",
+      "author": "PRESENTED TO",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "126_APP 2021 (52).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "127_APP 2021 (53).pdf",
+      "author": "Julian Brock,",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "128_APP 2021 (49).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "129_APP 2021 (48).pdf",
+      "author": "FARMER TO FARMER",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "130_APP 2021 (54).pdf",
+      "author": "Caleb G. Tisdale",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "131_APP 2021 (55).pdf",
+      "author": "EMMA KARNES",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "132_APP 2021 (56).pdf",
+      "author": "PREPARED BY",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "133_APP 2021 (57).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "134_APP 2021 (58).pdf",
+      "author": "A HOME FOR ALL",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "135_APP 2021 (59).pdf",
+      "author": "County, Texas",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "136_APP 2021 (60).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "138_APP 2021 (61).pdf",
+      "author": "Hannah Kay Byrum",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "139_APP 2021 (62).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "140_APP 2021 (63).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "141_APP 2021 (64).pdf",
+      "author": "ADDRESSING COLLEGE ATHLETIC RECRUITING",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "142_APP 2021 (65).pdf",
+      "author": "Elizabeth Padhi",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "143_APP 2021 (66).pdf",
+      "author": "Diana Gaiter",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "144_APP 2021 (67).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "145_APP 2021 (68).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "146_APP 2021 (69).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "147_APP 2021 (70).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "148_APP 2021 (71).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "149_APP 2021 (72).pdf",
+      "author": "Prepared By: Erin Melly",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "150_APP 2021 (73).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "151_APP 2021 (74).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "152_APP 2021 (75).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "153_APP 2021 (76).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "154_APP 2021 (77).pdf",
+      "author": "From Islands of Excellence to Universal Literacy",
+      "pattern": "PREPARED_BY",
+      "status": "success"
+    },
+    {
+      "filename": "155_APP 2021 (78).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "156_APP 2021 (79).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "157_APP 2021 (80).pdf",
+      "author": "Ethan Betterton",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "158_APP 2021 (81).pdf",
+      "author": "Aubrey Hobby",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "159_APP 2021 (82).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "160_APP 2021 (83).pdf",
+      "author": "Claire Alysse Berg",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "161_APP 2021 (84).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "162_APP 2021 (85).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "163_APP 2021 (86).pdf",
+      "author": "Caleb G. Tisdale",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "164_APP 2021 (87).pdf",
+      "author": "Dual Eligible Hospitalizations",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "165_APP 2021 (88).pdf",
+      "author": "Cultivating Resilience",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "166_APP 2021 (89).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "167_APP 2021 (90).pdf",
+      "author": "By Tihana Stojsavljevic",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "168_APP 2021 (91).pdf",
+      "author": "U.S. priorities in space",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "169_APP 2021 (92).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "170_APP 2021 (93).pdf",
+      "author": "Wade Griggs",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "171_APP 2021 (94).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "172_APP 2021 (95).pdf",
+      "author": "Deebii Duguma",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "173_APP 2021 (96).pdf",
+      "author": "POVERTY IN RICHMOND",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "174_APP 2021 (97).pdf",
+      "author": "Prepared by: Hannah Griffin",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "175_APP 2021 (98).pdf",
+      "author": "AIRCRAFT MAINTENANCE",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "176_APP 2021 (99).pdf",
+      "author": "SARAH R. SIMBA",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "177_APP 2020 (67).pdf",
+      "author": "Teka Lenahan,",
+      "pattern": "PREPARED_BY",
+      "status": "success"
+    },
+    {
+      "filename": "178_APP 2020 (71).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "179_APP 2020 (69).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "180_APP 2020 (70).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "181_APP 2020 (68).pdf",
+      "author": "Prepared by Monica Marciano",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "182_APP 2020 (72).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "183_APP 2020 (74).pdf",
+      "author": "Michael Salgueiro",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "184_APP 2020 (75).pdf",
+      "author": "Neela Saha",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "185_APP 2020 (73).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "186_APP 2020 (76).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "187_APP 2020 (77).pdf",
+      "author": "JACK C. LARKIN",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "188_APP 2020 (78).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "189_APP 2020 (79).pdf",
+      "author": "THE CANNABIS EQUITY",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "190_APP 2020 (80).pdf",
+      "author": "NORA SURBEY",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "191_APP 2020 (81).pdf",
+      "author": "EDWINA JOSEPH",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "192_APP 2020 (82).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "193_APP 2020 (83).pdf",
+      "author": "By Maggie Servais",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "194_APP 2020 (84).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "195_APP 2020 (85).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "196_APP 2020 (86).pdf",
+      "author": "Habert 1",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "197_APP 2020 (87).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "198_Nicholas Matthews APP 2019.pdf",
+      "author": "Nicholas Richardson Matthews",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "199_Taylor Boomer APP 2019.pdf",
+      "author": "Digital Credit in Kenya",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "200_Ellie Beahm APP 2019.pdf",
+      "author": "Ellen Beahm",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "201_David Bartha - APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "202_Kate Landers APP 2019.pdf",
+      "author": "Katharine Landers",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "203_Luke Tassopoulos APP 2019.pdf",
+      "author": "Luke Tassopoulos",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "204_vn6vf APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "205_rkd3mc APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "206_kvp3n APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "207_wes4du APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "208_trr2vy APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "209_brc4cb APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "210_sah4vy APP 2020.pdf",
+      "author": "FROM ABUSE TO",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "211_wlw5bc APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "212_lg2bs APP 2020.pdf",
+      "author": "LeAnn Golding",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "213_acp3bk APP 2020.pdf",
+      "author": "Athena Post",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "214_rh6vf APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "215_cnh5vf APP 2020.pdf",
+      "author": "CAMERON HADDAD",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "216_Hattar_Final APP.pdf",
+      "author": "ELECTRIC POWER SECTOR",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "217_tec5ae APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "218_sm8fq APP 2020.pdf",
+      "author": "SOCIOECONOMIC DIVERSITY",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "219_sz7up APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "220_ah2fq APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "221_xl5wv APP 2020.pdf",
+      "author": "Fintech as a Potential Solution",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "222_hcp9ur APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "223_mal2aq APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "224_ljk9s APP 2020.pdf",
+      "author": "NEW SUPPORT FOR REFUGEE",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "225_ir7at APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "226_dcd4ab APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "227_Boguslav_APP_revised.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "228_mr5gn APP 2020.pdf",
+      "author": "MADELINE ROTH",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "229_ab7tk APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "230_mmj2jm APP 2020.pdf",
+      "author": "Michael Jarosz",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "231_Paige Karp APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "232_rt2rb APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "233_SenecaT_revisedFinalAPP_May1.pdf",
+      "author": "Reducing Substance Abuse Relapse",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "234_Molly_APP_May1.pdf",
+      "author": "INCREASING SAFE HOUSE UPTAKE",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "235_jmp3yh APP 2020.pdf",
+      "author": "FOOD FINANCING IN",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "236_mml3hb APP 2020.pdf",
+      "author": "Maggie Linden",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "237_pg2ad_APP_final_edit.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "238_tjc2cr APP 2020.pdf",
+      "author": "Boston's Big Break",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "239_mew8we APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "240_hkg2vn APP 2020.pdf",
+      "author": "Hannah Gavin",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "241_20200501_JamesReed-APP.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "242_cjc2yk APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "243_zjd8df APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "244_mc4cc APP 2020.pdf",
+      "author": "NG SEA LEVEL RISE",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "245_bc9cd APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "246_Final APP - Askari (1).pdf",
+      "author": "Written for Jusoor",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "247_maw9ee APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "248_cmf5bh APP 2020.pdf",
+      "author": "CATHERINE FARNSLER",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "249_knj6df APP 2020.pdf",
+      "author": "Options for Internal Change Towards Equity",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "250_mmb4ef APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "251_ger3aj APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "252_ms8xp APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "253_ls8ay APP 2020.pdf",
+      "author": "Renewable Natural Gas",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "254_srl7ea APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "255_pck4ac APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "256_aeh4pc APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "257_jec2ec APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "258_Lester Coleman APP (2).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "259_jrc3cf APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "260_alc4yt APP 2020.pdf",
+      "author": "SETTING UP SUCCESS",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "261_sat9ck APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "262_rmc4cs APP 2020.pdf",
+      "author": "RUTH CHECKNOFF",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "263_jrb6xb APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "264_arb5mr APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "265_awb7v APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "266_dpk5nw APP 2020.pdf",
+      "author": "David King",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "267_co4qz APP 2020.pdf",
+      "author": "CARRIE O'FORAN",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "268_mer3xc APP 2020.pdf",
+      "author": "Madison Roberts",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "269_cb5xy APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "270_nm6jz APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "271_jh4un APP 2020.pdf",
+      "author": "Jordan Hollinger",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "272_ah4kn APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "273_Cjg8pa APP 2020.pdf",
+      "author": "Combating Wealth Inequality Through",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "274_Ben Stolz APP 2020 FINAL.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "275_bn7ue APP 2020.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "276_ldg5nv APP 2020.pdf",
+      "author": "By Laura Daniela Gonzalez",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "277_APP 2020 (88).pdf",
+      "author": "Jordan Sicklick",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "278_APP 2018 Garland Mooney (1).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "279_APP 2018 Travis Grubbs (1).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "280_APP 2018 Joshua Sagartz.pdf",
+      "author": "For: Ismael C.I. Yacoubou Djima",
+      "pattern": "PREPARED_BY",
+      "status": "success"
+    },
+    {
+      "filename": "281_APP 2018 Eric Prince.pdf",
+      "author": "Eric Prince,",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "282_Kesick_APP_Final.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "283_APP 2018 Anna Troutman.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "284_APP 2018 Stephen Thomson (1).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "285_APP 2018 Dana Kiernan (1).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "286_APP 2018 Ross Johndrow.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "287_APP 2018 Henry Pollock (1).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "288_APP 2018 Georgia Ratcliff.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "289_APP 2018 Jacob Cash.pdf",
+      "author": "JACOB CASH",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "290_APP 2018 Parks H Daniel.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "291_APP 2018 Emily Ewing.pdf",
+      "author": "Emily Ewing",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "292_APP 2018 James Joo.pdf",
+      "author": "James Hyung Jin Joo",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "293_APP 2018 Margaret Anderson.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "294_APP 2018 Theodore En-Dao Fergusson.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "296_APP 2018 Alexander Knutson.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "297_APP 2018 Avery Moyler.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "298_APP 2018 West Connors.pdf",
+      "author": "Prepared by West Connors",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "299_APP 2018 West Connors (1).pdf",
+      "author": "Prepared by West Connors",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "300_APP 2018 Leah Day.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "301_APP 2018 Leah Day (1).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "302_APP 2018 Kristin Fioretti.pdf",
+      "author": "Kristin M. Fioretti",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "303_APP 2018 Kristin Fioretti (1).pdf",
+      "author": "Kristin M. Fioretti",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "304_APP 2018 Vijay Menon.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "305_APP 2018 Vijay Menon (1).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "306_APP 2018 Lydia Chu (1).pdf",
+      "author": "Charlottesville, VA",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "307_APP 2018 Lydia Chu (1) (1).pdf",
+      "author": "Charlottesville, VA",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "308_APP 2018 Ali C.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "309_APP 2018 Ali C (1).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "310_APP 2018 Lena Lewis (1).pdf",
+      "author": "Lena Lewis",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "311_APP 2018 Lena Lewis (1) (1).pdf",
+      "author": "Lena Lewis",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "312_APP 2018 Phillip Louis Menard (1).pdf",
+      "author": "Phillip L. Menard",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "313_APP 2018 Phillip Louis Menard (1) (1).pdf",
+      "author": "Phillip L. Menard",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "314_APP 2018 Maggie Gratz.pdf",
+      "author": "A TRANSFORMATIONAL LEGISLATIVE WORKPLACE",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "315_APP 2018 Maggie Gratz (1).pdf",
+      "author": "A TRANSFORMATIONAL LEGISLATIVE WORKPLACE",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "316_APP 2018 Madison Kaye Lahey.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "317_APP 2018 Madison Kaye Lahey (1).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "318_APP 2018 Katherine Brandon.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "319_APP 2018 Katherine Brandon (1).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "320_APP 2018 Anthony Dunavant.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "321_APP 2018 Anthony Dunavant (1).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "322_APP 2018 Lianne T.pdf",
+      "author": "Lianne T. Provenzano",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "323_APP 2018 Lianne T (1).pdf",
+      "author": "Lianne T. Provenzano",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "324_APP 2018 Kylie Anglin.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "325_APP 2018 Allison Brooks Owens.pdf",
+      "author": "PREPARED BY: ALLISON OWENS,",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "326_APP 2018 Kaitlyn Kozlowski.pdf",
+      "author": "Prepared by Kaitlyn M Kozlowski",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "327_APP 2018 Matthew Tryst Hensell.pdf",
+      "author": "Prepared by Matthew Hensell",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "328_APP 2018 Emily Wiseman (1).pdf",
+      "author": "Emily Wiseman",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "329_Wiseman_APP_Final_5.14.pdf",
+      "author": "Emily Wiseman",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "330_APP 2018 Kelsey J Hunt.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "331_APP 2018 Dylan Kolb.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "332_APP 2018 Kyaw Moe Khine.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "333_APP 2018 Althea Pickering.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "334_APP 2018 Charlotte Marie Carr.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "335_APP 2018 Thanh-Truc Vo (1).pdf",
+      "author": "Truc Vo",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "336_APP 2018 Spencer Seongjun Park.pdf",
+      "author": "Prepared by Spencer Seongjun Park",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "337_APP 2018 Ransom Holliday.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "338_APP 2018 Shu Dai.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "339_APP 2018 Olivia Roat.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "340_APP 2018 Evelyn Immonen.pdf",
+      "author": "Evelyn Immonen",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "341_APP 2018 Justin Brian Doromal.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "342_APP 2018 Ramsay Stewart.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "343_APP 2018 Sierra Leickert (1).pdf",
+      "author": "Prepared by Sierra Leickert",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "344_APP 2018 Sofia Victoria McKewen Moreno.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "345_APP 2018 Tianwei Qu.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "346_APP 2018 Adam Prevost.pdf",
+      "author": "ADAM PREVOST",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "347_APP 2018 Grant J Schwab.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "348_APP 2018 Isabela Medina-Mate.pdf",
+      "author": "Prepared by Isabela Medina-Mat�",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "349_APP 2018 Mary Greeson.pdf",
+      "author": "Mary Greeson",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "350_APP 2018 Carly Gorelick.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "351_APP 2018 Clara Gainey.pdf",
+      "author": "Prepared by Clara E. Gainey",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "352_APP 2018 Aran Teeling.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "353_APP 2018 Jesse Beau Berman (1).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "354_APP 2018 Ben Yahnian (1).pdf",
+      "author": "Ben Yahnian",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "355_APP 2018 Nardos Assefa.pdf",
+      "author": "IMPROVING ADULT VOLUNTEERING RATES",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "356_LouisianaMaternalIncarceration.pdf",
+      "author": "PREVENTING INTERGENERATIONAL TRAUMA",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "357_APP 2018 Makayla Palazzo.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "358_APP 2018 Daniel Niez.pdf",
+      "author": "Prepared by Daniel Niez",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "359_APP 2018 Allison Turner (1).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "360_APP 2018 Casey Boyette.pdf",
+      "author": "Casey Boyette",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "361_Carolyn Ours APP 2019.pdf",
+      "author": "Options for a Sustainable Future",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "362_Jefferson Area CHIP.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/362_Jefferson Area CHIP.pdf\" - 2>&1"
+    },
+    {
+      "filename": "363_Stephanie Ibanez APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "365_Monticello Area Community Action Agency.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/365_Monticello Area Community Action Agency.pdf\" - 2>&1"
+    },
+    {
+      "filename": "366_Stuart deButts APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "367_Sexual Assault Resource Agency.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/367_Sexual Assault Resource Agency.pdf\" - 2>&1"
+    },
+    {
+      "filename": "369_Loaves & Fishes Food Pantry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "370_Loaves & Fishes Food Pantry PDF.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "371_Ryan McDowell APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "372_Grace Erard_APP.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "374_Virginia Joint Legislative Audit and Review Commission (JLARC).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/374_Virginia Joint Legislative Audit and Review Commission (JLARC).pdf\" - 2>&1"
+    },
+    {
+      "filename": "375_Ainsley Walker APP 2019.pdf",
+      "author": "Prepared by: Ainsley Walker,",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "376_Ainsley Walker APP 2019 (1).pdf",
+      "author": "Prepared by: Ainsley Walker,",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "377_Department of Medical Assistance Services.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/377_Department of Medical Assistance Services.pdf\" - 2>&1"
+    },
+    {
+      "filename": "379_College Advising Corps.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/379_College Advising Corps.pdf\" - 2>&1"
+    },
+    {
+      "filename": "380_Kathryn Babbin APP 2019.pdf",
+      "author": "COMMUNITY COLLEGE PROGRAMS",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "381_Suguru Amano APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "382_Conor Boyle APP 2019.pdf",
+      "author": "Long-Term Care",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "383_Medicaid and CHIP Payment and Access Commission (MACPAC).pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "384_James Leckie APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "385_Virginia Rural Health Association.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/385_Virginia Rural Health Association.pdf\" - 2>&1"
+    },
+    {
+      "filename": "386_Jack DiMatteo APP 2019.pdf",
+      "author": "Source: Mark Lennihan (AP)",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "387_Virginia Dept.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/387_Virginia Dept.pdf\" - 2>&1"
+    },
+    {
+      "filename": "388_APP 2019 Raleigh Sims.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "389_Raleigh Sims APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "390_The National Center on Sexual Exploitation.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/390_The National Center on Sexual Exploitation.pdf\" - 2>&1"
+    },
+    {
+      "filename": "391_Turner LaBrie APP 2019.pdf",
+      "author": "TURNER LABRIE",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "392_Ruhama Yared APP 2019.pdf",
+      "author": "Prepared by Ruhama Yared",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "393_City of Norfolk.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/393_City of Norfolk.pdf\" - 2>&1"
+    },
+    {
+      "filename": "394_Norah McDonald APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "395_Monika Merk APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "396_Catherine Griesedieck APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "397_Rita Cliffton APP 2019.pdf",
+      "author": "Prepared by Rita Cliffton",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "398_Maia Rosewelsh APP 2019.pdf",
+      "author": "Prepared by Maia Rosewelsh",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "399_Brian Kelley APP 2019.pdf",
+      "author": "Brian J. Kelley",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "400_Jake Blank APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "401_Maggie Cherry APP 2019.pdf",
+      "author": "Maggie Cherry",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "402_Naomi Gaba APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "403_Amanda Pickens APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "404_Care Shoaibi APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "405_Hannah Sullivan APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "407_Lettie Bien APP 2019.pdf",
+      "author": "BOARDS AND COMMISSIONS",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "408_Kristine Viray APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "409_Commitment Criteria Workgroup of SJ 47.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/409_Commitment Criteria Workgroup of SJ 47.pdf\" - 2>&1"
+    },
+    {
+      "filename": "410_Aerospace Corporation.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "411_Dillon Wild APP 2019.pdf",
+      "author": "By: Dillon Wild",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "412_Voices for Virginia's Children.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/412_Voices for Virginia's Children.pdf\" - 2>&1"
+    },
+    {
+      "filename": "413_Stephanie Davis APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "414_Joshua Margulies APP 2019.pdf",
+      "author": "JOSHUA MARGULIES",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "415_Chintan Environmental Research and Action Group.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/415_Chintan Environmental Research and Action Group.pdf\" - 2>&1"
+    },
+    {
+      "filename": "416_Janie Hammaker APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "417_Brandon Goldstein APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "418_Ryan LaRochelle APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "419_Danielle Spach APP 2019.pdf",
+      "author": "Danielle Spach",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "420_Rachel Astorquiza APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "421_Bradley Katcher APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "422_Virginia Department of Medical Assistance Services.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "423_Amy Dalrymple APP 2019.pdf",
+      "author": "AMY DALRYMPLE",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "424_Alice Thomson APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "425_Elizabeth Spach APP 2019.pdf",
+      "author": "Prepared by Elizabeth Spach",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "426_Po Efekoro APP 2019.pdf",
+      "author": "Prepared by Oghenakpobo Efekoro",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "427_Joe Boelsche APP 2019.pdf",
+      "author": "Joe Boelsche",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "428_James Williams APP 2019.pdf",
+      "author": "Drug Markets",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "429_Defense Health Agency.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/429_Defense Health Agency.pdf\" - 2>&1"
+    },
+    {
+      "filename": "430_Cara Snead APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "431_Alex Hassler APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "432_Yue Li APP 2019.pdf",
+      "author": "Prepared by Yue Li",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "433_Maeve Curtin APP 2019.pdf",
+      "author": "Maeve Curtin",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "434_Brett Curtis APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "435_Layla Bryant APP 2019.pdf",
+      "author": "LAYLA A. BRYANT",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "436_Longfei Xu APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "437_Prince William County Police Deparment.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/437_Prince William County Police Deparment.pdf\" - 2>&1"
+    },
+    {
+      "filename": "438_Sisi Fan APP 2019.pdf",
+      "author": "Client: PYXERA Global, China",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "439_Olivia Davis APP 2019.pdf",
+      "author": "ADDRESSING POVERTY I N",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "440_Kay Khosbayar APP 2019.pdf",
+      "author": "KHONGORZUL KHOSBAYAR",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "441_Isabel Coughlin APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "442_Aidan Brown APP 2019.pdf",
+      "author": "Aidan Brown",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "443_Virginia Department of Education.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "444_Alexandre Fall APP 2019.pdf",
+      "author": "Alexandre Fall",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "445_UNACOIS Jappo.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/445_UNACOIS Jappo.pdf\" - 2>&1"
+    },
+    {
+      "filename": "446_Anna Higgins APP 2019.pdf",
+      "author": "ANNA HIGGINS",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "447_APP Draft BK 19-05-15.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "448_Brian Kim APP 2019.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "error",
+      "error": "Command failed: pdftotext -l 1 \"./files/448_Brian Kim APP 2019.pdf\" - 2>&1"
+    },
+    {
+      "filename": "449_Virginia Community College System.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "450_Reducing Unnecessary Separation of Children from Domestic Abuse Survivors.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "451_Addressing Flood and Drought Risks in Humanitarian Settings through Disaster Risk Management and Anticipatory Action.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "452_Improving Retention in Richmond Public Schools.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "453_Increasing Remote Patient Monitoring in the Veterans Health Administration.pdf",
+      "author": "Presented by",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "454_Improving Henrico County's Mental Health Service Delivery.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "455_Accounting for Teachers’ Non-Academic Skill Contributions within Teacher Evaluation.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "456_Maryland’s Teacher Diversity Disparity- Examining Strategies to Improve Completion of Educator Preparation Programs.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "457_Why Is It So Hard to Run For Office in Virginia- - Administrative Burden and its Effects on Minority Candidates.pdf",
+      "author": "PREPARED BY MAGIN MISAEL SANCHEZ,",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "458_Accessing EVs at the Margins- Increasing Electric Vehicle Adoption in Rural Virginia.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "459_Expanding Maternal Health Care Services Within the Federal Employees Health Benefits (FEHB) Program.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "460_A multi-sectional approach to reduce the many out of school children in Lagos state.pdf",
+      "author": "FOR THE DESTINY TRUST",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "461_Constructing Diverse and Inclusive Pre-K in Charlottesville through Montessori.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "462_-Driving- Electric Vehicle Adoption in Rhode Island.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "463_Breaking the Barrier- Empowering Women to Lead in Wyoming Politics.pdf",
+      "author": "LEAD IN WYOMING POLITICS",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "464_Knowing and Being Known- Increasing Visibility for LifeSpring, a Pregnancy Care Center in Central Virginia.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "465_Protecting Women's Intimate Data in a Post-Roe World.pdf",
+      "author": "Shannon Foster",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "466_Invisible and Disproportionate Casualties.pdf",
+      "author": "Invisible and Disproportionate Casualties",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "467_Virginia’s Youth Mental Health Crisis- School-based alternatives to improve identification of crisis-level mental health concerns.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "468_Increasing Private Residential Uptake of Solar Generation in New York City.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "469_Swimming Upstream- Furthering Collaborative Care in Blue Ridge Health District.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "470_Data Mining of Fertility Tracking apps.pdf",
+      "author": "SENATOR GHAZALA HASHMI",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "471_Increasing Kindergarten Readiness amongst Special Education Students in D.C. Public Preschools.pdf",
+      "author": "Increasing Kindergarten Readiness amongst",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "472_Addressing the use of Payday Loans Among Habitat Families.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "473_Got College- An Analysis of Policy Options to preserve North Carolina’s Greatest Asset- The University of North Carolina System.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "474_The Future is Electric.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "475_Improving Domestic Resiliency to Disinformation Targeting the U.S. Justice System.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "476_Economic Development Strategies to Address the Gentrification of Bailey’s Crossroads.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "477_New Growth- Addressing Educational Barriers to Sustainable Agriculture Adoption in Virginia.pdf",
+      "author": "NEW GROWTH",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "478_Preparing Correctional Facilities for an Infectious Disease Outbreak.pdf",
+      "author": "Mehrisa Shah",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "479_Improving Team One Love Clubs on College Campuses.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "480_Reducing the Effect of Turnover.pdf",
+      "author": "REDUCING THE EFFECT OF TURNOVER",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "481_Evaluating the Regional Economic Impacts of Land Conversions to Solar Energy Production.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "482_Decarbonization of New York City Residential Buildings.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "483_Increasing Equitable Access to the Child Care Subsidy in Washington, DC.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "484_Preventing Right-Wing Extremist Use of Social Media.pdf",
+      "author": "Shivapriya Viswanathan",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "485_Preventing Radicalization in the Al-Hol Camp.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "486_Standardization of Civil Commitment Processes Across the State of Oregon.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "487_Hearts, Minds, and kWh- Rooftop Solar as a Mechanism for Community Engagement in West Virginia.pdf",
+      "author": "HEARTS, MINDS, & kWh",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "488_Critical Energy Infrastructure Cybersecurity.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "489_Improving Unaccompanied Refugee Minors Quality of Life in Virginia.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "490_Racial and Economic Integration of Alabama K-12 Public Schools.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "491_Electrifying Passenger Rail in Virginia.pdf",
+      "author": "ELECTRIFYING PASSENGER RAIL IN",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "492_Antiquated Authorizers- A Nationwide Analysis of Charter School Authorization Policies.pdf",
+      "author": "AIDAN DOUD",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "493_Informational Deficits- Women Farmers in India are Particularly Vulnerable to Climate Change.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "494_Improving Early Childhood Development in Rural Uganda.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "495_Increasing Community Engagement in Williamsburg Virginia.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "496_Addressing Substitute Teacher Shortages in Harrisonburg City Public Schools.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "497_Addressing the Rise of Forest Service Suppression Costs.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "498_Track to Development - Increasing the Research Capacity and Productivity of the Philippines.pdf",
+      "author": "TRACK TO DEVELOPMENT",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "499_Algorithmic Amplification- Reducing Radicalizing Online Content in Europe.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "500_ZONING DENSITY AND CLIMATE- ENERGY COSTS IN CHARLOTTESVILLE.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "501_The Future of Displaced Coal Miners in Southwest Virginia.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "502_Sub-Sahara African Climate-Based Migration Resilience.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "503_Community Space in Atlanta's District 2.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "504_Countering Disinformation in Fragile States.pdf",
+      "author": "COUNTERING DISINFORMATION IN",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "505_Considering Equity Within the Distribution of Innovative Approaches to Literacy Grant Funds.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "506_How to Stay- Addressing the Challenges of Humanitarian Remote Management in Myanmar through Localization.pdf",
+      "author": "HOW TO STAY",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "507_Migrant Crisis in the Darien Gap- Addressing the Demand for Humanitarian Aid.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "508_Defeating Domestic Violence- Protecting Virginia's Survivors.pdf",
+      "author": "DEFEA ING DOMES IC",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "509_Improving Youth Mental Health Using Social and Emotional Learning Tools.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "510_Increasing Black Homeownership in the City of Richmond.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "511_Network Adequacy in Mental Healthcare.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "512_Investigating Strategies for Greater Inclusion and Fairness.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "513_Beyond Food- Addressing Food Insecurity through Food Pantry Interventions.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "514_Evaluating Emergency Rental Assistance During Covid-19- A Strategy to Mitigate Eviction Outcomes in Future National Crisis.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "515_Opportunity to Increase Affordable Housing at 10th and Wertland Street.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "516_Hypersonic Strategies to Secure Rare Earth Magnet Supply Chains.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "517_Optimizing Energy Management- Strategies for Achieving 2030 Facility Sustainable Energy Goals.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "518_Reducing K-12 Anti-Asian Hate Incidents in California.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "519_Incentivizing Conservation Practices through Government Cost-Share Programs in Virginia.pdf",
+      "author": "Megan Finney",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "520_Decreasing Evictions in Public Housing.pdf",
+      "author": "Prepared by Maria Morrissey",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "521_The Road to Comprehensive Sex Education.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "522_The Fight for 5G- Competing with China for 5G Exports in the Middle East and North Africa.pdf",
+      "author": "EAST AND NORTH AFRICA",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "adamsandrew_1261467_14503320_Final Applied Po_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "Akpalu, Priscilla_Anna Thomas.pdf",
+      "author": "Priscilla Akpalu",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "anstettemily_932730_14496738_AnstettTechnical_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "APP Final Novak 5.9.2025 (1)_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "ashleyadam_32760_14500035_ashley_techreport_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "avitabileandrew_14394_7757558_avitabile_APP_t_Emily Anstett.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "bakhithana_LATE_1260016_15163978_APP_Hana_Bak_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "barbourkatharine_11214_7742567_BarbourKathari_Emily Anstett.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "barnettsarah_1257831_14485188_Barnett Technic_Anna Thomas.pdf",
+      "author": "Sarah Barnett,",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "beigermatt_11363_7776075_Matt Beiger- APP Tec_Emily Anstett.pdf",
+      "author": "PREPARED BY Matt Beiger",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "berrymorgan_LATE_39576_15044848_APP Technical_Anna Thomas.pdf",
+      "author": "ADDRESSING CHRONIC ABSENTEEISM AT",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "bochessarah_11221_7765712_Technical Repot_Emily Anstett.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "bowerslogan_13500_7766396_APP Final Technical_Emily Anstett.pdf",
+      "author": "LOGAN BOWERS",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "brementskylar_30093_14504891_SBrement_Technic_Anna Thomas.pdf",
+      "author": "SOLAR SOLUTIONS",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "browncaroline_LATE_27423_15064847_Caroline Br_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "brownpatrick_12946_7782532_APP technical repo_Emily Anstett.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "brunnhannah_LATE_1258558_15130802_Brunn_Final_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "bunthoambunlayasuka_2719_7779104_APP Technica_Emily Anstett.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "cashmankelsey_31860_14499778_Cashman Technica_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "chenyuyan_1091605_15055752_the final draft_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "christjames_971827_14473676_Technical Report-_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "cohenmadison_9564_7757396_Madison_APP_Technic_Emily Anstett.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "cohenshane_1257393_14481847_Cohen_Thesis_Anna Thomas.pdf",
+      "author": "Shane Cohen",
+      "pattern": "PREPARED_BY",
+      "status": "success"
+    },
+    {
+      "filename": "corvalanmariamj_LATE_1373_7782583_Technical R_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "craigdylan_LATE_1105169_15073418_Dylan_Craig__Anna Thomas.pdf",
+      "author": "Prepared by Dylan Craig,",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "cramerwilliam_5605_7762775_APP Technical Repo_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "crenshawcarson_33603_14518186_Crenshaw Techni_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "crewssarah_1255535_14364131_Crews APP Technic_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "cummingsnick_8610_7775960_APP Technical Repor_Emily Anstett.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "dedmonsean_9630_7748387_APP_FINAL_DRAFT_Emily Anstett.pdf",
+      "author": "SEAN DEDMON",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "demarcohenry_1257808_14494867_DeMarco_Technic_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "dickinsonlindsay_9540_7781130_Lindsay Dickins_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "dlabachisabel_6427_7780162_Dlabach Technical_Joshua McCray.pdf",
+      "author": "Isabel Dlabach",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "docalovichmatthew_LATE_34021_15066571_APP Tec_Anna Thomas.pdf",
+      "author": "PREPARED BY: MATTHEW DOCALOVICH",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "dojcakrosemarie_LATE_40117_15133985_Final APP_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "emericmartinezchristine_9856_7771644_Heritage_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "Entsminger_APP_5_6_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "Feeney, Quinn_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "fosstorie_3090_7761141_TFoss_APPFinal_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "furachel_LATE_1153424_15134579_Rachel Fu tech_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "geithclaire_990427_14518072_Claire Geith APP_Anna Thomas.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "georgemarina_9084_7759511_APP Technical Repor_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "graymakala_257597_14503338_Technical Report_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "greubelpeter_1248016_14470464_Greubel_APP_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "hamwilliam_LATE_27661_15141999_Ham - APP Tech_Carson Crenshaw.pdf",
+      "author": "PRESENTED BY William R. Ham",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "hasinahmadyaser_1257798_14518426_APP-Technica_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "havisonmikayla_49765_14472951_Havison__Techni_Carson Crenshaw.pdf",
+      "author": "By Mikayla Havison",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "hayterjess_1104598_14514036_Design, Build, Tr_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "heetderksanna_LATE_4891_7793632_FINAL APP tec_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "hirtmarvin_1261473_14509969_APP_Final_Report__Carson Crenshaw.pdf",
+      "author": "ENHANCING EMPLOYEE SATISFACTION",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "huberjenna_1256761_14502377_Huber APP Technic_Carson Crenshaw.pdf",
+      "author": "JENNA LEILANI CHONG HUBER",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "hundleyalicia_5880_7766768_APP Technical Repo_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "jonesburdickanastasia_1256759_14518623_APPFin_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "joycesheila_1256780_14447540_APP Technical Re_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "kimsarah_9481_7782513_technical_report_draft1_Joshua McCray.pdf",
+      "author": "Table of Contents",
+      "pattern": "PREPARED_BY",
+      "status": "success"
+    },
+    {
+      "filename": "kimvictoria_3154_7768050_APP_Joshua McCray.pdf",
+      "author": "VICTORIA KIM",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "kinghannah_1256765_14493587_APP King Technica_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "laffertydavid_1257829_14518526_David Lafferty_Carson Crenshaw.pdf",
+      "author": "Sun-Powered Progress",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "landerganallison_82298_14501952_Landergan-Tec_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "leechchrissy_33473_14495217_Leech- Technical_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "linkelizabeth_3956_7753434_Link_TechnicalRepo_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "lozanokrameralejandro_1108861_14506976_Alejan_Carson Crenshaw.pdf",
+      "author": "Alejandro Lozano-Kramer",
+      "pattern": "PREPARED_BY",
+      "status": "success"
+    },
+    {
+      "filename": "madormaanthony_38463_14518391_Madorma_Final D_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "makingrace_27961_14518099_Makin_Technical_Rep_Carson Crenshaw.pdf",
+      "author": "Prepared by Grace Makin",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "marshjulianna_14733_7782566_Final-Text_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "massingillmike_47859_14440616_Technical Repor_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "matthewskaitlyn_34074_14505370_APP Technical_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "mileselizabeth_1257099_14474399_APP Technical_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "mohammedsannimariama_1196450_14510100_APP_TEC_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "moorejacob_28094_15048411_APP Technical Repor_Carson Crenshaw.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "nguyenalvin_47616_14513493_Nguyen_Technical-R_Carson Crenshaw.pdf",
+      "author": "Content",
+      "pattern": "PREPARED_BY",
+      "status": "success"
+    },
+    {
+      "filename": "nguyenalvin_47616_14513534_Nguyen_Technical-R_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "odonnellconor_14069_7782507_O'Donnell - APP T_Emily Anstett.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "olivarescarlos_LATE_26882_15053830_Olivares-A_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "ottojenny_1256763_14518098_OTTO_APP_Technical_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "padilladianna_1261262_14505549_APP Final Dian_Morgan Berry.pdf",
+      "author": "Dianna E. Padilla",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "pepperkalista_384924_14494025_Technical Repor_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "phanjordan_46941_14475656_Phan_APP_Final-1_Morgan Berry.pdf",
+      "author": "Jordan Phan",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "phanjordan_46941_14475656_Phan_APP_Final-1_Susana Columbie Pere.pdf",
+      "author": "Jordan Phan",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "pomeranzandrew_950369_14492288_APP Technical_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "popeallison_1256767_14517791_Technical Report_Morgan Berry.pdf",
+      "author": "Allison Pope",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "powelleileen_LATE_3770_7823702_Final Technica_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "Prober, Eliana_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "Quigley, Collin_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "rampollastephen_11676_7771973_APP Technical R_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "Randolph, Meredith_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "rehmanmaria_1257827_14518271_Maria's Technica_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "Reynolds, Donna_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "Roche, Sam_Morgan Berry.pdf",
+      "author": "Sam Roche,",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "rodriguezashley_1257824_14515923_Technical Re_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "rowsonwill_288903_14514303_Rowson_Technical R_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "rungtadhruv_LATE_7429_7823900_Technical Repor_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "russellpeyton_37549_14463455_Assignment 5 - T_Morgan Berry.pdf",
+      "author": "PEYTON RUSSELL",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "russellpeyton_37549_14463455_Assignment 5 - T_Susana Columbie Pere.pdf",
+      "author": "PEYTON RUSSELL",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "ruszkowskinicholas_3172_7773196_Mitigating Da_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "ruzickazane_LATE_104681_14650148_ZR_Technical_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "samadanikayvon_LATE_13853_7796566_Samadani_Ka_Joshua McCray.pdf",
+      "author": "TREADING MURKY WATERS",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "sanchezcrowecatherine_34044_14486278_APP Tech_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "Savage, Kaitlyn_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "schardeinky_LATE_8267_7795299_Schardein_Techn_Joshua McCray.pdf",
+      "author": "Forging Digital Resiliency",
+      "pattern": "BEFORE_INSTITUTION",
+      "status": "success"
+    },
+    {
+      "filename": "Sebastian, Singh_Morgan Berry.pdf",
+      "author": "NAVIGATING THE TIDE",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "seskertyler_9892_7773975_APP Full Draft-1_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "sewellcharles_33831_14509949_Final Report_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "sewellcharles_33831_14509949_Final Report_Susana Columbie Pere.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "spakessarah_1257100_14475807_Spakes_Technical_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "spakessarah_1257100_14475807_Spakes_Technical_Susana Columbie Pere.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "sparlingmargaret_1335_7728394_5 Technical Rep_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "stevensonjosh_LATE_1260021_15130776_technical_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "Strand, Ryan_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "Studenic, Ethan_Morgan Berry.pdf",
+      "author": "Ethan Studenic",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "thomasanna_LATE_1256819_15089654_Technical_Re_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "townesamber_9043_7774390_Amber A Townes techn_Joshua McCray.pdf",
+      "author": "TABLE OF CONTENTS",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "tranjenny_2848_7757014_Tran-Jenny-TechnicalRe_Emily Anstett.pdf",
+      "author": "Jenny Ha Tran",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "vansantjohn_10814_14504380_Vansant, APP II As_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "Vargas, Gabriella_Morgan Berry.pdf",
+      "author": "ALBEMARLE COUNTY",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "vedbeejal_10085_7776730_Beejal Ved APP Techni_Joshua McCray.pdf",
+      "author": "JAIL DIVERSION IN OREGON",
+      "pattern": "ALL_CAPS",
+      "status": "success"
+    },
+    {
+      "filename": "Wagner, Amelia_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "washingtonandrew_1650_7756656_Drew Washington_Joshua McCray.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "witherspoondorothy_34073_14512728_Witherspoon_Morgan Berry.pdf",
+      "author": "Prepared by Dorothy Witherspoon",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "Wuco, Isabella_Morgan Berry.pdf",
+      "author": null,
+      "pattern": null,
+      "status": "not_found"
+    },
+    {
+      "filename": "xueziwei_12495_7762467_Ziwei Victor Xue_APP r_Joshua McCray.pdf",
+      "author": "ZIWEI VICTOR XUE",
+      "pattern": "BEFORE_MPP",
+      "status": "success"
+    },
+    {
+      "filename": "yeagerlexy_LATE_39903_14978663_yeager_technic_Morgan Berry.pdf",
+      "author": "Lexy Yeager",
+      "pattern": "WITH_MPP",
+      "status": "success"
+    }
+  ]
+}
