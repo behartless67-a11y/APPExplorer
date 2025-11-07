@@ -213,6 +213,75 @@ node extract_all_authors.js
 4. Should we extract other metadata from PDFs (advisor names, submission dates)?
 5. How do we handle group projects with multiple students?
 
+## Additional Investigation: Azure .DOCX Files
+
+### Discovery
+
+After the initial PDF extraction, we discovered that Azure blob storage contains **14 additional .docx (Word document) files** that are not present in the local files directory.
+
+**Azure Storage:** 651 total files
+**Local Directory:** 637 PDF files
+**Additional in Azure:** 14 .docx files
+
+### Student Names Identified from .DOCX Filenames
+
+Based on the `lastnamefirstname_` naming pattern, we identified these students:
+
+1. **Garreth Bartholomew** - `bartholomewgarreth_8520_7761880_Garreth_APPTe_Emily Anstett.docx`
+2. **Ella Carlson** - `carlsonella_9728_7781911_Carlson_Technical Re_Emily Anstett.docx`
+3. **Charles Caso** - `casocharles_8030_7758278_APP Technical Report_Joshua McCray.docx`
+4. **Hannah Crosby** - `crosbyhannah_3783_7756444_APP Technical Repor_Emily Anstett.docx`
+5. **Thomas Driscoll** - `driscollthomas_3955_7782411_APP Technical Rep_Emily Anstett.docx`
+6. **Jun Wang** - `wangjun_10887_7763746_Jun_Technical report _A_Emily Anstett.docx`
+7. **Sarah Westphal** - `westphalsarah_3152_7763853_Sarah_TechnicalRep_Emily Anstett.docx`
+
+### Other .DOCX Files (Student Names Unclear)
+
+These 7 files use organization names or unclear patterns:
+- `137_Lucy_TechnicalReport_April29_Final.docx` (possibly Lucy [lastname])
+- `295_FergussonAPP_jw_.docx` (possibly J.W. Fergusson)
+- `364_Monticello Area Community Action Agency.docx`
+- `368_Sexual Assault Resource Agency (1).docx`
+- `373_Virginia Joint Legislative Audit and Review Commission (JLARC).docx`
+- `378_College Advising Corps.docx`
+- `406_AAPP_1may1Submit.docx`
+
+### Missing Students - Final Status
+
+After searching through:
+- ✅ 637 PDF files (automated extraction)
+- ✅ All filenames in APPLibrary.xlsx and FixedAPPLibraryMapping.xlsx
+- ✅ Azure blob storage inventory (651 files)
+- ✅ Download index mappings
+- ✅ Manual PDF content search (first 3 pages)
+- ✅ Azure .docx files (14 files)
+
+**These three students were NOT FOUND anywhere in the system:**
+
+1. **Jaynae Wright** - No project found
+2. **Jen Donovan** - No project found (Megan Donovan found as client contact only)
+3. **Jamie Shelton** - No project found
+
+### Possible Explanations
+
+These students may have:
+- Never submitted their projects to the repository
+- Used different names (married name, nickname, preferred name, middle name)
+- Been part of group projects where another student was listed as primary author
+- Submitted projects that are filed under organization names or unclear numbered files
+- Graduated in years not yet digitized or uploaded to the system
+
+### Recommendation for Future Inquiries
+
+When students ask about missing projects, gather additional information:
+- What year did they graduate?
+- What was their instructor's name?
+- What was their project topic/client organization?
+- Did they use a different name at the time?
+- Was it a group project with other students?
+
+This information can help narrow down which numbered or organization-named files to investigate.
+
 ## Contact
 
 For questions about this extraction process or to request modifications, refer to this documentation and the associated script files.
@@ -220,4 +289,4 @@ For questions about this extraction process or to request modifications, refer t
 ---
 
 *Documentation created: November 6, 2025*
-*Last updated: November 6, 2025*
+*Last updated: November 6, 2025 - Added Azure .docx files investigation*
